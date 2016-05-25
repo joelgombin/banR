@@ -9,7 +9,8 @@ Description: This packages is a client for the BAN API, which allows to (batch)
 License: GPL-3
 LazyData: TRUE
 Depends:
-    R (>= 2.10),
+    R (>= 2.10)
+Imports:
     lazyeval,
     dplyr,
     httr,

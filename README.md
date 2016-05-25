@@ -27,10 +27,6 @@ library(dplyr)
 #> 
 #>     intersect, setdiff, setequal, union
 library(banR)
-#> Loading required package: lazyeval
-#> Loading required package: httr
-#> Loading required package: stringr
-#> Loading required package: readr
 data("paris2012")
 
 test_df <- paris2012 %>%
