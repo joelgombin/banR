@@ -61,6 +61,8 @@ ban_search(test_df, adresse, code_insee = "code_insee") %>% glimpse
 #> $ result_citycode    (int) 75106, 75106, 75106, 75106, 75106, 75106, 7...
 ```
 
+After geocoding, it's a good practice to check if the results are consistent by mapping them on a base map. This can be easily done using the `leaflet` API.
+
 ``` r
 paris2012_geocoded <- paris2012 %>%
               slice(1:10) %>% 
@@ -70,7 +72,7 @@ paris2012_geocoded <- ban_search(paris2012_geocoded, adresse, code_insee = "code
 #> Geocoding...
 
 library(leaflet)
-map <- paris2012_geocoded %>% 
+map_paris2012 <- paris2012_geocoded %>% 
   leaflet() %>% 
   addTiles() %>% 
   addCircleMarkers(
@@ -79,7 +81,7 @@ map <- paris2012_geocoded %>%
     radius = 5, 
     stroke = FALSE, 
     color = "navy")
-# map
+# map_paris2012
 ```
 
 Please report issues and suggestions to the [issues tracker](https://github.com/joelgombin/banR/issues).
