@@ -67,5 +67,5 @@ ban_search_ <- function(data, adresses, code_insee = NULL, code_postal = NULL, U
 #' @rdname ban_search_
 #' @export
 ban_search <- function(data, adresses, code_insee = NULL, code_postal = NULL, URL = "http://api-adresse.data.gouv.fr/") {
-  ban_search_(data, f_capture(adresses), code_insee = code_insee, code_postal = code_postal, URL = URL)
+  ban_search_(data, lazyeval::f_capture(adresses), code_insee = code_insee, code_postal = code_postal, URL = URL)
 }
