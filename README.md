@@ -61,4 +61,25 @@ ban_search(test_df, adresse, code_insee = "code_insee") %>% glimpse
 #> $ result_citycode    (int) 75106, 75106, 75106, 75106, 75106, 75106, 7...
 ```
 
+``` r
+paris2012_geocoded <- paris2012 %>%
+              slice(1:10) %>% 
+              mutate(adresse = paste(numero, voie, nom),
+                     code_insee = paste0("751", arrondissement)) 
+paris2012_geocoded <- ban_search(paris2012_geocoded, adresse, code_insee = "code_insee")
+#> Geocoding...
+
+library(leaflet)
+map <- paris2012_geocoded %>% 
+  leaflet() %>% 
+  addTiles() %>% 
+  addCircleMarkers(
+    lng = ~longitude, 
+    lat = ~latitude, 
+    radius = 5, 
+    stroke = FALSE, 
+    color = "navy")
+# map
+```
+
 Please report issues and suggestions to the [issues tracker](https://github.com/joelgombin/banR/issues).
