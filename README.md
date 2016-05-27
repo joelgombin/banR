@@ -29,11 +29,12 @@ library(dplyr)
 library(banR)
 data("paris2012")
 
-test_df <- paris2012 %>%
-              slice(1:10) %>%
-              mutate(adresse = paste(numero, voie, nom),
-                     code_insee = paste0("751", arrondissement))
-ban_search(test_df, adresse, code_insee = "code_insee") %>% glimpse
+paris2012 %>%
+  slice(1:10) %>%
+  mutate(adresse = paste(numero, voie, nom),
+         code_insee = paste0("751", arrondissement)) %>% 
+  ban_search(adresse, code_insee = "code_insee") %>% 
+  glimpse
 #> Geocoding...
 #> Observations: 10
 #> Variables: 22
@@ -61,27 +62,25 @@ ban_search(test_df, adresse, code_insee = "code_insee") %>% glimpse
 #> $ result_citycode    (int) 75106, 75106, 75106, 75106, 75106, 75106, 7...
 ```
 
-After geocoding, it's a good practice to check if the results are consistent by mapping them on a base map. This can be easily done using the `leaflet` API.
+After geocoding, it's a good practice to check if the results are consistent by mapping them on a base map. This can be easily done using the `mapview` package, for example.
 
 ``` r
 paris2012_geocoded <- paris2012 %>%
-              slice(1:10) %>% 
-              mutate(adresse = paste(numero, voie, nom),
-                     code_insee = paste0("751", arrondissement)) 
-paris2012_geocoded <- ban_search(paris2012_geocoded, adresse, code_insee = "code_insee")
+  slice(1:10) %>% 
+  mutate(adresse = paste(numero, voie, nom),
+         code_insee = paste0("751", arrondissement)) %>% 
+  ban_search(adresse, code_insee = "code_insee")
 #> Geocoding...
 
-library(leaflet)
-map_paris2012 <- paris2012_geocoded %>% 
-  leaflet() %>% 
-  addTiles() %>% 
-  addCircleMarkers(
-    lng = ~longitude, 
-    lat = ~latitude, 
-    radius = 5, 
-    stroke = FALSE, 
-    color = "navy")
-# map_paris2012
+library(mapview)
+#> Loading required package: leaflet
+library(sp)
+paris2012_geocoded %>%
+  as.data.frame %>% 
+  SpatialPointsDataFrame(.[,c("longitude", "latitude")], ., proj4string = CRS("+init=epsg:4326")) %>% 
+  mapView()
 ```
+
+<img src="./README-fig1.png" width="640" />
 
 Please report issues and suggestions to the [issues tracker](https://github.com/joelgombin/banR/issues).
