@@ -37,7 +37,7 @@ paris2012 %>%
   slice(1:10) %>%
   mutate(adresse = paste(numero, voie, nom),
          code_insee = paste0("751", arrondissement)) %>% 
-  ban_search(adresse, code_insee = "code_insee") %>% 
+  ban_geocode(adresse, code_insee = "code_insee") %>% 
   glimpse
 ```
 
@@ -48,7 +48,7 @@ paris2012_geocoded <- paris2012 %>%
   slice(1:10) %>% 
   mutate(adresse = paste(numero, voie, nom),
          code_insee = paste0("751", arrondissement)) %>% 
-  ban_search(adresse, code_insee = "code_insee")
+  ban_geocode(adresse, code_insee = "code_insee")
 
 library(mapview)
 library(sp)
