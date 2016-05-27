@@ -1,13 +1,14 @@
-#' géocode des adresses grâce à l'API BANO
+#' geocoding using the French national address database (BAN)
+#' http://adresse.data.gouv.fr/
 #'
-#' @param data un \code{dataframe} contenant, a minima, les adresses à géocoder.
-#' @param adresses nom de la colonne contenant les adresses à géocoder.
-#' @param code_insee nom d'une colonne contenant le code INSEE de la commune. Si \code{NULL} (par défaut), ce paramètre n'est pas utilisé.
-#' @param code_postal nom d'une colonne contenant le code postal de la commune. Si \code{NULL} (par défaut), ce paramètre n'est pas utilisé. Si \code{code_insee} et \code{code_postal} sont tous les deux fournis, seul \code{code_insee} est fourni.
-#' @param URL base de l'URL de l'API à utiliser. Ne modifier qu'en cas de déploiement local ou sur un serveur distant de l'API BAN, distinct du point d'entrée offert par Etalab (\url{http://api-adresse.data.gouv.fr/}).
+#' @param data a \code{dataframe} including at least one variable with addresses.
+#' @param adresses name of the address column to be geocoded
+#' @param code_insee name of the column including the French national code for a commune. If \code{NULL} (the default), this parameter is not used.
+#' @param code_postal name of the column including  postal code. If \code{NULL} (the default), this parameter is not used. If \code{code_insee} and \code{code_postal} are provided, only \code{code_insee} is used.
+#' @param URL base url of the API. This should only be modified if another endpoint than the one provided by Etalab (\url{http://api-adresse.data.gouv.fr/}) is used. 
 #'
-#' @details la fonction \code{ban_geocode_} utilise une formule pour l'argument \code{adresses}, tandis que la fonction \code{ban_geocode} utilise un nom de colonne sans guillemets, à la dplyr.
-#' @return un dataframe avec des colonnes supplémentaires avec la géolocalisation
+#' @details the function \code{ban_geocode_} use a formula for \code{adresses}, when the function \code{ban_geocode} works with column name without quote in the `dplyr` style.
+#' @return an augmented dataframe with columns about geolocalization
 #' @import lazyeval
 #' @importFrom utils write.csv
 #' @export
