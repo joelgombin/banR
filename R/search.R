@@ -61,7 +61,7 @@ ban_geocode_ <- function(data, adresses, code_insee = NULL, code_postal = NULL, 
     stop("Error on the result, error code: ", httr::status_code(queryResults))
   }
 
-  return(suppressMessages(dplyr::left_join(data, locations)))
+  return(suppressMessages(dplyr::bind_cols(data, locations[, -match(names(f_eval(~ data %>% dplyr::select_(uqs(vars)))), names(locations))])))
 
 }
 
