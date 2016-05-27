@@ -1,6 +1,6 @@
-#' Adresses de la liste électorale parisienne de 2012
+#' Addresses in the electoral register of Paris, 2012.
 #'
-#' Ce jeu de données comprend les adresses mentionnées sur la liste électorale parisienne en 2012.
+#' This dataset includes addresses found in the Parisian electoral register in 2012.
 #'
 #' @format un \code{tbl_df} avec 72107 lignes et 7 variables
 #' \describe{
@@ -12,5 +12,5 @@
 #'  \item{nb}{nombre d'électeurs enregistrés à cette adresse}
 #'  \item{ID}{identifiant du bureau de vote}
 #' }
-#' @source données compilées par Baptiste Coulmont
+#' @source data have been collected by Baptiste Coulmont
 "paris2012"
