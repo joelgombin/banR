@@ -35,13 +35,14 @@ ban_geocode_ <- function(data, adresses, code_insee = NULL, code_postal = NULL, 
     vars <- c(vars, code_postal)
   }
 
-  write.csv(f_eval(~ data %>% dplyr::select_(uqs(vars))), file = tmp, row.names = FALSE) # be nice with the server/bandwidth, just upload what's necessary!
+  write.csv(data[, vars, drop = FALSE], file = tmp, row.names = FALSE) # be nice with the server/bandwidth, just upload what's necessary!
 
   # envoyer à BANO
 #   baseURL <- "http://api-adresse.data.gouv.fr/search/csv/"
   message("Geocoding...")
   body <- list(data = httr::upload_file(tmp),
-               columns = as.character(adresses)[2])
+               columns = adresses,
+               delimiter = ",")
   # restriction de la requête par code insee ou code postal
   if (!is.null(code_insee)) {
     body$citycode <- code_insee
@@ -56,17 +57,17 @@ ban_geocode_ <- function(data, adresses, code_insee = NULL, code_postal = NULL, 
 
   # TODO : gérer les retours en erreur de l'API
   if (stringr::str_detect(queryResults$headers$`content-type`, "text/csv")) {
-    locations <- readr::read_csv(queryResults$content, col_types = paste0("cc", paste0(rep("?", 13), collapse = "")))
+    locations <- readr::read_csv(queryResults$content, col_types = paste0(paste0(rep("c", 1 + sum(!is.null(code_insee), !is.null(code_postal))), collapse = ""), paste0(rep("?", 13), collapse = "")))
   } else {
     stop("Error on the result, error code: ", httr::status_code(queryResults))
   }
 
-  return(suppressMessages(dplyr::bind_cols(data, locations[, -match(names(f_eval(~ data %>% dplyr::select_(uqs(vars)))), names(locations))])))
+  return(suppressMessages(dplyr::bind_cols(tibble::as_tibble(data), locations[, -match(names(f_eval(~ data %>% dplyr::select_(uqs(vars)))), names(locations))])))
 
 }
 
 #' @rdname ban_geocode_
 #' @export
 ban_geocode <- function(data, adresses, code_insee = NULL, code_postal = NULL, URL = "http://api-adresse.data.gouv.fr/") {
-  ban_geocode_(data, lazyeval::f_capture(adresses), code_insee = code_insee, code_postal = code_postal, URL = URL)
+  ban_geocode_(data, lazyeval::f_text(lazyeval::f_capture(adresses)), code_insee = code_insee, code_postal = code_postal, URL = URL)
 }
