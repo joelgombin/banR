@@ -3,5 +3,8 @@
 export(ban_geocode)
 export(ban_geocode_)
 export(geocode)
+export(get_features)
+export(get_geometry)
+export(get_properties)
 import(lazyeval)
 importFrom(utils,write.csv)

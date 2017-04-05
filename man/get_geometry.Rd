@@ -25,7 +25,7 @@ URLencode() \%>\%
 GET() \%>\% 
 content()
 feature <- extract2(test, "features")[[1]]
-get_geometry(features)
+get_geometry(feature)
 map_df(.x = test$features, .f = get_geometry)
 
 }

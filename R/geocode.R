@@ -4,7 +4,8 @@
 #' @param x a feature list
 #'
 #' @return a tibble
-#'
+#' @export
+#' 
 #' @examples
 #' library("magrittr")
 #' library("httr")
@@ -30,7 +31,8 @@ get_properties <- function(x) {
 #' @param x a feature
 #'
 #' @return a tibble
-#'
+#' @export
+#' 
 #' @examples
 #' library("magrittr")
 #' library("httr")
@@ -41,7 +43,7 @@ get_properties <- function(x) {
 #' GET() %>% 
 #' content()
 #' feature <- extract2(test, "features")[[1]]
-#' get_geometry(features)
+#' get_geometry(feature)
 #' map_df(.x = test$features, .f = get_geometry)
 #' 
 get_geometry <- function(x) {
@@ -63,6 +65,7 @@ get_geometry <- function(x) {
 #' @param x the content of a request
 #'
 #' @return a tibble
+#' @export
 #'
 #' @examples
 #' library("magrittr")
@@ -77,8 +80,12 @@ get_geometry <- function(x) {
 #' 
 get_features <- function(x) {
   dplyr::bind_cols(
-    map_df(.x = extract2(x, "features"), .f = get_properties), 
-    map_df(.x = extract2(x, "features"), .f = get_geometry)
+    purrr::map_df(
+      .x = magrittr::extract2(x, "features"), 
+      .f = get_properties), 
+    purrr::map_df(
+      .x = magrittr::extract2(x, "features"), 
+      .f = get_geometry)
   )
 }
 
@@ -94,7 +101,7 @@ get_features <- function(x) {
 #' 
 geocode <- function(query) {
   base_url <- "http://api-adresse.data.gouv.fr/search/?q=" 
-  get_query <- httr::GET(URLencode(paste0(base_url, query)))
+  get_query <- httr::GET(utils::URLencode(paste0(base_url, query)))
   message(
     httr::status_code(get_query)
   )
