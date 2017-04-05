@@ -24,4 +24,3 @@ paris2012
 This dataset includes addresses found in the Parisian electoral register in 2012.
 }
 \keyword{datasets}
-

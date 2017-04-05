@@ -2,5 +2,6 @@
 
 export(ban_geocode)
 export(ban_geocode_)
+export(geocode)
 import(lazyeval)
 importFrom(utils,write.csv)
