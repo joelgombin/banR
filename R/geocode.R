@@ -111,3 +111,29 @@ geocode <- function(query) {
     )
   }
 }
+
+#' Reverse geocode
+#'
+#' @param long longitude
+#' @param lat latitude
+#'
+#' @return a tibble
+#' @export
+#'
+#' @examples
+#' 
+#' reverse_geocode(long = 2.37, lat = 48.357)
+#' 
+reverse_geocode <- function(long, lat) {
+  
+  base_url <- "http://api-adresse.data.gouv.fr/reverse/?"
+  get_query <- httr::GET(paste0(base_url, "lon=", long, "&lat=", lat))
+  
+  message(httr::status_code(x = get_query))
+  
+  if (httr::status_code(x = get_query) == 200) {
+    get_features(x = httr::content(get_query))
+  }
+  
+}
+
