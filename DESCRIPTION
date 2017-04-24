@@ -15,10 +15,13 @@ Imports:
     dplyr,
     httr,
     stringr,
-    readr
+    readr,
+    tibble,
+    purrr,
+    magrittr
 Suggests:
     testthat
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
 Encoding: UTF-8
 URL: http://github.com/joelgombin/banR
 BugReports: http://github.com/joelgombin/banR/issues
