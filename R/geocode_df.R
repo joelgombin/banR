@@ -45,8 +45,6 @@ write_tempfile <- function(data, adresses, code_insee) {
   
 }
 
-
-
 #' Post Request
 #'
 #' @param data 

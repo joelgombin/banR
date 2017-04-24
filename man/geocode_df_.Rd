@@ -20,6 +20,7 @@ a tibble
 Geocode df
 }
 \examples{
+
 \dontrun{
 geocode_df_(data = table_test, adresses = "adresse")
 }
