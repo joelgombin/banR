@@ -18,13 +18,13 @@ devtools::install_github("joelgombin/banR")
 
 ``` r
 library(dplyr)
-#> 
+#>
 #> Attaching package: 'dplyr'
 #> The following objects are masked from 'package:stats':
-#> 
+#>
 #>     filter, lag
 #> The following objects are masked from 'package:base':
-#> 
+#>
 #>     intersect, setdiff, setequal, union
 library(banR)
 data("paris2012")
@@ -32,8 +32,8 @@ data("paris2012")
 paris2012 %>%
   slice(1:10) %>%
   mutate(adresse = paste(numero, voie, nom),
-         code_insee = paste0("751", arrondissement)) %>% 
-  ban_geocode(adresse, code_insee = "code_insee") %>% 
+         code_insee = paste0("751", arrondissement)) %>%
+  ban_geocode(adresse, code_insee = "code_insee") %>%
   glimpse
 #> Geocoding...
 #> Observations: 10
@@ -66,9 +66,9 @@ After geocoding, it's a good practice to check if the results are consistent by 
 
 ``` r
 paris2012_geocoded <- paris2012 %>%
-  slice(1:10) %>% 
+  slice(1:10) %>%
   mutate(adresse = paste(numero, voie, nom),
-         code_insee = paste0("751", arrondissement)) %>% 
+         code_insee = paste0("751", arrondissement)) %>%
   ban_geocode(adresse, code_insee = "code_insee")
 #> Geocoding...
 
@@ -76,11 +76,15 @@ library(mapview)
 #> Loading required package: leaflet
 library(sp)
 paris2012_geocoded %>%
-  as.data.frame %>% 
-  SpatialPointsDataFrame(.[,c("longitude", "latitude")], ., proj4string = CRS("+init=epsg:4326")) %>% 
+  as.data.frame %>%
+  SpatialPointsDataFrame(.[,c("longitude", "latitude")], ., proj4string = CRS("+init=epsg:4326")) %>%
   mapView()
 ```
 
 <img src="./README-fig1.png" width="640" />
 
 Please report issues and suggestions to the [issues tracker](https://github.com/joelgombin/banR/issues).
+
+## See also
+
+* [mhudecheck/revgeo](https://github.com/mhudecheck/revgeo) : reverse geocoding with Google Maps and Photon API
