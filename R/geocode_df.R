@@ -6,7 +6,6 @@
 #' @param code_insee name of code insee column
 #'
 #' @return path to the temp file
-#' @importFrom magrittr %>%
 #' @import rlang 
 #' @export
 #'
