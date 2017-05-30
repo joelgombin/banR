@@ -17,7 +17,8 @@ Imports:
     stringr,
     readr,
     magrittr,
-    tibble
+    tibble,
+    rlang
 Suggests:
     testthat
 RoxygenNote: 6.0.1

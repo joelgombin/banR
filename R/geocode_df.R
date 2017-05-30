@@ -6,6 +6,8 @@
 #' @param code_insee name of code insee column
 #'
 #' @return path to the temp file
+#' @importFrom magrittr %>%
+#' @import rlang 
 #' @export
 #'
 #' @examples
@@ -29,16 +31,16 @@
 write_tempfile <- function(data, adresses, code_insee) {
   
   if (missing(code_insee)) {
-    cols <- adresses
+    cols <- enquo(adresses)
   } else {
-    cols <- c(adresses, code_insee)
+    cols <-  c(enquo(adresses), enquo(code_insee))
   }
+  
   
   tmp <- paste0(tempfile(), ".csv")
   
-  dplyr::select_(
-    .data = data, 
-    .dots = cols)  %>% 
+  data %>% 
+    dplyr::select_at(dplyr::vars(UQS(cols)))  %>% 
     readr::write_csv(path = tmp)
   
   return(tmp)
