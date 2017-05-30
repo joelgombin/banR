@@ -100,10 +100,10 @@ post_request <- function(data, adresses, code_insee) {
 #' @examples
 #' 
 #' \dontrun{
-#' geocode_df_(data = table_test, adresses = "adresse")
+#' geocode_df(data = table_test, adresses = adresse)
 #' }
 #' 
-geocode_df_ <- function(data, adresses, code_insee) {
+geocode_df <- function(data, adresses, code_insee) {
   
   tmp_file <- write_tempfile(data = data, adresses = adresse, code_insee = code_insee)
   

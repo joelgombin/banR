@@ -12,7 +12,7 @@ Depends:
     R (>= 2.10)
 Imports:
     lazyeval,
-    dplyr,
+    dplyr (>= 0.6.0),
     httr,
     stringr,
     readr,
