@@ -106,7 +106,7 @@ post_request <- function(data, adresses, code_insee) {
 #' 
 geocode_df_ <- function(data, adresses, code_insee) {
   
-  tmp_file <- write_tempfile(data = table_test, adresses = "adresse", code_insee = "code_insee")
+  tmp_file <- write_tempfile(data = data, adresses = adresse, code_insee = code_insee)
   
   results <- post_request(
     data = tmp_file, 
