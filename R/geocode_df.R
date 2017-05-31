@@ -94,7 +94,6 @@ post_request <- function(data, adresses, code_insee = NULL, code_postal = NULL) 
 #' @param code_postal
 #'
 #' @return a tibble
-#' @import rlang
 #' @export
 #'
 #' @examples

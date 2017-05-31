@@ -2,22 +2,24 @@
 % Please edit documentation in R/geocode_df.R
 \name{write_tempfile}
 \alias{write_tempfile}
-\title{Write_temple}
+\title{write_tempfile}
 \usage{
-write_tempfile(data, adresses, code_insee)
+write_tempfile(data, adresses, code_insee = NULL, code_postal = NULL)
 }
 \arguments{
 \item{data}{a data frame}
 
-\item{adresses}{name of the address column}
+\item{adresses}{name of the address column (as a string)}
 
-\item{code_insee}{name of code insee column}
+\item{code_insee}{name of insee code column (as a string)}
+
+\item{code_postal}{name of the postal code column (as a string)}
 }
 \value{
 path to the temp file
 }
 \description{
-Write_temple
+write_tempfile
 }
 \examples{
 \dontrun{

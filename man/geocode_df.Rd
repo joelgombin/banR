@@ -4,7 +4,7 @@
 \alias{geocode_df}
 \title{Geocode df}
 \usage{
-geocode_df(data, adresses, code_insee)
+geocode_df(data, adresses, code_insee = NULL, code_postal = NULL)
 }
 \arguments{
 \item{data}{}
@@ -12,6 +12,8 @@ geocode_df(data, adresses, code_insee)
 \item{adresses}{}
 
 \item{code_insee}{}
+
+\item{code_postal}{}
 }
 \value{
 a tibble

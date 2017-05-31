@@ -4,7 +4,7 @@
 \alias{post_request}
 \title{Post Request}
 \usage{
-post_request(data, adresses, code_insee)
+post_request(data, adresses, code_insee = NULL, code_postal = NULL)
 }
 \arguments{
 \item{data}{}
@@ -12,6 +12,8 @@ post_request(data, adresses, code_insee)
 \item{adresses}{}
 
 \item{code_insee}{}
+
+\item{code_postal}{}
 }
 \value{
 results of a request
