@@ -4,10 +4,9 @@
 #' @param data a data frame
 #' @param adresses name of the address column (as a string)
 #' @param code_insee name of insee code column (as a string)
-#' @param code_postal name of the postal code column
+#' @param code_postal name of the postal code column (as a string)
 #'
 #' @return path to the temp file
-#' @import rlang 
 #' @export
 #'
 #' @examples
@@ -28,21 +27,14 @@
 #' utils:::format.object_size(file.size(temp_file), "MB")
 #' }
 #' 
-write_tempfile <- function(data, adresses, code_insee, code_postal) {
+write_tempfile <- function(data, adresses, code_insee = NULL, code_postal = NULL) {
   
-  if (missing(code_insee) & missing(code_postal)) {
-    cols <- enquo(adresses)
-  } else if (missing(code_postal)) {
-    cols <-  c(enquo(adresses), enquo(code_insee))
-  } else if (missing(code_insee)) {
-    cols <-  c(enquo(adresses), enquo(code_postal))
-  }
-  
+
   
   tmp <- paste0(tempfile(), ".csv")
   
   data %>% 
-    dplyr::select_at(dplyr::vars(UQS(cols)))  %>% 
+    dplyr::select_at(dplyr::vars(c(adresses, code_insee, code_postal)))  %>% 
     readr::write_csv(path = tmp)
   
   return(tmp)
@@ -71,23 +63,17 @@ write_tempfile <- function(data, adresses, code_insee, code_postal) {
 #' code_insee = "code_insee")
 #' }
 #' 
-post_request <- function(data, adresses, code_insee, code_postal) {
+post_request <- function(data, adresses, code_insee = NULL, code_postal = NULL) {
   
   base_url  <- "http://api-adresse.data.gouv.fr/search/csv/"
   
   body <- list(
     data = httr::upload_file(data), 
     columns = adresses, 
+    citycode = code_insee,
+    postalcode = code_postal,
     delimiter = ","
   )
-  
-  if (!missing(code_insee)) {
-    body$citycode <- code_insee
-  }
-  
-  if (!missing(code_postal)) {
-    body$postcode <- code_postal
-  }
   
   query_results <- httr::POST(
     base_url, 
@@ -102,7 +88,10 @@ post_request <- function(data, adresses, code_insee, code_postal) {
 
 #' Geocode df
 #'
-#' @inheritDotParams write_tempfile
+#' @param data 
+#' @param adresses 
+#' @param code_insee 
+#' @param code_postal
 #'
 #' @return a tibble
 #' @import rlang
@@ -114,15 +103,15 @@ post_request <- function(data, adresses, code_insee, code_postal) {
 #' geocode_df(data = table_test, adresses = adresse)
 #' }
 #' 
-geocode_df <- function(...) {
+geocode_df <- function(data, adresses, code_insee = NULL, code_postal = NULL) {
   
-  args <- quos(...)
-  
-  tmp_file <- write_tempfile(UQS(args))
+  tmp_file <- write_tempfile(data, adresses = adresses, code_insee = code_insee, code_postal = code_postal)
   
   results <- post_request(
     data = tmp_file, 
-    UQS(args))
+    adresses = adresses, 
+    code_insee = code_insee, 
+    code_postal = code_postal)
   
   table_results <- httr::content(results)
   
