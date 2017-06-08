@@ -49,7 +49,7 @@ get_properties <- function(x) {
 get_geometry <- function(x) {
   geom <- magrittr::extract2(x, "geometry")
   tibble::tibble(
-    type = magrittr::extract2(geom, "type"), 
+    type_geo = magrittr::extract2(geom, "type"), 
     longitude = magrittr::extract2(
       magrittr::extract2(geom, "coordinates"),
       1), 
