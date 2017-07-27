@@ -4,16 +4,16 @@
 \alias{post_request}
 \title{Post Request}
 \usage{
-post_request(data, adresses, code_insee = NULL, code_postal = NULL)
+post_request(tempfile, adresse, code_insee = NULL, code_postal = NULL)
 }
 \arguments{
-\item{data}{}
-
-\item{adresses}{}
-
 \item{code_insee}{}
 
 \item{code_postal}{}
+
+\item{data}{}
+
+\item{adresses}{}
 }
 \value{
 results of a request
@@ -22,15 +22,17 @@ results of a request
 Post Request
 }
 \examples{
-\dontrun{
-post_request(
-data = "/tmp/RtmpQaOPOu/file2d0b69b2dc4a.csv", 
-adresses = "adresse", 
-code_insee = "code_insee")
-results <- post_request(
-data = "/tmp/RtmpQaOPOu/file2d0b69b2dc4a.csv", 
-adresses = "adresse", 
-code_insee = "code_insee")
-}
 
+table_test <- tibble::tibble(
+x = c("39 quai André Citroën", "64 Allée de Sully", "20 avenue de Ségur"), 
+y = c("75015", "75012", "75007"), 
+z = rnorm(3)
+)
+
+tmp <- write_tempfile(data = table_test, adresse = x)
+post_request(
+tempfile = tmp, 
+adresse = x
+)
+ 
 }

@@ -2,41 +2,31 @@
 % Please edit documentation in R/geocode_df.R
 \name{write_tempfile}
 \alias{write_tempfile}
-\title{write_tempfile}
+\title{Write tempfile}
 \usage{
-write_tempfile(data, adresses, code_insee = NULL, code_postal = NULL)
+write_tempfile(data, adresse, code_insee = NULL, code_postal = NULL)
 }
 \arguments{
 \item{data}{a data frame}
 
-\item{adresses}{name of the address column (as a string)}
+\item{code_insee}{name of insee code column}
 
-\item{code_insee}{name of insee code column (as a string)}
+\item{code_postal}{name of the postal code column}
 
-\item{code_postal}{name of the postal code column (as a string)}
+\item{adresses}{name of the address column}
 }
 \value{
 path to the temp file
 }
 \description{
-write_tempfile
+Write tempfile
 }
 \examples{
-\dontrun{
-data(paris2012)
-table_test <- paris2012 \%>\%
-slice(1:10) \%>\%
-mutate(
-adresse = paste(numero, voie, nom), 
-code_insee = paste0("751", arrondissement)
+table_test <- tibble::tibble(
+x = c("39 quai André Citroën", "64 Allée de Sully", "20 avenue de Ségur"), 
+y = c("75015", "75012", "75007"), 
+z = rnorm(3)
 )
-write_tempfile(data = table_test, adresses = "adresse", 
-code_insee = "code_insee")
-write_tempfile(data = table_test, adresses = "adresse")
-
-temp_file <- write_tempfile(data = table_test, adresses = "adresse")
-file.size(temp_file)
-utils:::format.object_size(file.size(temp_file), "MB")
-}
+write_tempfile(data = table_test, adresse = x)
 
 }

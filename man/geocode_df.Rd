@@ -2,29 +2,38 @@
 % Please edit documentation in R/geocode_df.R
 \name{geocode_df}
 \alias{geocode_df}
-\title{Geocode df}
+\title{Geocode df
+ 
+Function to geocode a data frame}
 \usage{
-geocode_df(data, adresses, code_insee = NULL, code_postal = NULL)
+geocode_df(data, adresse, code_insee = NULL, code_postal = NULL)
 }
 \arguments{
 \item{data}{}
 
-\item{adresses}{}
-
 \item{code_insee}{}
 
 \item{code_postal}{}
+
+\item{adresses}{}
 }
 \value{
 a tibble
 }
 \description{
 Geocode df
+ 
+Function to geocode a data frame
 }
 \examples{
 
-\dontrun{
-geocode_df(data = table_test, adresses = adresse)
-}
+table_test <- tibble::tibble(
+x = c("39 quai André Citroën", "64 Allée de Sully", "20 avenue de Ségur"), 
+y = c("75015", "75012", "75007"), 
+z = rnorm(3)
+)
+
+geocode_df(data = table_test, adresse = x)
+geocode_df(data = table_test, adresse = x, code_postal = y)
 
 }

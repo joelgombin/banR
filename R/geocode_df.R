@@ -9,21 +9,12 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' table_test <- tibble::tibble(
 #' x = c("39 quai André Citroën", "64 Allée de Sully", "20 avenue de Ségur"), 
 #' y = c("75015", "75012", "75007"), 
 #' z = rnorm(3)
 #' )
-#' 
-#' write_tempfile(data = table_test, adresse = x, code_insee = y)
 #' write_tempfile(data = table_test, adresse = x)
-#' 
-#' temp_file <- write_tempfile(data = table_test, adresse = x)
-#' file.size(temp_file)
-#' utils:::format.object_size(file.size(temp_file), "MB")
-#' }
-#' 
 #' 
 write_tempfile <- function(data, adresse, code_insee = NULL, code_postal = NULL) {
 
@@ -55,6 +46,18 @@ write_tempfile <- function(data, adresse, code_insee = NULL, code_postal = NULL)
 #'
 #' @examples
 #' 
+#' table_test <- tibble::tibble(
+#' x = c("39 quai André Citroën", "64 Allée de Sully", "20 avenue de Ségur"), 
+#' y = c("75015", "75012", "75007"), 
+#' z = rnorm(3)
+#' )
+#' 
+#' tmp <- write_tempfile(data = table_test, adresse = x)
+#' post_request(
+#' tempfile = tmp, 
+#' adresse = x
+#' )
+#'  
 post_request <- function(tempfile, adresse, code_insee = NULL, code_postal = NULL) {
   
   base_url  <- "http://api-adresse.data.gouv.fr/search/csv/"
@@ -82,7 +85,9 @@ post_request <- function(tempfile, adresse, code_insee = NULL, code_postal = NUL
 }
 
 #' Geocode df
-#'
+#'  
+#' Function to geocode a data frame
+#' 
 #' @param data 
 #' @param adresses 
 #' @param code_insee 
@@ -93,22 +98,33 @@ post_request <- function(tempfile, adresse, code_insee = NULL, code_postal = NUL
 #'
 #' @examples
 #' 
-#' \dontrun{
-#' geocode_df(data = table_test, adresses = adresse)
-#' }
+#' table_test <- tibble::tibble(
+#' x = c("39 quai André Citroën", "64 Allée de Sully", "20 avenue de Ségur"), 
+#' y = c("75015", "75012", "75007"), 
+#' z = rnorm(3)
+#' )
 #' 
-geocode_df <- function(data, adresses, code_insee = NULL, code_postal = NULL) {
+#' geocode_df(data = table_test, adresse = x)
+#' geocode_df(data = table_test, adresse = x, code_postal = y)
+#' 
+geocode_df <- function(data, adresse, code_insee = NULL, code_postal = NULL) {
   
-  tmp_file <- write_tempfile(data, adresses = adresses, code_insee = code_insee, code_postal = code_postal)
+  tmp_file <- write_tempfile(
+    data = data, 
+    adresse = !! enquo(adresse), 
+    code_insee = !! enquo(code_insee), 
+    code_postal = !! enquo(code_postal)
+  )
   
   results <- post_request(
-    data = tmp_file, 
-    adresses = adresses, 
-    code_insee = code_insee, 
-    code_postal = code_postal)
+    tempfile = tmp_file, 
+    adresse = !! enquo(adresse), 
+    code_insee = !! enquo(code_insee), 
+    code_postal = !! enquo(code_postal)
+  )
   
   table_results <- httr::content(results)
   
   return(table_results)
+  
 }
-
