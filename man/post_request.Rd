@@ -7,13 +7,13 @@
 post_request(tempfile, adresse, code_insee = NULL, code_postal = NULL)
 }
 \arguments{
-\item{code_insee}{}
+\item{adresse}{name of the adress column}
 
-\item{code_postal}{}
+\item{code_insee}{name of the column including code insee}
 
-\item{data}{}
+\item{code_postal}{name of the column including post code}
 
-\item{adresses}{}
+\item{data}{a data frame}
 }
 \value{
 results of a request

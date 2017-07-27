@@ -9,13 +9,13 @@ Function to geocode a data frame}
 geocode_df(data, adresse, code_insee = NULL, code_postal = NULL)
 }
 \arguments{
-\item{data}{}
+\item{data}{a dataframe}
 
-\item{code_insee}{}
+\item{adresse}{column including adresses}
 
-\item{code_postal}{}
+\item{code_insee}{column including code insee}
 
-\item{adresses}{}
+\item{code_postal}{column including post code}
 }
 \value{
 a tibble

@@ -9,11 +9,11 @@ write_tempfile(data, adresse, code_insee = NULL, code_postal = NULL)
 \arguments{
 \item{data}{a data frame}
 
+\item{adresse}{name of the address column}
+
 \item{code_insee}{name of insee code column}
 
 \item{code_postal}{name of the postal code column}
-
-\item{adresses}{name of the address column}
 }
 \value{
 path to the temp file

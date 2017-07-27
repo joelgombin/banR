@@ -1,0 +1,33 @@
+---
+title: "Vignette Title"
+author: "Vignette Author"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup}
+library("tibble")
+library("dplyr")
+library("banR")
+table_test <- tibble::tibble(
+  x = c("39 quai André Citroën", "64 Allée de Sully", "20 avenue de Ségur"), 
+  y = c("75015", "75012", "75007"), 
+  z = rnorm(3)
+  )
+```
+
+- `geocode_df()` geocode a whole dataframe and returns results as a dataframe
+
+```{r}
+geocode_df(data = table_test, adresse = x)
+```
+
+```{r}
+geocode_df(data = table_test, adresse = x, code_postal = y)
+```
+
+

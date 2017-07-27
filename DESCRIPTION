@@ -17,10 +17,15 @@ Imports:
     stringr,
     readr,
     magrittr,
-    tibble
+    tibble,
+    plyr,
+    purrr
 Suggests:
-    testthat
+    testthat,
+    knitr,
+    rmarkdown
 RoxygenNote: 6.0.1
 Encoding: UTF-8
 URL: http://github.com/joelgombin/banR
 BugReports: http://github.com/joelgombin/banR/issues
+VignetteBuilder: knitr

@@ -83,7 +83,6 @@ write_tempfile <- function(data, adresse, code_insee = NULL, code_postal = NULL)
   
 }
 
-
 f2 <- function(adresse, code_insee = NULL, code_postal = NULL) {
   list(
     columns = enquo(adresse), 

@@ -1,7 +1,7 @@
 #' Write tempfile
 #'
 #' @param data a data frame
-#' @param adresses name of the address column 
+#' @param adresse name of the address column 
 #' @param code_insee name of insee code column 
 #' @param code_postal name of the postal code column
 #'
@@ -36,10 +36,10 @@ write_tempfile <- function(data, adresse, code_insee = NULL, code_postal = NULL)
 
 #' Post Request
 #'
-#' @param data 
-#' @param adresses 
-#' @param code_insee 
-#' @param code_postal
+#' @param data a data frame
+#' @param adresse name of the adress column 
+#' @param code_insee name of the column including code insee
+#' @param code_postal name of the column including post code
 #'
 #' @return results of a request
 #' @export
@@ -63,12 +63,12 @@ post_request <- function(tempfile, adresse, code_insee = NULL, code_postal = NUL
   base_url  <- "http://api-adresse.data.gouv.fr/search/csv/"
   
   body <- list(
-    columns = enquo(adresse), 
-    citycode = enquo(code_insee),
-    postalcode = enquo(code_postal)
+    columns = dplyr::enquo(adresse), 
+    citycode = dplyr::enquo(code_insee),
+    postalcode = dplyr::enquo(code_postal)
   ) %>% 
     purrr::keep(.p = function(x) {(x != ~NULL)}) %>%
-    plyr::llply(.fun = quo_name)
+    plyr::llply(.fun = dplyr::quo_name)
   
   body$data <- httr::upload_file(path = tempfile)
   body$delimiter <- "," 
@@ -78,7 +78,9 @@ post_request <- function(tempfile, adresse, code_insee = NULL, code_postal = NUL
     body = body
   )
   
-  message(httr::status_code(query_results))
+  message(
+    httr::status_code(query_results)
+    )
   
   return(query_results)
   
@@ -88,10 +90,10 @@ post_request <- function(tempfile, adresse, code_insee = NULL, code_postal = NUL
 #'  
 #' Function to geocode a data frame
 #' 
-#' @param data 
-#' @param adresses 
-#' @param code_insee 
-#' @param code_postal
+#' @param data a dataframe
+#' @param adresse column including adresses
+#' @param code_insee column including code insee
+#' @param code_postal column including post code
 #'
 #' @return a tibble
 #' @export
@@ -111,16 +113,16 @@ geocode_df <- function(data, adresse, code_insee = NULL, code_postal = NULL) {
   
   tmp_file <- write_tempfile(
     data = data, 
-    adresse = !! enquo(adresse), 
-    code_insee = !! enquo(code_insee), 
-    code_postal = !! enquo(code_postal)
+    adresse = !! dplyr::enquo(adresse), 
+    code_insee = !! dplyr::enquo(code_insee), 
+    code_postal = !! dplyr::enquo(code_postal)
   )
   
   results <- post_request(
     tempfile = tmp_file, 
-    adresse = !! enquo(adresse), 
-    code_insee = !! enquo(code_insee), 
-    code_postal = !! enquo(code_postal)
+    adresse = !! dplyr::enquo(adresse), 
+    code_insee = !! dplyr::enquo(code_insee), 
+    code_postal = !! dplyr::enquo(code_postal)
   )
   
   table_results <- httr::content(results)
