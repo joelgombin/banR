@@ -103,21 +103,60 @@ f2 <- function(adresse, code_insee = NULL, code_postal = NULL) {
   purrr::keep(.p = function(x) {(x != ~NULL)}) %>%
   plyr::llply(.fun = quo_name)
   }
-f2(adresse = x, code_postal = z)
+body <- f2(adresse = x, code_postal = z)
+body$data = httr::upload_file(path = "/var/folders/rv/yt271f0523s3vmqt3p8zzr9h0000gn/T//RtmpRCe7Yk/file64a79526e2f.csv")
+body
+body$delimiter = ","
+httr::POST(url = "http://api-adresse.data.gouv.fr/search/csv/", body = body) %>% httr::content()
 
+write_tempfile(data = table_test, adresse = x) 
+readr::
+post_request(
+  tempfile = "/var/folders/rv/yt271f0523s3vmqt3p8zzr9h0000gn/T//RtmpRCe7Yk/file64a79526e2f.csv", 
+  adresse = x
+  )
 
 
 geocode_df <- function(data, adresse, code_insee = NULL, code_postal = NULL) {
   
-  write_tempfile(
-      data = data, 
-      adresse = enquo(adresse), 
-      code_insee = code_insee, 
-      code_postal = code_postal
-      )
+  tmp <- paste0(tempfile(), ".csv")
+    
+  vars <- list(
+    "adresse" = dplyr::enquo(adresse), 
+    "code_postal" = dplyr::enquo(code_postal), 
+    "code_insee" = dplyr::enquo(code_insee)
+    ) %>%
+    purrr::keep(.p = function(x) {(x != ~NULL)})
+    
+  dplyr::select(.data = data, !!! vars) %>%
+    readr::write_csv(path = tmp)
+  
+  base_url  <- "http://api-adresse.data.gouv.fr/search/csv/"
+  
+  body <- list(
+    columns = enquo(adresse), 
+    citycode = enquo(code_insee),
+    postalcode = enquo(code_postal)
+    ) %>% 
+    purrr::keep(.p = function(x) {(x != ~NULL)}) %>%
+    plyr::llply(.fun = quo_name)
+  
+  body$data <- httr::upload_file(path = tmp)
+  body$delimiter <- "," 
+  
+  query_results <- httr::POST(
+    url = base_url, 
+    body = body
+    )
+  
+  message(httr::status_code(query_results))
+  table_results <- httr::content(query_results)
+  
+  return(table_results)
+  
 }
 
-geocode_df(data = table_test, adresse = x)
+geocode_df(data = table_test, adresse = x, code_postal = y)
 
   results <- post_request(
     data = tmp_file, 
@@ -125,7 +164,6 @@ geocode_df(data = table_test, adresse = x)
     code_insee = code_insee, 
     code_postal = code_postal)
   
-  table_results <- httr::content(results)
   
   return(table_results)
 
