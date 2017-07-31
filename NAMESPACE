@@ -3,6 +3,7 @@
 export("%>%")
 export(geocode)
 export(geocode_df)
+export(geocode_tbl)
 export(get_features)
 export(get_geometry)
 export(get_properties)
