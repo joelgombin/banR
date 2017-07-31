@@ -13,21 +13,29 @@ vignette: >
 library("tibble")
 library("dplyr")
 library("banR")
+```
+
+## Geocoding a data frame
+
+- `geocode_tbl()` geocode a whole dataframe and returns results as a dataframe
+
+```{r}
 table_test <- tibble::tibble(
-  x = c("39 quai André Citroën", "64 Allée de Sully", "20 avenue de Ségur"), 
+  x = c("39 quai André Citroën", "64 Allée de Bercy", "20 avenue de Ségur"), 
   y = c("75015", "75012", "75007"), 
   z = rnorm(3)
   )
 ```
 
-- `geocode_df()` geocode a whole dataframe and returns results as a dataframe
 
 ```{r}
-geocode_df(data = table_test, adresse = x)
+geocode_tbl(tbl = table_test, adresse = x) %>%
+  glimpse()
 ```
 
 ```{r}
-geocode_df(data = table_test, adresse = x, code_postal = y)
+geocode_tbl(tbl = table_test, adresse = x, code_postal = y) %>%
+  glimpse()
 ```
 
 
