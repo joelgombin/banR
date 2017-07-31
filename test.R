@@ -1,52 +1,17 @@
 library("dplyr")
+library("rlang")
 library("banR")
 library("tibble")
 table_test <- tibble::tibble(
   x = c("39 quai André Citroën", "64 Allée de Sully", "20 avenue de Ségur"), 
   y = c("75015", "75012", "75007"), 
   z = rnorm(3)
-  )
+)
 
-f1 <- function(data, adresse, code_insee = NULL, code_postal = NULL) {
-  vars <- enquo(adresse)
-  vars
-}
-f1(data = table_test, adresse = x, code_postal = y)
-
-f1 <- function(data, adresse, code_insee = NULL, code_postal = NULL) {
-  vars <- enquo(adresse)
-  select(.data = data, !! vars)
-  }
-f1(data = table_test, adresse = x, code_postal = y)
-
-f1 <- function(data, adresse, code_insee = NULL, code_postal = NULL) {
-  vars <- list(enquo(adresse), enquo(code_postal))
-  vars
-}
-f1(data = table_test, adresse = x, code_postal = y)
-
-f1 <- function(data, adresse, code_insee = NULL, code_postal = NULL) {
-  vars <- list(
-    "adresse" = enquo(adresse), 
-    "code_postal" = enquo(code_postal)
-    )
-  select(.data = data, !!! vars)
-}
-f1(data = table_test, adresse = x, code_postal = y)
-
-f1 <- function(data, adresse, code_insee = NULL, code_postal = NULL) {
+geocode_tbl <- function(tbl, adresse, code_insee = NULL, code_postal = NULL) {
   
-  vars <- list(
-    "adresse" = enquo(adresse), 
-    "code_postal" = enquo(code_postal), 
-    "code_insee" = enquo(code_insee)
-  ) %>%
-  purrr::keep(.p = function(x) {(x != ~NULL)})
-  
-}
-f1(data = table_test, adresse = x, code_insee = y) 
-
-f1 <- function(data, adresse, code_insee = NULL, code_postal = NULL) {
+  tmp <- paste0(tempfile(), ".csv")
+  message("writing to…", tmp)
   
   vars <- list(
     "adresse" = enquo(adresse), 
@@ -55,63 +20,45 @@ f1 <- function(data, adresse, code_insee = NULL, code_postal = NULL) {
     ) %>%
     purrr::keep(.p = function(x) {(x != ~NULL)})
   
-  dplyr::select(.data = data, !!! vars)  
-}
-f1(data = table_test, adresse = x, code_postal = y) 
-
-table_test <- tibble::tibble(
-  x = c("39 quai André Citroën", "64 Allée de Sully", "20 avenue de Ségur"), 
-  y = c("75015", "75012", "75007"), 
-  z = rnorm(3)
-)
-
-write_tempfile <- function(data, adresse, code_insee = NULL, code_postal = NULL) {
-  
-  tmp <- paste0(tempfile(), ".csv")
-  
-  vars <- list(
-    dplyr::enquo(adresse), 
-    dplyr::enquo(code_postal), 
-    dplyr::enquo(code_insee)
-  ) %>%
-  purrr::keep(.p = function(x) {(x != ~NULL)})
-  
-  dplyr::select(.data = data, !!! vars) %>%
+  dplyr::select(.data = tbl, !!! vars) %>%
     readr::write_csv(path = tmp)
-  
-  return(tmp)
-  
-}
 
-f2 <- function(adresse, code_insee = NULL, code_postal = NULL) {
+  message(
+    "Size is : ", utils:::format.object_size(file.size(tmp), "MB"), "MB", 
+    "\n If file is larger than 8 MB, it must be splitted"
+    )
+  
+  tbl_temp <- dplyr::select(.data = tbl, - !!! vars)  
+
+  body <- list(
+    data = httr::upload_file(path = tmp), 
+    columns = quo_name(enquo(adresse)), 
+    delimiter = ","
+  )
+  
+  print(body)  
+  
+  base_url  <- "http://api-adresse.data.gouv.fr/search/csv/"
+  
+  query_results <- httr::POST(
+    url = base_url, 
+    body = body
+  )
+  
+  message(httr::http_status(query_results))
+}
+geocode_tbl(tbl = table_test, adresse = x)
+
   list(
-    columns = enquo(adresse), 
     citycode = enquo(code_insee),
     postalcode = enquo(code_postal)
     ) %>% 
-  purrr::keep(.p = function(x) {(x != ~NULL)}) %>%
-  plyr::llply(.fun = quo_name)
-  }
-body <- f2(adresse = x, code_postal = z)
-body$data = httr::upload_file(path = "/tmp/RtmpfDtsT9/file2105311d9638.csv")
-body$delimiter = ","
+    
 httr::POST(url = "http://api-adresse.data.gouv.fr/search/csv/", body = body) %>% httr::content()
 
 geocode_df <- function(data, adresse, code_insee = NULL, code_postal = NULL) {
   
-  tmp_file <- write_tempfile(
-    data = data, 
-    adresse = !! enquo(adresse), 
-    code_insee = !! enquo(code_insee), 
-    code_postal = !! enquo(code_postal)
-  )
-  
-  results <- post_request(
-    tempfile = tmp_file, 
-    adresse = !! enquo(adresse), 
-    code_insee = !! enquo(code_insee), 
-    code_postal = !! enquo(code_postal)
-  )
+
   
   table_results <- httr::content(results)
 
