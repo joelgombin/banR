@@ -13,7 +13,7 @@
 #' @examples
 #' 
 #' table_test <- tibble::tibble(
-#' x = c("39 quai André Citroën", "64 Allée de Sully", "20 avenue de Ségur"), 
+#' x = c("39 quai Andre Citroen", "64 Allee de Bercy", "20 avenue de Segur"), 
 #' y = c("75015", "75012", "75007"), 
 #' z = rnorm(3)
 #' )
@@ -40,7 +40,7 @@ geocode_tbl <- function(tbl, adresse, code_insee = NULL, code_postal = NULL) {
 
   message(
     "If file is larger than 8 MB, it must be splitted\n",
-    "Size is : ", utils:::format.object_size(file.size(tmp), "MB"), "MB"
+    "Size is : ", file.size(tmp)
   )
 
   tbl_temp <- dplyr::select(.data = tbl, - !!! vars)
@@ -89,7 +89,7 @@ geocode_tbl <- function(tbl, adresse, code_insee = NULL, code_postal = NULL) {
       )
     )
 
-    dplyr::bind_cols(tbl_temp, tbl_geocoded)
+    dplyr::as_tibble(dplyr::bind_cols(tbl_temp, tbl_geocoded))
 
   }
 
