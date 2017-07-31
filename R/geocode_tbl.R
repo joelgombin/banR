@@ -22,52 +22,56 @@
 #' geocode_tbl(tbl = table_test, adresse = x, code_postal = y)
 #' 
 geocode_tbl <- function(tbl, adresse, code_insee = NULL, code_postal = NULL) {
-  
+
   tmp <- paste0(tempfile(), ".csv")
   message("Writing tempfile to…", tmp)
-  
+
   vars <- list(
-    rlang::enquo(adresse), 
-    rlang::enquo(code_postal), 
+    rlang::enquo(adresse),
+    rlang::enquo(code_postal),
     rlang::enquo(code_insee)
   ) %>%
-    purrr::keep(.p = function(x) {(x != ~NULL)})
-  
+  purrr::keep(.p = function(x) {
+    (x != ~NULL)
+    })
+
   dplyr::select(.data = tbl, !!! vars) %>%
     readr::write_csv(path = tmp)
-  
+
   message(
-    "If file is larger than 8 MB, it must be splitted\n", 
+    "If file is larger than 8 MB, it must be splitted\n",
     "Size is : ", utils:::format.object_size(file.size(tmp), "MB"), "MB"
   )
-  
+
   tbl_temp <- dplyr::select(.data = tbl, - !!! vars)
-  
+
   body <- list(
-    columns = rlang::enquo(arg = adresse), 
-    citycode = rlang::enquo(arg = code_insee), 
+    columns = rlang::enquo(arg = adresse),
+    citycode = rlang::enquo(arg = code_insee),
     postalcode = rlang::enquo(arg = code_postal)
   ) %>%
-    purrr::keep(.p = function(x) {(x != ~NULL)}) %>%
-    plyr::llply(.fun = rlang::quo_name)
-  
+  purrr::keep(.p = function(x) {
+    (x != ~NULL)
+    }) %>%
+  plyr::llply(.fun = rlang::quo_name)
+
   body$data <- httr::upload_file(path = tmp)
   body$delimiter <- ","
-  
+
   base_url  <- "http://api-adresse.data.gouv.fr/search/csv/"
-  
+
   query_results <- httr::POST(
-    url = base_url, 
+    url = base_url,
     body = body
   )
-  
+
   message(httr::http_status(query_results))
-  
+
   if (httr::status_code(query_results) == 200) {
-    
+
     tbl_geocoded <- httr::content(
-      query_results, 
-      encoding = "UTF-8", 
+      query_results,
+      encoding = "UTF-8",
       col_types = readr::cols(
         latitude = readr::col_double(),
         longitude = readr::col_double(),
@@ -84,10 +88,9 @@ geocode_tbl <- function(tbl, adresse, code_insee = NULL, code_postal = NULL) {
         result_citycode = readr::col_character()
       )
     )
-    
-    dplyr::bind_cols(tbl_temp, tbl_geocoded)
-    
-  }
-  
-}
 
+    dplyr::bind_cols(tbl_temp, tbl_geocoded)
+
+  }
+
+}

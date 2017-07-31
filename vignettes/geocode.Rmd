@@ -15,7 +15,15 @@ library("dplyr")
 library("banR")
 ```
 
-## Geocoding a data frame
+
+## Geocode a single address
+
+```{r}
+geocode(query = "39 quai André Citroën, Paris") %>%
+  glimpse()
+```
+
+## Geocode a data frame
 
 - `geocode_tbl()` geocode a whole dataframe and returns results as a dataframe
 

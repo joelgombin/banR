@@ -49,16 +49,15 @@ get_properties <- function(x) {
 get_geometry <- function(x) {
   geom <- magrittr::extract2(x, "geometry")
   tibble::tibble(
-    type_geo = magrittr::extract2(geom, "type"), 
+    type_geo = magrittr::extract2(geom, "type"),
     longitude = magrittr::extract2(
       magrittr::extract2(geom, "coordinates"),
-      1), 
+      1),
     latitude = magrittr::extract2(
       magrittr::extract2(geom, "coordinates"),
       2)
   )
 }
-
 
 #' Get features
 #'
@@ -81,10 +80,10 @@ get_geometry <- function(x) {
 get_features <- function(x) {
   dplyr::bind_cols(
     purrr::map_df(
-      .x = magrittr::extract2(x, "features"), 
-      .f = get_properties), 
+      .x = magrittr::extract2(x, "features"),
+      .f = get_properties),
     purrr::map_df(
-      .x = magrittr::extract2(x, "features"), 
+      .x = magrittr::extract2(x, "features"),
       .f = get_geometry)
   )
 }
@@ -97,10 +96,10 @@ get_features <- function(x) {
 #' @export
 #'
 #' @examples
-#' geocode(query = "8 boulevard du port")
+#' geocode(query = "39 quai André Citroën, Paris")
 #' 
 geocode <- function(query) {
-  base_url <- "http://api-adresse.data.gouv.fr/search/?q=" 
+  base_url <- "http://api-adresse.data.gouv.fr/search/?q="
   get_query <- httr::GET(utils::URLencode(paste0(base_url, query)))
   message(
     httr::status_code(get_query)
@@ -125,15 +124,14 @@ geocode <- function(query) {
 #' reverse_geocode(long = 2.37, lat = 48.357)
 #' 
 reverse_geocode <- function(long, lat) {
-  
+
   base_url <- "http://api-adresse.data.gouv.fr/reverse/?"
   get_query <- httr::GET(paste0(base_url, "lon=", long, "&lat=", lat))
-  
+
   message(httr::status_code(x = get_query))
-  
+
   if (httr::status_code(x = get_query) == 200) {
     get_features(x = httr::content(get_query))
   }
-  
-}
 
+}
