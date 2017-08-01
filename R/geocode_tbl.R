@@ -40,7 +40,7 @@ geocode_tbl <- function(tbl, adresse, code_insee = NULL, code_postal = NULL) {
 
   message(
     "If file is larger than 8 MB, it must be splitted\n",
-    "Size is : ", file.size(tmp)
+    "Size is : ", format_object_size(x = file.size(tmp), units = "auto")
   )
 
   tbl_temp <- dplyr::select(.data = tbl, - !!! vars)
