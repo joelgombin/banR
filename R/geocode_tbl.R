@@ -24,7 +24,7 @@
 geocode_tbl <- function(tbl, adresse, code_insee = NULL, code_postal = NULL) {
 
   tmp <- paste0(tempfile(), ".csv")
-  message("Writing tempfile to…", tmp)
+  message("Writing tempfile to...", tmp)
 
   vars <- list(
     rlang::enquo(adresse),
