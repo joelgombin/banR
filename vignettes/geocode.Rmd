@@ -1,5 +1,5 @@
 ---
-title: "Vignette Title"
+title: "BanR"
 author: "Vignette Author"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -13,37 +13,63 @@ vignette: >
 library("tibble")
 library("dplyr")
 library("banR")
-```
-
-
-## Geocode a single address
-
-```{r}
-geocode(query = "39 quai André Citroën, Paris") %>%
-  glimpse()
-```
-
-## Geocode a data frame
-
-- `geocode_tbl()` geocode a whole dataframe and returns results as a dataframe
-
-```{r}
+# generate fake data
 table_test <- tibble::tibble(
-  x = c("39 quai André Citroën", "64 Allée de Bercy", "20 avenue de Ségur"), 
-  y = c("75015", "75012", "75007"), 
+  x = c("39 quai André Citroën", "64 Allée de Bercy", "20 avenue de Ségur"),
+  y = c("75015", "75012", "75007"),
   z = rnorm(3)
   )
 ```
 
+- `geocode()` geocodes a single address
+- `reverse_geocode()` reverse geocodes a single pair of longitude and latitude
+- `geocode_tbl()` geocodes a data frame
+- `reverse_geocode_tbl()` is still to be developed
 
-```{r}
+## Geocode
+
+Geocoding is the process of transforming a human readable address into a location (ie a pair of latitude and longitude).
+
+### A single address
+
+```{r geocode}
+geocode(query = "39 quai André Citroën, Paris") %>%
+  glimpse()
+```
+
+### A data frame
+
+`geocode-tbl()` can take as argument either the [postal code](https://en.wikipedia.org/wiki/Postal_codes_in_France) or the French official code ([INSEE code](https://en.wikipedia.org/wiki/INSEE_code))
+
+```{r geocode-tbl}
 geocode_tbl(tbl = table_test, adresse = x) %>%
   glimpse()
 ```
 
-```{r}
+```{r geocode-tbl-postalcode}
 geocode_tbl(tbl = table_test, adresse = x, code_postal = y) %>%
   glimpse()
 ```
 
+```{r geocode-tbl-codeinsee}
+data("paris2012")
+paris2012 %>%
+  slice(1:10) %>%
+  mutate(
+    adresse = paste(numero, voie, nom),
+    code_insee = paste0("751", arrondissement)
+    ) %>%
+  geocode_tbl(adresse = adresse, code_insee = code_insee) %>%
+  glimpse()
+```
 
+## Reverse geocode
+
+Reverse geocoding is the process of back (reverse) coding of a point location (latitude, longitude) to a human readable address.
+
+- `reverse_geocode()` takes longitude and latitude as arguments and returns a data frame with addresses.
+
+```{r reverse-geocode}
+reverse_geocode(long =  2.279092, lat = 48.84683)  %>%
+  glimpse()
+```
