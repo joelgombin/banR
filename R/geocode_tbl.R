@@ -43,8 +43,8 @@ geocode_tbl <- function(tbl, adresse, code_insee = NULL, code_postal = NULL) {
     "Size is : ", format_object_size(x = file.size(tmp), units = "auto")
   )
 
-  tbl_temp <- dplyr::select(.data = tbl, - !!! vars)
-
+  tbl_temp <- dplyr::select(.data = tbl,  !!! purrr::map(.x = vars, .f = function(sym) {rlang::lang("-", sym)}))
+  
   body <- list(
     columns = rlang::enquo(arg = adresse),
     citycode = rlang::enquo(arg = code_insee),
@@ -73,6 +73,7 @@ geocode_tbl <- function(tbl, adresse, code_insee = NULL, code_postal = NULL) {
       query_results,
       encoding = "UTF-8",
       col_types = readr::cols(
+        .default = readr::col_character(), 
         latitude = readr::col_double(),
         longitude = readr::col_double(),
         result_label = readr::col_character(),
