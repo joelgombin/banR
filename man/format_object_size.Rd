@@ -21,8 +21,3 @@ format_object_size(x, units = "b", standard = "auto", digits = 1L, ...)
 This function is modified copy of the utils:::format.object_size function which is not exported. 
 The main difference is that it returns values.
 }
-\examples{
-
-format_object_size(x = 22222222, units = "auto")
-
-}

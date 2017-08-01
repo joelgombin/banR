@@ -9,10 +9,6 @@
 #' @param digits number of digits
 #' @param ... anything else
 #'
-#' @examples
-#' 
-#' format_object_size(x = 22222222, units = "auto")
-#' 
 format_object_size <- function (x, units = "b", standard = "auto", digits = 1L, ...) {
 
     known_bases <- c(legacy = 1024, IEC = 1024, SI = 1000)
