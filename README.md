@@ -35,7 +35,7 @@ paris2012 %>%
          code_insee = paste0("751", arrondissement)) %>% 
   geocode_tbl(adresse = adresse, code_insee = code_insee) %>%
   glimpse
-#> Writing tempfile to.../tmp/Rtmpz8Ejkd/file63401eb86b84.csv
+#> Writing tempfile to.../tmp/RtmpNIiel8/file64813690f79d.csv
 #> If file is larger than 8 MB, it must be splitted
 #> Size is : 3 Kb
 #> SuccessOKSuccess: (200) OK
@@ -65,6 +65,6 @@ paris2012 %>%
 #> $ result_citycode    <chr> "75106", "75106", "75106", "75106", "75106"...
 ```
 
-To know more about this package, please read the [vignette](./blob/tidyeval/inst/doc/geocode.md) (`vignette("geocode")`)
+To know more about this package, please read the [vignette](./inst/doc/geocode.md) (`vignette("geocode")`)
 
 Please report issues and suggestions to the [issues tracker](https://github.com/joelgombin/banR/issues).

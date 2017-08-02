@@ -42,6 +42,6 @@ paris2012 %>%
 
 ```
 
-To know more about this package, please read the [vignette](./blob/tidyeval/inst/doc/geocode.md) (`vignette("geocode")`)
+To know more about this package, please read the [vignette](./inst/doc/geocode.md) (`vignette("geocode")`)
 
 Please report issues and suggestions to the [issues tracker](https://github.com/joelgombin/banR/issues).
