@@ -18,7 +18,6 @@ Imports:
     readr,
     magrittr,
     tibble,
-    plyr,
     purrr,
     rlang,
     utils
