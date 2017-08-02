@@ -16,7 +16,7 @@ geocode_tbl(tbl, adresse, code_insee = NULL, code_postal = NULL)
 \item{code_postal}{official postcode column}
 }
 \value{
-an augmented data frame of classe tbl with latitude, longitude, etc
+an augmented data frame of class tbl with latitude, longitude, etc
 }
 \description{
 Geocode tbl geocodes a whole data frame

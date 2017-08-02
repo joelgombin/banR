@@ -7,7 +7,7 @@
 #' @param code_insee official citycode column
 #' @param code_postal official postcode column
 #'
-#' @return an augmented data frame of classe tbl with latitude, longitude, etc
+#' @return an augmented data frame of class tbl with latitude, longitude, etc
 #' @export 
 #'
 #' @examples
@@ -31,9 +31,7 @@ geocode_tbl <- function(tbl, adresse, code_insee = NULL, code_postal = NULL) {
     rlang::enquo(code_postal),
     rlang::enquo(code_insee)
   ) %>%
-  purrr::keep(.p = function(x) {
-    (x != ~NULL)
-    })
+  purrr::discard(rlang::quo_is_null)
 
   dplyr::select(.data = tbl, !!! vars) %>%
     readr::write_csv(path = tmp)
@@ -58,10 +56,8 @@ geocode_tbl <- function(tbl, adresse, code_insee = NULL, code_postal = NULL) {
     citycode = rlang::enquo(arg = code_insee),
     postalcode = rlang::enquo(arg = code_postal)
   ) %>%
-  purrr::keep(.p = function(x) {
-    (x != ~NULL)
-    }) %>%
-  plyr::llply(.fun = rlang::quo_name)
+  purrr::discard(rlang::quo_is_null) %>%
+  purrr::map(rlang::quo_name)
 
   body$data <- httr::upload_file(path = tmp)
   body$delimiter <- ","
@@ -100,6 +96,8 @@ geocode_tbl <- function(tbl, adresse, code_insee = NULL, code_postal = NULL) {
 
     dplyr::as_tibble(dplyr::bind_cols(tbl_temp, tbl_geocoded))
 
+  } else {
+    stop("The API sent back an error ", httr::status_code(query_results))
   }
 
 }
@@ -195,6 +193,8 @@ reverse_geocode_tbl <- function(tbl, longitude, latitude) {
       tbl_reverse
       )
     )
+  } else {
+    stop("The API sent back an error ", httr::status_code(query_results))
   }
 
 }
