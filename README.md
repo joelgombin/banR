@@ -20,13 +20,13 @@ devtools::install_github("joelgombin/banR", build_vignettes = TRUE)
 
 ``` r
 library(dplyr)
-#> 
+#>
 #> Attaching package: 'dplyr'
 #> The following objects are masked from 'package:stats':
-#> 
+#>
 #>     filter, lag
 #> The following objects are masked from 'package:base':
-#> 
+#>
 #>     intersect, setdiff, setequal, union
 library(banR)
 data("paris2012")
@@ -70,3 +70,7 @@ paris2012 %>%
 To know more about this package, please read the [vignette](./inst/doc/geocode.md) (`vignette("geocode")`)
 
 Please report issues and suggestions to the [issues tracker](https://github.com/joelgombin/banR/issues).
+
+## See also
+
+* [mhudecheck/revgeo](https://github.com/mhudecheck/revgeo) : reverse geocoding with Google Maps and Photon API
