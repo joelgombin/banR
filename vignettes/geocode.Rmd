@@ -1,6 +1,6 @@
 ---
 title: "Geocoding French adresses with BanR"
-author: "Pierre-Antoine Chevallier (Etalab), Joël Gombin (Datactivist)"
+author: "Pierre-Antoine Chevalier, Joël Gombin"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >

@@ -1,7 +1,7 @@
 Geocoding French adresses with BanR
 ================
-Pierre-Antoine Chevallier (Etalab), Joël Gombin (Datactivist)
-2017-08-02
+Pierre-Antoine Chevalier, Joël Gombin
+2017-08-03
 
 ``` r
 library("tibble")
@@ -65,7 +65,7 @@ geocode_tbl(tbl = table_test, adresse = adress) %>%
   glimpse()
 ```
 
-    ## Writing tempfile to.../tmp/RtmpFyHQEy/fileb1f3d11018c.csv
+    ## Writing tempfile to.../tmp/RtmpaA8vlS/file19b247150249.csv
 
     ## If file is larger than 8 MB, it must be splitted
     ## Size is : 70 bytes
@@ -75,7 +75,7 @@ geocode_tbl(tbl = table_test, adresse = adress) %>%
     ## Observations: 3
     ## Variables: 16
     ## $ postal_code        <chr> "75015", "75012", "75007"
-    ## $ z                  <dbl> 1.8233726, -1.6682385, 0.8940748
+    ## $ z                  <dbl> -1.0645933, -1.1554278, 0.4798515
     ## $ adress             <chr> "39 quai André Citroën", "64 Allée de Bercy...
     ## $ latitude           <dbl> 48.84683, 48.84255, 48.85032
     ## $ longitude          <dbl> 2.279092, 2.375933, 2.308332
@@ -96,7 +96,7 @@ geocode_tbl(tbl = table_test, adresse = adress, code_postal = postal_code) %>%
   glimpse()
 ```
 
-    ## Writing tempfile to.../tmp/RtmpFyHQEy/fileb1f3aeacb0e.csv
+    ## Writing tempfile to.../tmp/RtmpaA8vlS/file19b258c21694.csv
 
     ## If file is larger than 8 MB, it must be splitted
     ## Size is : 100 bytes
@@ -105,7 +105,7 @@ geocode_tbl(tbl = table_test, adresse = adress, code_postal = postal_code) %>%
 
     ## Observations: 3
     ## Variables: 16
-    ## $ z                  <dbl> 1.8233726, -1.6682385, 0.8940748
+    ## $ z                  <dbl> -1.0645933, -1.1554278, 0.4798515
     ## $ adress             <chr> "39 quai André Citroën", "64 Allée de Bercy...
     ## $ postal_code        <chr> "75015", "75012", "75007"
     ## $ latitude           <dbl> 48.84683, 48.84255, 48.85032
@@ -134,7 +134,7 @@ paris2012 %>%
   glimpse()
 ```
 
-    ## Writing tempfile to.../tmp/RtmpFyHQEy/fileb1f1f8125be.csv
+    ## Writing tempfile to.../tmp/RtmpaA8vlS/file19b22cdffaae.csv
 
     ## If file is larger than 8 MB, it must be splitted
     ## Size is : 3 Kb
@@ -219,28 +219,28 @@ test_df %>%
   glimpse
 ```
 
-    ## Writing tempfile to.../tmp/RtmpFyHQEy/fileb1f728bde9b.csv
+    ## Writing tempfile to.../tmp/RtmpaA8vlS/file19b2209a3375.csv
 
     ## If file is larger than 8 MB, it must be splitted
-    ## Size is : 385 bytes
+    ## Size is : 381 bytes
 
     ## SuccessOKSuccess: (200) OK
 
     ## Observations: 10
     ## Variables: 16
-    ## $ nom                <chr> "o", "m", "l", "a", "v", "r", "j", "g", "u"...
-    ## $ longitude          <dbl> 2.362700, 2.348544, 2.388745, 2.280845, 2.2...
-    ## $ latitude           <dbl> 48.89103, 48.82098, 48.82995, 48.89872, 48....
-    ## $ result_latitude    <dbl> 48.89121, 48.82120, 48.83042, 48.89861, 48....
-    ## $ result_longitude   <dbl> 2.362761, 2.348030, 2.387637, 2.280798, 2.2...
-    ## $ result_label       <chr> "Rue de Torcy 75018 Paris", "23 Rue des Lon...
-    ## $ result_distance    <int> 20, 44, 96, 12, 11, 18, 139, 98, 197, 24
-    ## $ result_type        <chr> "street", "housenumber", "housenumber", "ho...
-    ## $ result_id          <chr> "75118_9348_16e403", "75113_5747_969bf7", "...
-    ## $ result_housenumber <chr> NA, "23", "7", "35", "1", "32 TER", "9008",...
-    ## $ result_name        <chr> "Rue de Torcy", "Rue des Longues Raies", "T...
+    ## $ nom                <chr> "w", "y", "c", "z", "u", "g", "m", "b", "o"...
+    ## $ longitude          <dbl> 2.428339, 2.347702, 2.268201, 2.375550, 2.2...
+    ## $ latitude           <dbl> 48.80140, 48.85351, 48.89463, 48.80440, 48....
+    ## $ result_latitude    <dbl> 48.80196, 48.85354, 48.89469, 48.80452, 48....
+    ## $ result_longitude   <dbl> 2.428480, 2.347221, 2.268177, 2.376019, 2.2...
+    ## $ result_label       <chr> "3 Rue Auguste Simon 94700 Maisons-Alfort",...
+    ## $ result_distance    <int> 62, 35, 7, 36, 22, 23, 13, 165, 246, 43
+    ## $ result_type        <chr> "housenumber", "housenumber", "housenumber"...
+    ## $ result_id          <chr> "94046_0070_a8ca9b", "75104_XXXX_51f68b", "...
+    ## $ result_housenumber <chr> "3", "4", "16", "1 B", "31", "47", "2 BIS",...
+    ## $ result_name        <chr> "Rue Auguste Simon", "Parvis Notre-Dame-Pl ...
     ## $ result_street      <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
-    ## $ result_postcode    <chr> "75018", "75013", "75012", "92300", "75016"...
-    ## $ result_city        <chr> "Paris", "Paris", "Paris", "Levallois-Perre...
-    ## $ result_context     <chr> "75, Paris, Île-de-France", "75, Paris, Île...
-    ## $ result_citycode    <chr> "75118", "75113", "75112", "92044", "75116"...
+    ## $ result_postcode    <chr> "94700", "75004", "92200", "94400", "92210"...
+    ## $ result_city        <chr> "Maisons-Alfort", "Paris", "Neuilly-sur-Sei...
+    ## $ result_context     <chr> "94, Val-de-Marne, Île-de-France", "75, Par...
+    ## $ result_citycode    <chr> "94046", "75104", "92051", "94081", "92064"...
