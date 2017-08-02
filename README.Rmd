@@ -1,0 +1,47 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+# An R client for the BAN API
+
+The `banR` package is a light R client for the [BAN API](https://adresse.data.gouv.fr/api/). The [Base Adresse Nationale (BAN)](https://adresse.data.gouv.fr/) is an open database of French adresses, produced by OpenStreetMap, La Poste, the IGN and Etalab. 
+
+`banR` is not yet on CRAN (but hopefully, it will be soon), so for the time being it can be installed through `devtools`:
+
+```{r eval=FALSE}
+# install.packages("devtools")
+devtools::install_github("joelgombin/banR", build_vignettes = TRUE)
+```
+
+
+`banR` allows to geocode lots of adresses in batch (the only hard limit is that, at the moment, the API only allows CSV files up to 8 MB). Please be gentle with the server though!
+
+`banR` is designed to be used in a data exploration workflow, with a syntax 'à la [`tidyverse`](http://tidyverse.org)':
+
+```{r}
+library(dplyr)
+library(banR)
+data("paris2012")
+
+paris2012 %>%
+  slice(1:100) %>%
+  mutate(adresse = paste(numero, voie, nom),
+         code_insee = paste0("751", arrondissement)) %>% 
+  geocode_tbl(adresse = adresse, code_insee = code_insee) %>%
+  glimpse
+
+```
+
+To know more about this package, please read the [vignette](./blob/tidyeval/inst/doc/geocode.md) (`vignette("geocode")`)
+
+Please report issues and suggestions to the [issues tracker](https://github.com/joelgombin/banR/issues).
