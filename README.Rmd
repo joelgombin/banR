@@ -14,6 +14,8 @@ knitr::opts_chunk$set(
 
 # An R client for the BAN API
 
+[![Travis-CI Build Status](https://travis-ci.org/joelgombin/banR.svg?branch=master)](https://travis-ci.org/joelgombin/banR)
+
 The `banR` package is a light R client for the [BAN API](https://adresse.data.gouv.fr/api/). The [Base Adresse Nationale (BAN)](https://adresse.data.gouv.fr/) is an open database of French adresses, produced by OpenStreetMap, La Poste, the IGN and Etalab. 
 
 `banR` is not yet on CRAN (but hopefully, it will be soon), so for the time being it can be installed through `devtools`:
