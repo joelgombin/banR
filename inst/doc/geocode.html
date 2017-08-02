@@ -74,7 +74,7 @@ table_test &lt;-<span class="st"> </span>tibble::<span class="kw">tibble</span>(
 <p>In addition to the adress, <code>geocode_tbl()</code> can take as argument either the <a href="https://en.wikipedia.org/wiki/Postal_codes_in_France">postal code</a> or the French official code (<a href="https://en.wikipedia.org/wiki/INSEE_code">INSEE code</a>) of the commune.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">geocode_tbl</span>(<span class="dt">tbl =</span> table_test, <span class="dt">adresse =</span> adress) %&gt;%
 <span class="st">  </span><span class="kw">glimpse</span>()</code></pre></div>
-<pre><code>## Writing tempfile to.../tmp/RtmpaA8vlS/file19b247150249.csv
+<pre><code>## Writing tempfile to.../tmp/RtmprZnWJL/file2951633bd6e3.csv
 
 ## If file is larger than 8 MB, it must be splitted
 ## Size is : 70 bytes
@@ -84,7 +84,7 @@ table_test &lt;-<span class="st"> </span>tibble::<span class="kw">tibble</span>(
 ## Observations: 3
 ## Variables: 16
 ## $ postal_code        &lt;chr&gt; &quot;75015&quot;, &quot;75012&quot;, &quot;75007&quot;
-## $ z                  &lt;dbl&gt; -1.0645933, -1.1554278, 0.4798515
+## $ z                  &lt;dbl&gt; -0.7916957, -0.7563508, -0.3894949
 ## $ adress             &lt;chr&gt; &quot;39 quai André Citroën&quot;, &quot;64 Allée de Bercy...
 ## $ latitude           &lt;dbl&gt; 48.84683, 48.84255, 48.85032
 ## $ longitude          &lt;dbl&gt; 2.279092, 2.375933, 2.308332
@@ -101,7 +101,7 @@ table_test &lt;-<span class="st"> </span>tibble::<span class="kw">tibble</span>(
 ## $ result_citycode    &lt;chr&gt; &quot;75115&quot;, &quot;75112&quot;, &quot;75107&quot;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">geocode_tbl</span>(<span class="dt">tbl =</span> table_test, <span class="dt">adresse =</span> adress, <span class="dt">code_postal =</span> postal_code) %&gt;%
 <span class="st">  </span><span class="kw">glimpse</span>()</code></pre></div>
-<pre><code>## Writing tempfile to.../tmp/RtmpaA8vlS/file19b258c21694.csv
+<pre><code>## Writing tempfile to.../tmp/RtmprZnWJL/file2951620c79e4.csv
 
 ## If file is larger than 8 MB, it must be splitted
 ## Size is : 100 bytes
@@ -110,7 +110,7 @@ table_test &lt;-<span class="st"> </span>tibble::<span class="kw">tibble</span>(
 
 ## Observations: 3
 ## Variables: 16
-## $ z                  &lt;dbl&gt; -1.0645933, -1.1554278, 0.4798515
+## $ z                  &lt;dbl&gt; -0.7916957, -0.7563508, -0.3894949
 ## $ adress             &lt;chr&gt; &quot;39 quai André Citroën&quot;, &quot;64 Allée de Bercy...
 ## $ postal_code        &lt;chr&gt; &quot;75015&quot;, &quot;75012&quot;, &quot;75007&quot;
 ## $ latitude           &lt;dbl&gt; 48.84683, 48.84255, 48.85032
@@ -135,7 +135,7 @@ paris2012 %&gt;%
     ) %&gt;%
 <span class="st">  </span><span class="kw">geocode_tbl</span>(<span class="dt">adresse =</span> adresse, <span class="dt">code_insee =</span> code_insee) %&gt;%
 <span class="st">  </span><span class="kw">glimpse</span>()</code></pre></div>
-<pre><code>## Writing tempfile to.../tmp/RtmpaA8vlS/file19b22cdffaae.csv
+<pre><code>## Writing tempfile to.../tmp/RtmprZnWJL/file29512597aa00.csv
 
 ## If file is larger than 8 MB, it must be splitted
 ## Size is : 3 Kb
@@ -205,31 +205,31 @@ paris2012 %&gt;%
 test_df %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">reverse_geocode_tbl</span>(lon, lat) %&gt;%<span class="st"> </span>
 <span class="st">  </span>glimpse</code></pre></div>
-<pre><code>## Writing tempfile to.../tmp/RtmpaA8vlS/file19b2209a3375.csv
+<pre><code>## Writing tempfile to.../tmp/RtmprZnWJL/file29514a0a2559.csv
 
 ## If file is larger than 8 MB, it must be splitted
-## Size is : 381 bytes
+## Size is : 385 bytes
 
 ## SuccessOKSuccess: (200) OK
 
 ## Observations: 10
 ## Variables: 16
-## $ nom                &lt;chr&gt; &quot;w&quot;, &quot;y&quot;, &quot;c&quot;, &quot;z&quot;, &quot;u&quot;, &quot;g&quot;, &quot;m&quot;, &quot;b&quot;, &quot;o&quot;...
-## $ longitude          &lt;dbl&gt; 2.428339, 2.347702, 2.268201, 2.375550, 2.2...
-## $ latitude           &lt;dbl&gt; 48.80140, 48.85351, 48.89463, 48.80440, 48....
-## $ result_latitude    &lt;dbl&gt; 48.80196, 48.85354, 48.89469, 48.80452, 48....
-## $ result_longitude   &lt;dbl&gt; 2.428480, 2.347221, 2.268177, 2.376019, 2.2...
-## $ result_label       &lt;chr&gt; &quot;3 Rue Auguste Simon 94700 Maisons-Alfort&quot;,...
-## $ result_distance    &lt;int&gt; 62, 35, 7, 36, 22, 23, 13, 165, 246, 43
+## $ nom                &lt;chr&gt; &quot;w&quot;, &quot;u&quot;, &quot;m&quot;, &quot;q&quot;, &quot;h&quot;, &quot;t&quot;, &quot;f&quot;, &quot;s&quot;, &quot;o&quot;...
+## $ longitude          &lt;dbl&gt; 2.297121, 2.207908, 2.433294, 2.442644, 2.3...
+## $ latitude           &lt;dbl&gt; 48.84533, 48.87362, 48.87276, 48.87979, 48....
+## $ result_latitude    &lt;dbl&gt; 48.84534, 48.87329, 48.87274, 48.87985, 48....
+## $ result_longitude   &lt;dbl&gt; 2.297203, 2.207137, 2.433189, 2.442718, 2.3...
+## $ result_label       &lt;chr&gt; &quot;148 Rue du Théâtre 75015 Paris&quot;, &quot;51 B Rue...
+## $ result_distance    &lt;int&gt; 6, 67, 7, 8, 4, 4, 89, 10, 204, 16
 ## $ result_type        &lt;chr&gt; &quot;housenumber&quot;, &quot;housenumber&quot;, &quot;housenumber&quot;...
-## $ result_id          &lt;chr&gt; &quot;94046_0070_a8ca9b&quot;, &quot;75104_XXXX_51f68b&quot;, &quot;...
-## $ result_housenumber &lt;chr&gt; &quot;3&quot;, &quot;4&quot;, &quot;16&quot;, &quot;1 B&quot;, &quot;31&quot;, &quot;47&quot;, &quot;2 BIS&quot;,...
-## $ result_name        &lt;chr&gt; &quot;Rue Auguste Simon&quot;, &quot;Parvis Notre-Dame-Pl ...
+## $ result_id          &lt;chr&gt; &quot;75115_9230_9ea8f1&quot;, &quot;92063_3600_1ead14&quot;, &quot;...
+## $ result_housenumber &lt;chr&gt; &quot;148&quot;, &quot;51 B&quot;, &quot;48&quot;, &quot;6&quot;, &quot;66&quot;, &quot;118&quot;, &quot;1&quot;,...
+## $ result_name        &lt;chr&gt; &quot;Rue du Théâtre&quot;, &quot;Rue des Talus&quot;, &quot;Rue des...
 ## $ result_street      &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
-## $ result_postcode    &lt;chr&gt; &quot;94700&quot;, &quot;75004&quot;, &quot;92200&quot;, &quot;94400&quot;, &quot;92210&quot;...
-## $ result_city        &lt;chr&gt; &quot;Maisons-Alfort&quot;, &quot;Paris&quot;, &quot;Neuilly-sur-Sei...
-## $ result_context     &lt;chr&gt; &quot;94, Val-de-Marne, Île-de-France&quot;, &quot;75, Par...
-## $ result_citycode    &lt;chr&gt; &quot;94046&quot;, &quot;75104&quot;, &quot;92051&quot;, &quot;94081&quot;, &quot;92064&quot;...</code></pre>
+## $ result_postcode    &lt;chr&gt; &quot;75015&quot;, &quot;92500&quot;, &quot;93100&quot;, &quot;93230&quot;, &quot;75019&quot;...
+## $ result_city        &lt;chr&gt; &quot;Paris&quot;, &quot;Rueil-Malmaison&quot;, &quot;Montreuil&quot;, &quot;R...
+## $ result_context     &lt;chr&gt; &quot;75, Paris, Île-de-France&quot;, &quot;92, Hauts-de-S...
+## $ result_citycode    &lt;chr&gt; &quot;75115&quot;, &quot;92063&quot;, &quot;93048&quot;, &quot;93063&quot;, &quot;75119&quot;...</code></pre>
 
 </body>
 </html>
