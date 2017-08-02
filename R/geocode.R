@@ -94,6 +94,8 @@ reverse_geocode <- function(long, lat) {
 
   if (httr::status_code(x = get_query) == 200) {
     get_features(x = httr::content(get_query))
+  } else {
+    stop("The API sent back an error ", httr::status_code(get_query))
   }
 
 }
