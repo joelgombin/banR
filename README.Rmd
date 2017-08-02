@@ -14,19 +14,21 @@ knitr::opts_chunk$set(
 
 # An R client for the BAN API
 
+[![Travis-CI Build Status](https://travis-ci.org/joelgombin/banR.svg?branch=master)](https://travis-ci.org/joelgombin/banR)
+
 The `banR` package is a light R client for the [BAN API](https://adresse.data.gouv.fr/api/). The [Base Adresse Nationale (BAN)](https://adresse.data.gouv.fr/) is an open database of French adresses, produced by OpenStreetMap, La Poste, the IGN and Etalab. 
 
-`banR` is not yet on CRAN, so for the time being it can be installed through `devtools`:
+`banR` is not yet on CRAN (but hopefully, it will be soon), so for the time being it can be installed through `devtools`:
 
 ```{r eval=FALSE}
 # install.packages("devtools")
-devtools::install_github("joelgombin/banR")
+devtools::install_github("joelgombin/banR", build_vignettes = TRUE)
 ```
 
 
 `banR` allows to geocode lots of adresses in batch (the only hard limit is that, at the moment, the API only allows CSV files up to 8 MB). Please be gentle with the server though!
 
-`banR` is designed to be used in a data exploration workflow, with a syntax 'à la `dplyr`':
+`banR` is designed to be used in a data exploration workflow, with a syntax 'à la [`tidyverse`](http://tidyverse.org)':
 
 ```{r}
 library(dplyr)
@@ -34,33 +36,14 @@ library(banR)
 data("paris2012")
 
 paris2012 %>%
-  slice(1:10) %>%
+  slice(1:100) %>%
   mutate(adresse = paste(numero, voie, nom),
          code_insee = paste0("751", arrondissement)) %>% 
-  ban_geocode(adresse, code_insee = "code_insee") %>% 
+  geocode_tbl(adresse = adresse, code_insee = code_insee) %>%
   glimpse
+
 ```
 
-After geocoding, it's a good practice to check if the results are consistent by mapping them on a base map. This can be easily done using the `mapview` package, for example. 
-
-```{r leaflet}
-paris2012_geocoded <- paris2012 %>%
-  slice(1:10) %>% 
-  mutate(adresse = paste(numero, voie, nom),
-         code_insee = paste0("751", arrondissement)) %>% 
-  ban_geocode(adresse, code_insee = "code_insee")
-
-library(mapview)
-library(sp)
-paris2012_geocoded %>%
-  as.data.frame %>% 
-  SpatialPointsDataFrame(.[,c("longitude", "latitude")], ., proj4string = CRS("+init=epsg:4326")) %>% 
-  mapView()
-```
-
-```{r, echo = FALSE}
-knitr::include_graphics("./README-fig1.png")
-```
-
+To know more about this package, please read the [vignette](./inst/doc/geocode.md) (`vignette("geocode")`)
 
 Please report issues and suggestions to the [issues tracker](https://github.com/joelgombin/banR/issues).

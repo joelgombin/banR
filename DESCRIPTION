@@ -1,9 +1,10 @@
 Package: banR
 Type: Package
 Title: R client for the BAN API
-Version: 0.1.0
-Author: Joel Gombin, P.-A. Chevalier
-Maintainer: Joel Gombin <joel.gombin@gmail.com>
+Version: 0.2.0
+Authors@R: c(
+    person("Joel", "Gombin", email = "joel.gombin@gmail.com", role = c("cre", "aut")),
+    person("Paul-Antoine", "Chevalier", email = "pachevalier@gmail.com", role = "aut"))
 Description: This packages is a client for the BAN API, which allows to (batch)
     geocode and reverse-geocode French adresses.
 License: GPL-3
@@ -11,14 +12,15 @@ LazyData: TRUE
 Depends:
     R (>= 2.10)
 Imports:
-    lazyeval,
-    dplyr,
+    dplyr (>= 0.7.0),
     httr,
     stringr,
     readr,
+    magrittr,
     tibble,
     purrr,
-    magrittr
+    rlang,
+    utils
 Suggests:
     testthat,
     knitr,

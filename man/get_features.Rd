@@ -15,15 +15,3 @@ a tibble
 \description{
 Get features
 }
-\examples{
-library("magrittr")
-library("httr")
-library("tibble")
-library("purrr")
-test <- "http://api-adresse.data.gouv.fr/search/?q=8 bd du port" \%>\% 
-URLencode() \%>\% 
-GET() \%>\% 
-content()
-get_features(test)
-
-}

@@ -15,17 +15,3 @@ a tibble
 \description{
 Get properties of a feature
 }
-\examples{
-library("magrittr")
-library("httr")
-library("tibble")
-library("purrr")
-test <- "http://api-adresse.data.gouv.fr/search/?q=8 bd du port" \%>\% 
-URLencode() \%>\% 
-GET() \%>\% 
-content()
-feature <- extract2(test, "features")[[1]]
-get_properties(feature)
-map_df(.x = test$features, .f = get_properties)
-
-}
