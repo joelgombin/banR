@@ -9,7 +9,8 @@
 #' @param digits number of digits
 #' @param ... anything else
 #'
-format_object_size <- function (x, units = "b", standard = "auto", digits = 1L, ...) {
+format_object_size <- function (
+  x, units = "b", standard = "auto", digits = 1L, ...) {
 
     known_bases <- c(legacy = 1024, IEC = 1024, SI = 1000)
     known_units <- list(
@@ -51,7 +52,7 @@ format_object_size <- function (x, units = "b", standard = "auto", digits = 1L, 
     unit <- units_map[power + 1L]
     if (power == 0 && standard == "legacy")
         unit <- "bytes"
-    
-    paste0(round(x/base^power, digits = digits), " ", unit)
-    
+
+    paste0( round(x = x / base ^ power, digits = digits), " ", unit)
+
 }
