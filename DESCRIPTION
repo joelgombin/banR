@@ -5,7 +5,7 @@ Version: 0.2.0
 Authors@R: c(
     person("Joel", "Gombin", email = "joel.gombin@gmail.com", role = c("cre", "aut")),
     person("Paul-Antoine", "Chevalier", email = "pachevalier@gmail.com", role = "aut"))
-Description: This packages is a client for the BAN API, which allows to (batch)
+Description: A client for the BAN API, which allows to (batch)
     geocode and reverse-geocode French adresses.
 License: GPL-3
 LazyData: TRUE
