@@ -2,15 +2,15 @@
 #'
 #' This dataset includes addresses found in the Parisian electoral register in 2012.
 #'
-#' @format un \code{tbl_df} avec 72107 lignes et 7 variables
+#' @format a \code{tbl_df} with 72107 lines and 7 variables
 #' \describe{
-#'  \item{arrondissement}{code de l'arrondissement}
-#'  \item{bureau}{code du bureau de vote, dans l'arrondissement}
-#'  \item{numero}{numéro dans la voie}
-#'  \item{voie}{type de voie}
-#'  \item{nom}{nom de la voie}
-#'  \item{nb}{nombre d'électeurs enregistrés à cette adresse}
-#'  \item{ID}{identifiant du bureau de vote}
+#'  \item{arrondissement}{code of the arrondissement (district)}
+#'  \item{bureau}{code of the polling station, in the arrondissement}
+#'  \item{numero}{street number}
+#'  \item{voie}{type of street}
+#'  \item{nom}{name of the street}
+#'  \item{nb}{number of voters registered at this adress}
+#'  \item{ID}{polling station ID}
 #' }
 #' @source data have been collected by Baptiste Coulmont
 "paris2012"
