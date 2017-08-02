@@ -50,7 +50,7 @@ get_features <- function(x) {
 
 #' Geocode
 #'
-#' @param query a string
+#' @param query a string of the adress you want to geocode
 #'
 #' @return a tibble
 #' @export
@@ -68,6 +68,8 @@ geocode <- function(query) {
     get_features(
       x = httr::content(get_query)
     )
+  } else {
+    stop("The API sent back an error ", httr::status_code(get_query))
   }
 }
 

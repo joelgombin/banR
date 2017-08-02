@@ -7,7 +7,7 @@
 geocode(query)
 }
 \arguments{
-\item{query}{a string}
+\item{query}{a string of the adress you want to geocode}
 }
 \value{
 a tibble
