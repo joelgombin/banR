@@ -1,3 +1,7 @@
+## Resubmission
+This is a resubmission. In this version I have:
+* added a link documenting the BAN and its API
+
 ## Test environments
 * local Ubuntu 17.04 install, R 3.4.1
 * Ubuntu 14.04 (on travis-ci), R 3.4.1
