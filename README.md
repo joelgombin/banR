@@ -7,7 +7,13 @@ An R client for the BAN API
 
 The `banR` package is a light R client for the [BAN API](https://adresse.data.gouv.fr/api/). The [Base Adresse Nationale (BAN)](https://adresse.data.gouv.fr/) is an open database of French adresses, produced by OpenStreetMap, La Poste, the IGN and Etalab.
 
-`banR` is not yet on CRAN (but hopefully, it will be soon), so for the time being it can be installed through `devtools`:
+`banR` can be installed from CRAN (stable version):
+
+``` r
+install.packages("banR")
+```
+
+or from Github (dev version):
 
 ``` r
 # install.packages("devtools")
@@ -20,13 +26,13 @@ devtools::install_github("joelgombin/banR", build_vignettes = TRUE)
 
 ``` r
 library(dplyr)
-#>
+#> 
 #> Attaching package: 'dplyr'
 #> The following objects are masked from 'package:stats':
-#>
+#> 
 #>     filter, lag
 #> The following objects are masked from 'package:base':
-#>
+#> 
 #>     intersect, setdiff, setequal, union
 library(banR)
 data("paris2012")
@@ -37,7 +43,7 @@ paris2012 %>%
          code_insee = paste0("751", arrondissement)) %>% 
   geocode_tbl(adresse = adresse, code_insee = code_insee) %>%
   glimpse
-#> Writing tempfile to.../tmp/RtmpJH6j8a/file724e4d069d5a.csv
+#> Writing tempfile to.../tmp/RtmpsliUzK/file143530a72f6.csv
 #> If file is larger than 8 MB, it must be splitted
 #> Size is : 3 Kb
 #> SuccessOKSuccess: (200) OK
@@ -70,7 +76,3 @@ paris2012 %>%
 To know more about this package, please read the [vignette](./inst/doc/geocode.md) (`vignette("geocode")`)
 
 Please report issues and suggestions to the [issues tracker](https://github.com/joelgombin/banR/issues).
-
-## See also
-
-* [mhudecheck/revgeo](https://github.com/mhudecheck/revgeo) : reverse geocoding with Google Maps and Photon API
