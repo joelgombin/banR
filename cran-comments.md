@@ -1,6 +1,8 @@
 ## Resubmission
 This is a resubmission. In this version I have:
-* added a link documenting the BAN and its API
+* double-quoted the BAN description in the DESCRIPTION file
+* fixed a typo (adresses -> addresses)
+* I've also taken the opportunity to add our affiliations in the vignette.
 
 ## Test environments
 * local Ubuntu 17.04 install, R 3.4.1
