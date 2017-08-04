@@ -1,7 +1,7 @@
 Geocoding French adresses with BanR
 ================
-Pierre-Antoine Chevalier (Etalab), Joël Gombin (Datactivist)
-2017-08-03
+Paul-Antoine Chevalier (Etalab), Joël Gombin (Datactivist)
+2017-08-04
 
 ``` r
 library("tibble")
@@ -65,7 +65,7 @@ geocode_tbl(tbl = table_test, adresse = adress) %>%
   glimpse()
 ```
 
-    ## Writing tempfile to.../tmp/RtmpInxa18/file5bcf5501f5d9.csv
+    ## Writing tempfile to.../tmp/Rtmp7cMa5G/file5efd43a9c648.csv
 
     ## If file is larger than 8 MB, it must be splitted
     ## Size is : 70 bytes
@@ -75,7 +75,7 @@ geocode_tbl(tbl = table_test, adresse = adress) %>%
     ## Observations: 3
     ## Variables: 16
     ## $ postal_code        <chr> "75015", "75012", "75007"
-    ## $ z                  <dbl> -0.1522052, -1.2207492, 1.1941024
+    ## $ z                  <dbl> -0.2453739, -0.1189456, -1.0130883
     ## $ adress             <chr> "39 quai André Citroën", "64 Allée de Bercy...
     ## $ latitude           <dbl> 48.84683, 48.84255, 48.85032
     ## $ longitude          <dbl> 2.279092, 2.375933, 2.308332
@@ -96,7 +96,7 @@ geocode_tbl(tbl = table_test, adresse = adress, code_postal = postal_code) %>%
   glimpse()
 ```
 
-    ## Writing tempfile to.../tmp/RtmpInxa18/file5bcf766ddad4.csv
+    ## Writing tempfile to.../tmp/Rtmp7cMa5G/file5efd62e8e1ba.csv
 
     ## If file is larger than 8 MB, it must be splitted
     ## Size is : 100 bytes
@@ -105,7 +105,7 @@ geocode_tbl(tbl = table_test, adresse = adress, code_postal = postal_code) %>%
 
     ## Observations: 3
     ## Variables: 16
-    ## $ z                  <dbl> -0.1522052, -1.2207492, 1.1941024
+    ## $ z                  <dbl> -0.2453739, -0.1189456, -1.0130883
     ## $ adress             <chr> "39 quai André Citroën", "64 Allée de Bercy...
     ## $ postal_code        <chr> "75015", "75012", "75007"
     ## $ latitude           <dbl> 48.84683, 48.84255, 48.85032
@@ -134,7 +134,7 @@ paris2012 %>%
   glimpse()
 ```
 
-    ## Writing tempfile to.../tmp/RtmpInxa18/file5bcf3f7670fd.csv
+    ## Writing tempfile to.../tmp/Rtmp7cMa5G/file5efd1c13b781.csv
 
     ## If file is larger than 8 MB, it must be splitted
     ## Size is : 3 Kb
@@ -219,28 +219,28 @@ test_df %>%
   glimpse
 ```
 
-    ## Writing tempfile to.../tmp/RtmpInxa18/file5bcf15d3aaa5.csv
+    ## Writing tempfile to.../tmp/Rtmp7cMa5G/file5efd723bfbb4.csv
 
     ## If file is larger than 8 MB, it must be splitted
-    ## Size is : 385 bytes
+    ## Size is : 382 bytes
 
     ## SuccessOKSuccess: (200) OK
 
     ## Observations: 10
     ## Variables: 16
-    ## $ nom                <chr> "p", "w", "o", "i", "y", "s", "r", "v", "z"...
-    ## $ longitude          <dbl> 2.443291, 2.391914, 2.298639, 2.424329, 2.3...
-    ## $ latitude           <dbl> 48.81203, 48.89883, 48.88584, 48.80896, 48....
-    ## $ result_latitude    <dbl> 48.81207, 48.89949, 48.88593, 48.80873, 48....
-    ## $ result_longitude   <dbl> 2.443314, 2.391948, 2.298503, 2.424405, 2.3...
-    ## $ result_label       <chr> "119 Rue du Maréchal de Lattre de Tassigny ...
-    ## $ result_distance    <int> 4, 73, 13, 25, 13, 16, 18, 6, 18, 25
-    ## $ result_type        <chr> "housenumber", "street", "housenumber", "ho...
-    ## $ result_id          <chr> "94046_XXXX_1022ec", "75119_1961_08ed59", "...
-    ## $ result_housenumber <chr> "119", NA, "106 BIS", "9001", "19", "24", "...
-    ## $ result_name        <chr> "Rue du Maréchal de Lattre de Tassigny", "R...
+    ## $ nom                <chr> "q", "a", "s", "y", "f", "v", "b", "k", "z"...
+    ## $ longitude          <dbl> 2.269380, 2.327532, 2.334737, 2.370485, 2.2...
+    ## $ latitude           <dbl> 48.83021, 48.87524, 48.85729, 48.83499, 48....
+    ## $ result_latitude    <dbl> 48.82991, 48.87522, 48.85716, 48.83474, 48....
+    ## $ result_longitude   <dbl> 2.267338, 2.327530, 2.334976, 2.370134, 2.2...
+    ## $ result_label       <chr> "48 Boulevard Gallieni 92130 Issy-les-Mouli...
+    ## $ result_distance    <int> 153, 1, 22, 37, 6, 7, 34, 45, 21, 5
+    ## $ result_type        <chr> "housenumber", "housenumber", "housenumber"...
+    ## $ result_id          <chr> "92040_XXXX_d66ae3", "75109_XXXX_6dce2d", "...
+    ## $ result_housenumber <chr> "48", "42", "6", "55 A", "7", "16", "1", "4...
+    ## $ result_name        <chr> "Boulevard Gallieni", "Passage du Havre", "...
     ## $ result_street      <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
-    ## $ result_postcode    <chr> "94700", "75019", "75017", "94700", "75005"...
-    ## $ result_city        <chr> "Maisons-Alfort", "Paris", "Paris", "Maison...
-    ## $ result_context     <chr> "94, Val-de-Marne, Île-de-France", "75, Par...
-    ## $ result_citycode    <chr> "94046", "75119", "75117", "94046", "75105"...
+    ## $ result_postcode    <chr> "92130", "75009", "75006", "75013", "92100"...
+    ## $ result_city        <chr> "Issy-les-Moulineaux", "Paris", "Paris", "P...
+    ## $ result_context     <chr> "92, Hauts-de-Seine, Île-de-France", "75, P...
+    ## $ result_citycode    <chr> "92040", "75109", "75106", "75113", "92012"...
