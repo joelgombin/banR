@@ -27,6 +27,6 @@ Suggests:
     rmarkdown
 RoxygenNote: 6.0.1
 Encoding: UTF-8
-URL: http://github.com/joelgombin/banR
+URL: http://joelgombin.github.io/banR/
 BugReports: http://github.com/joelgombin/banR/issues
 VignetteBuilder: knitr
