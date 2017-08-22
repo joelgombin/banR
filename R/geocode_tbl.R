@@ -84,10 +84,10 @@ geocode_tbl <- function(tbl, adresse, code_insee = NULL, code_postal = NULL) {
         result_score = readr::col_double(),
         result_type = readr::col_character(),
         result_id = readr::col_character(),
-        result_housenumber = readr::col_integer(),
+        result_housenumber = readr::col_character(),
         result_name = readr::col_character(),
         result_street = readr::col_character(),
-        result_postcode = readr::col_integer(),
+        result_postcode = readr::col_character(),
         result_city = readr::col_character(),
         result_context = readr::col_character(),
         result_citycode = readr::col_character()

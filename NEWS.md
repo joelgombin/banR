@@ -1,4 +1,5 @@
 # banR v0.2.0.9000
+- fix #16: allows for characters in postcodes and housenumbers
 
 # banR v0.2
 
