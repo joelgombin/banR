@@ -64,3 +64,27 @@ test_that(
     )
   }
 )
+
+test_that(
+  desc = "Code INSEE and Code postal return the same result",
+  code = {
+    table_check <- tibble::tribble(
+      ~ num_voie, ~ cp,  ~ ville, ~ codecommune,
+      "1 Rue Gaspard Monge", "22300", "Lannion", "22113",
+      "Square Edouard Herriot", "85400", "Lucon", "85128"
+      )
+
+    expect_equivalent(
+      object = geocode_tbl(
+          tbl = table_check,
+          adresse = num_voie,
+          code_postal = cp
+          ),
+      expected = geocode_tbl(
+          tbl = table_check,
+          adresse = num_voie,
+          code_insee =  codecommune
+        )
+    )
+  }
+)

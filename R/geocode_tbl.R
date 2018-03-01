@@ -54,7 +54,7 @@ geocode_tbl <- function(tbl, adresse, code_insee = NULL, code_postal = NULL) {
   body <- list(
     columns = rlang::enquo(arg = adresse),
     citycode = rlang::enquo(arg = code_insee),
-    postalcode = rlang::enquo(arg = code_postal)
+    postcode = rlang::enquo(arg = code_postal)
   ) %>%
   purrr::discard(rlang::quo_is_null) %>%
   purrr::map(rlang::quo_name)
