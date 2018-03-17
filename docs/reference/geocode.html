@@ -78,12 +78,7 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        <li>
-  <a href="http://github.com/joelgombin/banR">
-    <span class="fa fa-github fa-lg"></span>
-     
-  </a>
-</li>
+        
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -120,12 +115,11 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>geocode</span>(<span class='kw'>query</span> <span class='kw'>=</span> <span class='st'>"39 quai André Citroën, Paris"</span>)</div><div class='output co'>#&gt; <span class='message'>200</span></div><div class='output co'>#&gt; # A tibble: 1 x 17
-#&gt;                         id importance                  name postcode
-#&gt;                      &lt;chr&gt;      &lt;dbl&gt;                 &lt;chr&gt;    &lt;chr&gt;
-#&gt; 1 ADRNIVX_0000000270792870     0.3044 39 Quai André Citroën    75015
-#&gt; # ... with 13 more variables: housenumber &lt;chr&gt;, citycode &lt;chr&gt;, x &lt;dbl&gt;,
-#&gt; #   label &lt;chr&gt;, y &lt;dbl&gt;, street &lt;chr&gt;, context &lt;chr&gt;, type &lt;chr&gt;, city &lt;chr&gt;,
-#&gt; #   score &lt;dbl&gt;, type_geo &lt;chr&gt;, longitude &lt;dbl&gt;, latitude &lt;dbl&gt;</div><div class='input'>
+#&gt;         x postcode housenumber context  city  score type  name        y label  
+#&gt;     &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;  
+#&gt; 1 647095. 75015    39          75, Par… Paris 0.936 hous… 39 Qu… 6.86e6 39 Qua…
+#&gt; # ... with 7 more variables: street &lt;chr&gt;, importance &lt;dbl&gt;, citycode &lt;chr&gt;,
+#&gt; #   id &lt;chr&gt;, type_geo &lt;chr&gt;, longitude &lt;dbl&gt;, latitude &lt;dbl&gt;</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

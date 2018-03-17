@@ -53,14 +53,7 @@
   <a href="news/index.html">News</a>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
-  <a href="http://github.com/joelgombin/banR">
-    <span class="fa fa-github fa-lg"></span>
-     
-  </a>
-</li>
-      </ul>
+<ul class="nav navbar-nav navbar-right"></ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -91,7 +84,7 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 <p><code>banR</code> is designed to be used in a data exploration workflow, with a syntax ‘à la <a href="http://tidyverse.org"><code>tidyverse</code></a>’:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
 <span class="co">#&gt; </span>
-<span class="co">#&gt; Attachement du package : 'dplyr'</span>
+<span class="co">#&gt; Attaching package: 'dplyr'</span>
 <span class="co">#&gt; The following objects are masked from 'package:stats':</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;     filter, lag</span>
@@ -107,7 +100,7 @@ paris2012 <span class="op">%&gt;%</span>
          <span class="dt">code_insee =</span> <span class="kw">paste0</span>(<span class="st">"751"</span>, arrondissement)) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="reference/geocode_tbl.html">geocode_tbl</a></span>(<span class="dt">adresse =</span> adresse, <span class="dt">code_insee =</span> code_insee) <span class="op">%&gt;%</span>
 <span class="st">  </span>glimpse
-<span class="co">#&gt; Writing tempfile to.../var/folders/rv/yt271f0523s3vmqt3p8zzr9h0000gn/T//Rtmp65wJUJ/file538c46119472.csv</span>
+<span class="co">#&gt; Writing tempfile to.../tmp/RtmpoDjygE/file6f6d3f07c225.csv</span>
 <span class="co">#&gt; If file is larger than 8 MB, it must be splitted</span>
 <span class="co">#&gt; Size is : 3 Kb</span>
 <span class="co">#&gt; SuccessOKSuccess: (200) OK</span>
@@ -128,10 +121,10 @@ paris2012 <span class="op">%&gt;%</span>
 <span class="co">#&gt; $ result_score       &lt;dbl&gt; 0.94, 0.94, 0.94, 0.94, 0.94, 0.94, 0.94, 0...</span>
 <span class="co">#&gt; $ result_type        &lt;chr&gt; "housenumber", "housenumber", "housenumber"...</span>
 <span class="co">#&gt; $ result_id          &lt;chr&gt; "ADRNIVX_0000000270779523", "ADRNIVX_000000...</span>
-<span class="co">#&gt; $ result_housenumber &lt;int&gt; 4, 5, 6, 7, 8, 11, 12, 13, 14, 16, 3, 4, 5,...</span>
+<span class="co">#&gt; $ result_housenumber &lt;chr&gt; "4", "5", "6", "7", "8", "11", "12", "13", ...</span>
 <span class="co">#&gt; $ result_name        &lt;chr&gt; "Rue de l'Abbaye", "Rue de l'Abbaye", "Rue ...</span>
 <span class="co">#&gt; $ result_street      &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...</span>
-<span class="co">#&gt; $ result_postcode    &lt;int&gt; 75006, 75006, 75006, 75006, 75006, 75006, 7...</span>
+<span class="co">#&gt; $ result_postcode    &lt;chr&gt; "75006", "75006", "75006", "75006", "75006"...</span>
 <span class="co">#&gt; $ result_city        &lt;chr&gt; "Paris", "Paris", "Paris", "Paris", "Paris"...</span>
 <span class="co">#&gt; $ result_context     &lt;chr&gt; "75, Paris, Île-de-France", "75, Paris, Île...</span>
 <span class="co">#&gt; $ result_citycode    &lt;chr&gt; "75106", "75106", "75106", "75106", "75106"...</span></code></pre></div>
@@ -147,7 +140,7 @@ paris2012 <span class="op">%&gt;%</span>
 <ul class="list-unstyled">
 <li>Download from CRAN at <br><a href="https://cran.r-project.org/package=banR">https://​cran.r-project.org/​package=banR</a>
 </li>
-<li>Browse source code at <br><a href="http://github.com/joelgombin/banR">http://​github.com/​joelgombin/​banR</a>
+<li>Browse source code at <br><a href="http://joelgombin.github.io/banR/">http://​joelgombin.github.io/​banR/​</a>
 </li>
 <li>Report a bug at <br><a href="http://github.com/joelgombin/banR/issues">http://​github.com/​joelgombin/​banR/​issues</a>
 </li>

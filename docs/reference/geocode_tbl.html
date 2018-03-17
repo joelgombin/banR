@@ -78,12 +78,7 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        <li>
-  <a href="http://github.com/joelgombin/banR">
-    <span class="fa fa-github fa-lg"></span>
-     
-  </a>
-</li>
+        
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -138,26 +133,24 @@
 <span class='kw'>z</span> <span class='kw'>=</span> <span class='fu'>rnorm</span>(<span class='fl'>3</span>)
 )
 
-<span class='fu'>geocode_tbl</span>(<span class='kw'>tbl</span> <span class='kw'>=</span> <span class='no'>table_test</span>, <span class='kw'>adresse</span> <span class='kw'>=</span> <span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='message'>Writing tempfile to.../var/folders/rv/yt271f0523s3vmqt3p8zzr9h0000gn/T//RtmpNW7fU3/file534f3b435185.csv</span></div><div class='output co'>#&gt; <span class='message'>If file is larger than 8 MB, it must be splitted</span>
+<span class='fu'>geocode_tbl</span>(<span class='kw'>tbl</span> <span class='kw'>=</span> <span class='no'>table_test</span>, <span class='kw'>adresse</span> <span class='kw'>=</span> <span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='message'>Writing tempfile to.../tmp/RtmpGXcXJT/file608b5b72f341.csv</span></div><div class='output co'>#&gt; <span class='message'>If file is larger than 8 MB, it must be splitted</span>
 #&gt; <span class='message'>Size is : 61 bytes</span></div><div class='output co'>#&gt; <span class='message'>SuccessOKSuccess: (200) OK</span></div><div class='output co'>#&gt; # A tibble: 3 x 16
-#&gt;       y          z                     x latitude longitude
-#&gt;   &lt;chr&gt;      &lt;dbl&gt;                 &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;
-#&gt; 1 75015 -1.4000435 39 quai Andre Citroen 48.84683  2.279092
-#&gt; 2 75012  0.2553171     64 Allee de Bercy 48.84255  2.375933
-#&gt; 3 75007 -2.4372636    20 avenue de Segur 48.85032  2.308332
-#&gt; # ... with 11 more variables: result_label &lt;chr&gt;, result_score &lt;dbl&gt;,
-#&gt; #   result_type &lt;chr&gt;, result_id &lt;chr&gt;, result_housenumber &lt;int&gt;,
-#&gt; #   result_name &lt;chr&gt;, result_street &lt;chr&gt;, result_postcode &lt;int&gt;,
-#&gt; #   result_city &lt;chr&gt;, result_context &lt;chr&gt;, result_citycode &lt;chr&gt;</div><div class='input'><span class='fu'>geocode_tbl</span>(<span class='kw'>tbl</span> <span class='kw'>=</span> <span class='no'>table_test</span>, <span class='kw'>adresse</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>code_postal</span> <span class='kw'>=</span> <span class='no'>y</span>)</div><div class='output co'>#&gt; <span class='message'>Writing tempfile to.../var/folders/rv/yt271f0523s3vmqt3p8zzr9h0000gn/T//RtmpNW7fU3/file534f409d1128.csv</span></div><div class='output co'>#&gt; <span class='message'>If file is larger than 8 MB, it must be splitted</span>
+#&gt;   y          z x      latitude longitude result_label  result_score result_type
+#&gt;   &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;                &lt;dbl&gt; &lt;chr&gt;      
+#&gt; 1 75015 -1.40  39 qu…     48.8      2.28 39 Quai Andr…        0.940 housenumber
+#&gt; 2 75012  0.255 64 Al…     48.8      2.38 64 Allée de …        0.930 housenumber
+#&gt; 3 75007 -2.44  20 av…     48.9      2.31 20 Avenue de…        0.950 housenumber
+#&gt; # ... with 8 more variables: result_id &lt;chr&gt;, result_housenumber &lt;chr&gt;,
+#&gt; #   result_name &lt;chr&gt;, result_street &lt;chr&gt;, result_postcode &lt;chr&gt;,
+#&gt; #   result_city &lt;chr&gt;, result_context &lt;chr&gt;, result_citycode &lt;chr&gt;</div><div class='input'><span class='fu'>geocode_tbl</span>(<span class='kw'>tbl</span> <span class='kw'>=</span> <span class='no'>table_test</span>, <span class='kw'>adresse</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>code_postal</span> <span class='kw'>=</span> <span class='no'>y</span>)</div><div class='output co'>#&gt; <span class='message'>Writing tempfile to.../tmp/RtmpGXcXJT/file608b249f138a.csv</span></div><div class='output co'>#&gt; <span class='message'>If file is larger than 8 MB, it must be splitted</span>
 #&gt; <span class='message'>Size is : 81 bytes</span></div><div class='output co'>#&gt; <span class='message'>SuccessOKSuccess: (200) OK</span></div><div class='output co'>#&gt; # A tibble: 3 x 16
-#&gt;            z                     x     y latitude longitude
-#&gt;        &lt;dbl&gt;                 &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;
-#&gt; 1 -1.4000435 39 quai Andre Citroen 75015 48.84683  2.279092
-#&gt; 2  0.2553171     64 Allee de Bercy 75012 48.84255  2.375933
-#&gt; 3 -2.4372636    20 avenue de Segur 75007 48.85032  2.308332
-#&gt; # ... with 11 more variables: result_label &lt;chr&gt;, result_score &lt;dbl&gt;,
-#&gt; #   result_type &lt;chr&gt;, result_id &lt;chr&gt;, result_housenumber &lt;int&gt;,
-#&gt; #   result_name &lt;chr&gt;, result_street &lt;chr&gt;, result_postcode &lt;int&gt;,
+#&gt;        z x      y     latitude longitude result_label  result_score result_type
+#&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;                &lt;dbl&gt; &lt;chr&gt;      
+#&gt; 1 -1.40  39 qu… 75015     48.8      2.28 39 Quai Andr…        0.940 housenumber
+#&gt; 2  0.255 64 Al… 75012     48.8      2.38 64 Allée de …        0.930 housenumber
+#&gt; 3 -2.44  20 av… 75007     48.9      2.31 20 Avenue de…        0.950 housenumber
+#&gt; # ... with 8 more variables: result_id &lt;chr&gt;, result_housenumber &lt;chr&gt;,
+#&gt; #   result_name &lt;chr&gt;, result_street &lt;chr&gt;, result_postcode &lt;chr&gt;,
 #&gt; #   result_city &lt;chr&gt;, result_context &lt;chr&gt;, result_citycode &lt;chr&gt;</div><div class='input'>
 </div></pre>
   </div>

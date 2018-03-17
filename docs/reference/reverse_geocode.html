@@ -78,12 +78,7 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        <li>
-  <a href="http://github.com/joelgombin/banR">
-    <span class="fa fa-github fa-lg"></span>
-     
-  </a>
-</li>
+        
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -125,12 +120,11 @@
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='fu'>reverse_geocode</span>(<span class='kw'>long</span> <span class='kw'>=</span> <span class='fl'>2.37</span>, <span class='kw'>lat</span> <span class='kw'>=</span> <span class='fl'>48.357</span>)</div><div class='output co'>#&gt; <span class='message'>200</span></div><div class='output co'>#&gt; # A tibble: 1 x 18
-#&gt;                  id importance              name distance postcode housenumber
-#&gt;               &lt;chr&gt;      &lt;dbl&gt;             &lt;chr&gt;    &lt;int&gt;    &lt;chr&gt;       &lt;chr&gt;
-#&gt; 1 91507_XXXX_56a53d     0.0057 6 Rue de l'Église      172    91720           6
-#&gt; # ... with 12 more variables: citycode &lt;chr&gt;, x &lt;dbl&gt;, label &lt;chr&gt;, y &lt;dbl&gt;,
-#&gt; #   street &lt;chr&gt;, context &lt;chr&gt;, type &lt;chr&gt;, city &lt;chr&gt;, score &lt;dbl&gt;,
-#&gt; #   type_geo &lt;chr&gt;, longitude &lt;dbl&gt;, latitude &lt;dbl&gt;</div><div class='input'>
+#&gt;         x postcode housenumber context  city  distance score type  name       y
+#&gt;     &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;    &lt;int&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;dbl&gt;
+#&gt; 1 653546. 91720    6           91, Ess… Prun…      172 1.000 hous… 6 Ru… 6.81e6
+#&gt; # ... with 8 more variables: label &lt;chr&gt;, street &lt;chr&gt;, importance &lt;dbl&gt;,
+#&gt; #   citycode &lt;chr&gt;, id &lt;chr&gt;, type_geo &lt;chr&gt;, longitude &lt;dbl&gt;, latitude &lt;dbl&gt;</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

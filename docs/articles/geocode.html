@@ -53,14 +53,7 @@
   <a href="../news/index.html">News</a>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
-  <a href="http://github.com/joelgombin/banR">
-    <span class="fa fa-github fa-lg"></span>
-     
-  </a>
-</li>
-      </ul>
+<ul class="nav navbar-nav navbar-right"></ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -75,7 +68,7 @@
       <h1>Geocoding French adresses with BanR</h1>
                         <h4 class="author">Paul-Antoine Chevalier (Etalab), Joël Gombin (Datactivist)</h4>
             
-            <h4 class="date">2017-08-04</h4>
+            <h4 class="date">2018-03-01</h4>
           </div>
 
     
@@ -84,7 +77,7 @@
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">"tibble"</span>)
 <span class="kw">library</span>(<span class="st">"dplyr"</span>)</code></pre></div>
 <pre><code>## 
-## Attachement du package : 'dplyr'</code></pre>
+## Attaching package: 'dplyr'</code></pre>
 <pre><code>## The following objects are masked from 'package:stats':
 ## 
 ##     filter, lag</code></pre>
@@ -120,20 +113,20 @@ table_test &lt;-<span class="st"> </span>tibble<span class="op">::</span><span c
 <pre><code>## 200</code></pre>
 <pre><code>## Observations: 1
 ## Variables: 17
-## $ id          &lt;chr&gt; "ADRNIVX_0000000270792870"
-## $ importance  &lt;dbl&gt; 0.3044
-## $ name        &lt;chr&gt; "39 Quai André Citroën"
+## $ x           &lt;dbl&gt; 647095.1
 ## $ postcode    &lt;chr&gt; "75015"
 ## $ housenumber &lt;chr&gt; "39"
-## $ citycode    &lt;chr&gt; "75115"
-## $ x           &lt;dbl&gt; 647095.1
-## $ label       &lt;chr&gt; "39 Quai André Citroën 75015 Paris"
-## $ y           &lt;dbl&gt; 6860995
-## $ street      &lt;chr&gt; "Quai André Citroën"
 ## $ context     &lt;chr&gt; "75, Paris, Île-de-France"
-## $ type        &lt;chr&gt; "housenumber"
 ## $ city        &lt;chr&gt; "Paris"
-## $ score       &lt;dbl&gt; 0.9367636
+## $ score       &lt;dbl&gt; 0.9361455
+## $ type        &lt;chr&gt; "housenumber"
+## $ name        &lt;chr&gt; "39 Quai André Citroën"
+## $ y           &lt;dbl&gt; 6860995
+## $ label       &lt;chr&gt; "39 Quai André Citroën 75015 Paris"
+## $ street      &lt;chr&gt; "Quai André Citroën"
+## $ importance  &lt;dbl&gt; 0.2976
+## $ citycode    &lt;chr&gt; "75115"
+## $ id          &lt;chr&gt; "ADRNIVX_0000000270792870"
 ## $ type_geo    &lt;chr&gt; "Point"
 ## $ longitude   &lt;dbl&gt; 2.279092
 ## $ latitude    &lt;dbl&gt; 48.84683</code></pre>
@@ -145,49 +138,49 @@ table_test &lt;-<span class="st"> </span>tibble<span class="op">::</span><span c
 <p>In addition to the adress, <code><a href="../reference/geocode_tbl.html">geocode_tbl()</a></code> can take as argument either the <a href="https://en.wikipedia.org/wiki/Postal_codes_in_France">postal code</a> or the French official code (<a href="https://en.wikipedia.org/wiki/INSEE_code">INSEE code</a>) of the commune.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/geocode_tbl.html">geocode_tbl</a></span>(<span class="dt">tbl =</span> table_test, <span class="dt">adresse =</span> adress) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>()</code></pre></div>
-<pre><code>## Writing tempfile to.../var/folders/rv/yt271f0523s3vmqt3p8zzr9h0000gn/T//RtmpH5jG7x/file53b65b6352e8.csv</code></pre>
+<pre><code>## Writing tempfile to.../tmp/RtmpXC1cCr/file6fc34b4415df.csv</code></pre>
 <pre><code>## If file is larger than 8 MB, it must be splitted
 ## Size is : 70 bytes</code></pre>
 <pre><code>## SuccessOKSuccess: (200) OK</code></pre>
 <pre><code>## Observations: 3
 ## Variables: 16
 ## $ postal_code        &lt;chr&gt; "75015", "75012", "75007"
-## $ z                  &lt;dbl&gt; 1.5318829, 0.5878711, -1.2369952
+## $ z                  &lt;dbl&gt; -1.2555945, -0.4664011, 0.7379092
 ## $ adress             &lt;chr&gt; "39 quai André Citroën", "64 Allée de Bercy...
 ## $ latitude           &lt;dbl&gt; 48.84683, 48.84255, 48.85032
-## $ longitude          &lt;dbl&gt; 2.279092, 2.375933, 2.308332
+## $ longitude          &lt;dbl&gt; 2.279092, 2.375933, 2.308328
 ## $ result_label       &lt;chr&gt; "39 Quai André Citroën 75015 Paris", "64 Al...
 ## $ result_score       &lt;dbl&gt; 0.94, 0.93, 0.95
 ## $ result_type        &lt;chr&gt; "housenumber", "housenumber", "housenumber"
 ## $ result_id          &lt;chr&gt; "ADRNIVX_0000000270792870", "ADRNIVX_000000...
-## $ result_housenumber &lt;int&gt; 39, 64, 20
+## $ result_housenumber &lt;chr&gt; "39", "64", "20"
 ## $ result_name        &lt;chr&gt; "Quai André Citroën", "Allée de Bercy", "Av...
 ## $ result_street      &lt;chr&gt; NA, NA, NA
-## $ result_postcode    &lt;int&gt; 75015, 75012, 75007
+## $ result_postcode    &lt;chr&gt; "75015", "75012", "75007"
 ## $ result_city        &lt;chr&gt; "Paris", "Paris", "Paris"
 ## $ result_context     &lt;chr&gt; "75, Paris, Île-de-France", "75, Paris, Île...
 ## $ result_citycode    &lt;chr&gt; "75115", "75112", "75107"</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/geocode_tbl.html">geocode_tbl</a></span>(<span class="dt">tbl =</span> table_test, <span class="dt">adresse =</span> adress, <span class="dt">code_postal =</span> postal_code) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>()</code></pre></div>
-<pre><code>## Writing tempfile to.../var/folders/rv/yt271f0523s3vmqt3p8zzr9h0000gn/T//RtmpH5jG7x/file53b6633efae8.csv</code></pre>
+<pre><code>## Writing tempfile to.../tmp/RtmpXC1cCr/file6fc3727c2d89.csv</code></pre>
 <pre><code>## If file is larger than 8 MB, it must be splitted
 ## Size is : 100 bytes</code></pre>
 <pre><code>## SuccessOKSuccess: (200) OK</code></pre>
 <pre><code>## Observations: 3
 ## Variables: 16
-## $ z                  &lt;dbl&gt; 1.5318829, 0.5878711, -1.2369952
+## $ z                  &lt;dbl&gt; -1.2555945, -0.4664011, 0.7379092
 ## $ adress             &lt;chr&gt; "39 quai André Citroën", "64 Allée de Bercy...
 ## $ postal_code        &lt;chr&gt; "75015", "75012", "75007"
 ## $ latitude           &lt;dbl&gt; 48.84683, 48.84255, 48.85032
-## $ longitude          &lt;dbl&gt; 2.279092, 2.375933, 2.308332
+## $ longitude          &lt;dbl&gt; 2.279092, 2.375933, 2.308328
 ## $ result_label       &lt;chr&gt; "39 Quai André Citroën 75015 Paris", "64 Al...
 ## $ result_score       &lt;dbl&gt; 0.94, 0.93, 0.95
 ## $ result_type        &lt;chr&gt; "housenumber", "housenumber", "housenumber"
 ## $ result_id          &lt;chr&gt; "ADRNIVX_0000000270792870", "ADRNIVX_000000...
-## $ result_housenumber &lt;int&gt; 39, 64, 20
+## $ result_housenumber &lt;chr&gt; "39", "64", "20"
 ## $ result_name        &lt;chr&gt; "Quai André Citroën", "Allée de Bercy", "Av...
 ## $ result_street      &lt;chr&gt; NA, NA, NA
-## $ result_postcode    &lt;int&gt; 75015, 75012, 75007
+## $ result_postcode    &lt;chr&gt; "75015", "75012", "75007"
 ## $ result_city        &lt;chr&gt; "Paris", "Paris", "Paris"
 ## $ result_context     &lt;chr&gt; "75, Paris, Île-de-France", "75, Paris, Île...
 ## $ result_citycode    &lt;chr&gt; "75115", "75112", "75107"</code></pre>
@@ -200,7 +193,7 @@ paris2012 <span class="op">%&gt;%</span>
     ) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/geocode_tbl.html">geocode_tbl</a></span>(<span class="dt">adresse =</span> adresse, <span class="dt">code_insee =</span> code_insee) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/glimpse">glimpse</a></span>()</code></pre></div>
-<pre><code>## Writing tempfile to.../var/folders/rv/yt271f0523s3vmqt3p8zzr9h0000gn/T//RtmpH5jG7x/file53b67e20bec3.csv</code></pre>
+<pre><code>## Writing tempfile to.../tmp/RtmpXC1cCr/file6fc378345f3c.csv</code></pre>
 <pre><code>## If file is larger than 8 MB, it must be splitted
 ## Size is : 3 Kb</code></pre>
 <pre><code>## SuccessOKSuccess: (200) OK</code></pre>
@@ -221,10 +214,10 @@ paris2012 <span class="op">%&gt;%</span>
 ## $ result_score       &lt;dbl&gt; 0.94, 0.94, 0.94, 0.94, 0.94, 0.94, 0.94, 0...
 ## $ result_type        &lt;chr&gt; "housenumber", "housenumber", "housenumber"...
 ## $ result_id          &lt;chr&gt; "ADRNIVX_0000000270779523", "ADRNIVX_000000...
-## $ result_housenumber &lt;int&gt; 4, 5, 6, 7, 8, 11, 12, 13, 14, 16, 3, 4, 5,...
+## $ result_housenumber &lt;chr&gt; "4", "5", "6", "7", "8", "11", "12", "13", ...
 ## $ result_name        &lt;chr&gt; "Rue de l'Abbaye", "Rue de l'Abbaye", "Rue ...
 ## $ result_street      &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
-## $ result_postcode    &lt;int&gt; 75006, 75006, 75006, 75006, 75006, 75006, 7...
+## $ result_postcode    &lt;chr&gt; "75006", "75006", "75006", "75006", "75006"...
 ## $ result_city        &lt;chr&gt; "Paris", "Paris", "Paris", "Paris", "Paris"...
 ## $ result_context     &lt;chr&gt; "75, Paris, Île-de-France", "75, Paris, Île...
 ## $ result_citycode    &lt;chr&gt; "75106", "75106", "75106", "75106", "75106"...</code></pre>
@@ -243,21 +236,21 @@ paris2012 <span class="op">%&gt;%</span>
 <pre><code>## 200</code></pre>
 <pre><code>## Observations: 1
 ## Variables: 18
-## $ id          &lt;chr&gt; "75115_0318_91e007"
-## $ importance  &lt;dbl&gt; 0.3044
-## $ name        &lt;chr&gt; "39 Quai André Citroën"
-## $ distance    &lt;int&gt; 0
+## $ x           &lt;dbl&gt; 647092.8
 ## $ postcode    &lt;chr&gt; "75015"
 ## $ housenumber &lt;chr&gt; "39"
-## $ citycode    &lt;chr&gt; "75115"
-## $ x           &lt;dbl&gt; 647050.2
-## $ label       &lt;chr&gt; "39 Quai André Citroën 75015 Paris"
-## $ y           &lt;dbl&gt; 6860963
-## $ street      &lt;chr&gt; "Quai André Citroën"
 ## $ context     &lt;chr&gt; "75, Paris, Île-de-France"
-## $ type        &lt;chr&gt; "housenumber"
 ## $ city        &lt;chr&gt; "Paris"
+## $ distance    &lt;int&gt; 0
 ## $ score       &lt;dbl&gt; 1
+## $ type        &lt;chr&gt; "housenumber"
+## $ name        &lt;chr&gt; "39 Quai André Citroën"
+## $ y           &lt;dbl&gt; 6861007
+## $ label       &lt;chr&gt; "39 Quai André Citroën 75015 Paris"
+## $ street      &lt;chr&gt; "Quai André Citroën"
+## $ importance  &lt;dbl&gt; 0.2976
+## $ citycode    &lt;chr&gt; "75115"
+## $ id          &lt;chr&gt; "75115_0318_91e007"
 ## $ type_geo    &lt;chr&gt; "Point"
 ## $ longitude   &lt;dbl&gt; 2.279092
 ## $ latitude    &lt;dbl&gt; 48.84683</code></pre>
@@ -275,28 +268,28 @@ paris2012 <span class="op">%&gt;%</span>
 test_df <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="../reference/reverse_geocode_tbl.html">reverse_geocode_tbl</a></span>(lon, lat) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span>glimpse</code></pre></div>
-<pre><code>## Writing tempfile to.../var/folders/rv/yt271f0523s3vmqt3p8zzr9h0000gn/T//RtmpH5jG7x/file53b6469f4380.csv</code></pre>
+<pre><code>## Writing tempfile to.../tmp/RtmpXC1cCr/file6fc316d05b2a.csv</code></pre>
 <pre><code>## If file is larger than 8 MB, it must be splitted
-## Size is : 384 bytes</code></pre>
+## Size is : 388 bytes</code></pre>
 <pre><code>## SuccessOKSuccess: (200) OK</code></pre>
 <pre><code>## Observations: 10
 ## Variables: 16
-## $ nom                &lt;chr&gt; "b", "y", "k", "j", "x", "r", "u", "a", "i"...
-## $ longitude          &lt;dbl&gt; 2.286191, 2.419854, 2.340087, 2.448276, 2.4...
-## $ latitude           &lt;dbl&gt; 48.84145, 48.87718, 48.81109, 48.88392, 48....
-## $ result_latitude    &lt;dbl&gt; 48.84161, 48.87730, 48.81100, 48.88587, 48....
-## $ result_longitude   &lt;dbl&gt; 2.286359, 2.419666, 2.340066, 2.446612, 2.4...
-## $ result_label       &lt;chr&gt; "96 Rue de la Convention 75015 Paris", "204...
-## $ result_distance    &lt;int&gt; 21, 19, 9, 248, 19, 108, 4, 14, 135, 27
+## $ nom                &lt;chr&gt; "z", "t", "h", "l", "b", "d", "j", "f", "a"...
+## $ longitude          &lt;dbl&gt; 2.257602, 2.362758, 2.462082, 2.310460, 2.4...
+## $ latitude           &lt;dbl&gt; 48.81449, 48.82955, 48.82639, 48.82178, 48....
+## $ result_latitude    &lt;dbl&gt; 48.81452, 48.82983, 48.82723, 48.82174, 48....
+## $ result_longitude   &lt;dbl&gt; 2.257584, 2.362975, 2.464272, 2.310462, 2.4...
+## $ result_label       &lt;chr&gt; "101 Avenue Henri Barbusse 92140 Clamart", ...
+## $ result_distance    &lt;int&gt; 3, 35, 185, 4, 13, NA, 5, 45, 27, 11
 ## $ result_type        &lt;chr&gt; "housenumber", "housenumber", "housenumber"...
-## $ result_id          &lt;chr&gt; "75115_2300_7d60bf", "93006_6640_091158", "...
-## $ result_housenumber &lt;chr&gt; "96", "204", "51", "17", "11", "1 B", "2", ...
-## $ result_name        &lt;chr&gt; "Rue de la Convention", "Rue de Noisy le Se...
+## $ result_id          &lt;chr&gt; "92023_XXXX_6b2b3c", "75113_1918_3de1e2", "...
+## $ result_housenumber &lt;chr&gt; "101", "159", "9001", "4 B", "105", NA, "26...
+## $ result_name        &lt;chr&gt; "Avenue Henri Barbusse", "Rue du Château de...
 ## $ result_street      &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
-## $ result_postcode    &lt;chr&gt; "75015", "93170", "94250", "93130", "93260"...
-## $ result_city        &lt;chr&gt; "Paris", "Bagnolet", "Gentilly", "Noisy-le-...
-## $ result_context     &lt;chr&gt; "75, Paris, Île-de-France", "93, Seine-Sain...
-## $ result_citycode    &lt;chr&gt; "75115", "93006", "94037", "93053", "93045"...</code></pre>
+## $ result_postcode    &lt;chr&gt; "92140", "75013", "75012", "92240", "94120"...
+## $ result_city        &lt;chr&gt; "Clamart", "Paris", "Paris", "Malakoff", "F...
+## $ result_context     &lt;chr&gt; "92, Hauts-de-Seine, Île-de-France", "75, P...
+## $ result_citycode    &lt;chr&gt; "92023", "75113", "75112", "92046", "94033"...</code></pre>
 </div>
 </div>
 </div>

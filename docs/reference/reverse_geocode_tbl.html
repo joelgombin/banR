@@ -78,12 +78,7 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        <li>
-  <a href="http://github.com/joelgombin/banR">
-    <span class="fa fa-github fa-lg"></span>
-     
-  </a>
-</li>
+        
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -134,17 +129,17 @@
 <span class='kw'>z</span> <span class='kw'>=</span> <span class='fu'>rnorm</span>(<span class='fl'>3</span>)
 )
 
-<span class='fu'>reverse_geocode_tbl</span>(<span class='kw'>tbl</span> <span class='kw'>=</span> <span class='no'>table_reverse</span>, <span class='kw'>longitude</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>latitude</span> <span class='kw'>=</span> <span class='no'>y</span>)</div><div class='output co'>#&gt; <span class='message'>Writing tempfile to.../var/folders/rv/yt271f0523s3vmqt3p8zzr9h0000gn/T//RtmpNW7fU3/file534f7223c7ff.csv</span></div><div class='output co'>#&gt; <span class='message'>If file is larger than 8 MB, it must be splitted</span>
+<span class='fu'>reverse_geocode_tbl</span>(<span class='kw'>tbl</span> <span class='kw'>=</span> <span class='no'>table_reverse</span>, <span class='kw'>longitude</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>latitude</span> <span class='kw'>=</span> <span class='no'>y</span>)</div><div class='output co'>#&gt; <span class='message'>Writing tempfile to.../tmp/RtmpGXcXJT/file608b16b08504.csv</span></div><div class='output co'>#&gt; <span class='message'>If file is larger than 8 MB, it must be splitted</span>
 #&gt; <span class='message'>Size is : 73 bytes</span></div><div class='output co'>#&gt; <span class='message'>SuccessOKSuccess: (200) OK</span></div><div class='output co'>#&gt; # A tibble: 3 x 16
-#&gt;              z longitude latitude result_latitude result_longitude
-#&gt;          &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;           &lt;dbl&gt;            &lt;dbl&gt;
-#&gt; 1 -0.005571287  2.279092 48.84683        48.84683         2.279092
-#&gt; 2  0.621552721  2.375933 48.84255        48.84255         2.375933
-#&gt; 3  1.148411606  2.308332 48.85032        48.85032         2.308332
-#&gt; # ... with 11 more variables: result_label &lt;chr&gt;, result_distance &lt;int&gt;,
-#&gt; #   result_type &lt;chr&gt;, result_id &lt;chr&gt;, result_housenumber &lt;chr&gt;,
-#&gt; #   result_name &lt;chr&gt;, result_street &lt;chr&gt;, result_postcode &lt;chr&gt;,
-#&gt; #   result_city &lt;chr&gt;, result_context &lt;chr&gt;, result_citycode &lt;chr&gt;</div><div class='input'>
+#&gt;          z longitude latitude result_latitude result_longitude result_label    
+#&gt;      &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;           &lt;dbl&gt;            &lt;dbl&gt; &lt;chr&gt;           
+#&gt; 1 -0.00557      2.28     48.8            48.8             2.28 39 Quai André C…
+#&gt; 2  0.622        2.38     48.8            48.8             2.38 64 Allée de Ber…
+#&gt; 3  1.15         2.31     48.9            48.9             2.31 20 Avenue de Sé…
+#&gt; # ... with 10 more variables: result_distance &lt;int&gt;, result_type &lt;chr&gt;,
+#&gt; #   result_id &lt;chr&gt;, result_housenumber &lt;chr&gt;, result_name &lt;chr&gt;,
+#&gt; #   result_street &lt;chr&gt;, result_postcode &lt;chr&gt;, result_city &lt;chr&gt;,
+#&gt; #   result_context &lt;chr&gt;, result_citycode &lt;chr&gt;</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
