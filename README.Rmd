@@ -49,7 +49,10 @@ paris2012 %>%
   glimpse
 
 ```
-
 To know more about this package, please read the [vignette](./inst/doc/geocode.md) (`vignette("geocode")`)
 
 Please report issues and suggestions to the [issues tracker](https://github.com/joelgombin/banR/issues).
+
+## See also
+
+* [BAN-geocoder](https://github.com/atao/BAN-Geocoder), python wrapper for adresse.data.gouv.fr
