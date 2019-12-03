@@ -21,6 +21,7 @@ data have been collected by Baptiste Coulmont
 paris2012
 }
 \description{
-This dataset includes addresses found in the Parisian electoral register in 2012.
+This dataset includes addresses found in the Parisian electoral 
+register in 2012.
 }
 \keyword{datasets}
