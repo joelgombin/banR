@@ -1,7 +1,8 @@
-# banR v0.2.0.9000
+# banR v0.2.1
+- very minor changes 
 - fix #16: allows for characters in postcodes and housenumbers
 
-# banR v0.2
+# banR v0.2.0
 
 - now manages reverse geocoding
 - now completely handles NSE 
