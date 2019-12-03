@@ -14,7 +14,6 @@ Depends:
 Imports:
     dplyr (>= 0.7.0),
     httr,
-    stringr,
     readr,
     magrittr,
     tibble,
