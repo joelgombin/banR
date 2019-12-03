@@ -5,7 +5,7 @@ An R client for the BAN API
 
 [![Travis-CI Build Status](https://travis-ci.org/joelgombin/banR.svg?branch=master)](https://travis-ci.org/joelgombin/banR)
 
-The `banR` package is a light R client for the [BAN API](https://adresse.data.gouv.fr/api/). The [Base Adresse Nationale (BAN)](https://adresse.data.gouv.fr/) is an open database of French adresses, produced by OpenStreetMap, La Poste, the IGN and Etalab.
+The `banR` package is a light R client for the [BAN API](https://adresse.data.gouv.fr/api). The [Base Adresse Nationale (BAN)](https://adresse.data.gouv.fr/) is an open database of French adresses, produced by OpenStreetMap, La Poste, the IGN and Etalab.
 
 `banR` can be installed from CRAN (stable version):
 
@@ -76,3 +76,8 @@ paris2012 %>%
 To know more about this package, please read the [vignette](./inst/doc/geocode.md) (`vignette("geocode")`)
 
 Please report issues and suggestions to the [issues tracker](https://github.com/joelgombin/banR/issues).
+
+## See also
+
+* [bulk-geocoding-python-client](https://github.com/MTES-MCT/bulk-geocoding-python-client) : Python client for geocoding adresses in bulk using adresse.data.gouv.fr API, developed by @benoitguigal for @MTES-MCT
+
