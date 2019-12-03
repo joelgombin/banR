@@ -1,6 +1,7 @@
 #' Addresses in the electoral register of Paris, 2012.
 #'
-#' This dataset includes addresses found in the Parisian electoral register in 2012.
+#' This dataset includes addresses found in the Parisian electoral 
+#' register in 2012.
 #'
 #' @format a \code{tbl_df} with 72107 lines and 7 variables
 #' \describe{

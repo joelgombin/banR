@@ -1,6 +1,7 @@
 #' Format object size
 #'
-#' This function is modified copy of the utils:::format.object_size function which is not exported. 
+#' This function is modified copy of the utils:::format.object_size 
+#' function which is not exported. 
 #' The main difference is that it returns values.
 #' 
 #' @param x a number
@@ -9,7 +10,7 @@
 #' @param digits number of digits
 #' @param ... anything else
 #'
-format_object_size <- function (
+format_object_size <- function(
   x, units = "b", standard = "auto", digits = 1L, ...) {
 
     known_bases <- c(legacy = 1024, IEC = 1024, SI = 1000)
@@ -53,6 +54,6 @@ format_object_size <- function (
     if (power == 0 && standard == "legacy")
         unit <- "bytes"
 
-    paste0( round(x = x / base ^ power, digits = digits), " ", unit)
+    paste0(round(x = x / base ^ power, digits = digits), " ", unit)
 
 }
