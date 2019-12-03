@@ -46,7 +46,7 @@ geocode_tbl <- function(tbl, adresse, code_insee = NULL, code_postal = NULL) {
     !!! purrr::map(
       .x = vars,
       .f = function(sym) {
-        rlang::lang("-", sym)
+        rlang::call2("-", sym)
         }
       )
     )
@@ -140,7 +140,7 @@ reverse_geocode_tbl <- function(tbl, longitude, latitude) {
     !!! purrr::map(
       .x = vars,
       .f = function(sym) {
-        rlang::lang("-", sym)
+        rlang::call2("-", sym)
         })
     )
 
