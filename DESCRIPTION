@@ -1,7 +1,7 @@
 Package: banR
 Type: Package
 Title: R Client for the BAN API
-Version: 0.2.0.9000
+Version: 0.2.1.0000
 Authors@R: c(
     person("Joel", "Gombin", email = "joel.gombin@gmail.com", role = c("cre", "aut")),
     person("Paul-Antoine", "Chevalier", email = "pachevalier@gmail.com", role = "aut"))
@@ -25,7 +25,7 @@ Suggests:
     testthat,
     knitr,
     rmarkdown
-RoxygenNote: 6.0.1
+RoxygenNote: 7.0.1
 Encoding: UTF-8
 URL: http://joelgombin.github.io/banR/
 BugReports: http://github.com/joelgombin/banR/issues
