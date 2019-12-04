@@ -7,7 +7,7 @@
 Status](https://travis-ci.org/joelgombin/banR.svg?branch=master)](https://travis-ci.org/joelgombin/banR)
 
 The `banR` package is a light R client for the [BAN
-API](https://adresse.data.gouv.fr/api/). The [Base Adresse Nationale
+API](https://geo.api.gouv.fr/adresse). The [Base Adresse Nationale
 (BAN)](https://adresse.data.gouv.fr/) is an open database of French
 adresses, produced by OpenStreetMap, La Poste, the IGN and Etalab.
 
@@ -50,7 +50,7 @@ paris2012 %>%
          code_insee = paste0("751", arrondissement)) %>% 
   geocode_tbl(adresse = adresse, code_insee = code_insee) %>%
   glimpse
-#> Writing tempfile to.../tmp/RtmpV2AX0y/file4e2e282dffd5.csv
+#> Writing tempfile to.../tmp/RtmpgcvC2R/file367c582c0944.csv
 #> If file is larger than 8 MB, it must be splitted
 #> Size is : 3 Kb
 #> SuccessOKSuccess: (200) OK
