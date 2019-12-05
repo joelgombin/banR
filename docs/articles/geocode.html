@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">banR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
       </span>
     </div>
 
@@ -62,7 +62,14 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+  <a href="https://github.com/joelgombin/banR">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -78,9 +85,9 @@
       <h1>Geocoding French adresses with BanR</h1>
                         <h4 class="author">Paul-Antoine Chevalier (Etalab), Joël Gombin (Datactivist)</h4>
             
-            <h4 class="date">2019-12-03</h4>
+            <h4 class="date">2019-12-05</h4>
       
-      
+      <small class="dont-index">Source: <a href="https://github.com/joelgombin/banR/blob/master/vignettes/geocode.Rmd"><code>vignettes/geocode.Rmd</code></a></small>
       <div class="hidden name"><code>geocode.Rmd</code></div>
 
     </div>
@@ -152,14 +159,14 @@
 <p>In addition to the adress, <code><a href="../reference/geocode_tbl.html">geocode_tbl()</a></code> can take as argument either the <a href="https://en.wikipedia.org/wiki/Postal_codes_in_France">postal code</a> or the French official code (<a href="https://en.wikipedia.org/wiki/INSEE_code">INSEE code</a>) of the commune.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw"><a href="../reference/geocode_tbl.html">geocode_tbl</a></span>(<span class="dt">tbl =</span> table_test, <span class="dt">adresse =</span> adress) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb9-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>()</a></code></pre></div>
-<pre><code>## Writing tempfile to.../tmp/RtmpICc2P2/file1cf9613c828d.csv</code></pre>
+<pre><code>## Writing tempfile to.../tmp/RtmpRDQZ7M/file623c18ae00c0.csv</code></pre>
 <pre><code>## If file is larger than 8 MB, it must be splitted
 ## Size is : 70 bytes</code></pre>
 <pre><code>## SuccessOKSuccess: (200) OK</code></pre>
 <pre><code>## Observations: 3
 ## Variables: 19
 ## $ postal_code        &lt;chr&gt; "75015", "75012", "75007"
-## $ z                  &lt;dbl&gt; 2.1316283, -1.4471508, 0.3458753
+## $ z                  &lt;dbl&gt; -0.8665143, 0.6564003, 0.2739766
 ## $ adress             &lt;chr&gt; "39 quai André Citroën", "64 Allée de Bercy", "20 …
 ## $ latitude           &lt;dbl&gt; 48.84696, 48.84254, 48.85070
 ## $ longitude          &lt;dbl&gt; 2.278922, 2.376011, 2.308628
@@ -179,13 +186,13 @@
 ## $ result_district    &lt;chr&gt; "Paris 15e Arrondissement", "Paris 12e Arrondissem…</code></pre>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw"><a href="../reference/geocode_tbl.html">geocode_tbl</a></span>(<span class="dt">tbl =</span> table_test, <span class="dt">adresse =</span> adress, <span class="dt">code_postal =</span> postal_code) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb14-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>()</a></code></pre></div>
-<pre><code>## Writing tempfile to.../tmp/RtmpICc2P2/file1cf9ae76da6.csv</code></pre>
+<pre><code>## Writing tempfile to.../tmp/RtmpRDQZ7M/file623c13ad493e.csv</code></pre>
 <pre><code>## If file is larger than 8 MB, it must be splitted
 ## Size is : 100 bytes</code></pre>
 <pre><code>## SuccessOKSuccess: (200) OK</code></pre>
 <pre><code>## Observations: 3
 ## Variables: 19
-## $ z                  &lt;dbl&gt; 2.1316283, -1.4471508, 0.3458753
+## $ z                  &lt;dbl&gt; -0.8665143, 0.6564003, 0.2739766
 ## $ adress             &lt;chr&gt; "39 quai André Citroën", "64 Allée de Bercy", "20 …
 ## $ postal_code        &lt;chr&gt; "75015", "75012", "75007"
 ## $ latitude           &lt;dbl&gt; 48.84696, 48.84254, 48.85070
@@ -213,7 +220,7 @@
 <a class="sourceLine" id="cb19-7" data-line-number="7">    ) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb19-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="../reference/geocode_tbl.html">geocode_tbl</a></span>(<span class="dt">adresse =</span> adresse, <span class="dt">code_insee =</span> code_insee) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb19-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>()</a></code></pre></div>
-<pre><code>## Writing tempfile to.../tmp/RtmpICc2P2/file1cf96ea2212f.csv</code></pre>
+<pre><code>## Writing tempfile to.../tmp/RtmpRDQZ7M/file623c3d76c12e.csv</code></pre>
 <pre><code>## If file is larger than 8 MB, it must be splitted
 ## Size is : 3 Kb</code></pre>
 <pre><code>## SuccessOKSuccess: (200) OK</code></pre>
@@ -292,31 +299,31 @@
 <a class="sourceLine" id="cb27-7" data-line-number="7">test_df <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb27-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="../reference/reverse_geocode_tbl.html">reverse_geocode_tbl</a></span>(lon, lat) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb27-9" data-line-number="9"><span class="st">  </span>glimpse</a></code></pre></div>
-<pre><code>## Writing tempfile to.../tmp/RtmpICc2P2/file1cf91d34e7da.csv</code></pre>
+<pre><code>## Writing tempfile to.../tmp/RtmpRDQZ7M/file623c3df0134f.csv</code></pre>
 <pre><code>## If file is larger than 8 MB, it must be splitted
-## Size is : 384 bytes</code></pre>
+## Size is : 388 bytes</code></pre>
 <pre><code>## SuccessOKSuccess: (200) OK</code></pre>
 <pre><code>## Observations: 10
 ## Variables: 19
-## $ nom                &lt;chr&gt; "v", "r", "i", "c", "t", "w", "o", "p", "e", "g"
-## $ longitude          &lt;dbl&gt; 2.229016, 2.312699, 2.256794, 2.355671, 2.214349, …
-## $ latitude           &lt;dbl&gt; 48.89085, 48.82552, 48.82655, 48.82600, 48.86265, …
-## $ result_latitude    &lt;dbl&gt; 48.89089, 48.82573, 48.82583, 48.82601, 48.86257, …
-## $ result_longitude   &lt;dbl&gt; 2.228886, 2.312431, 2.256436, 2.355885, 2.214481, …
-## $ result_label       &lt;chr&gt; "72 Boulevard de Pesaro 92000 Nanterre", "3 Avenue…
-## $ result_distance    &lt;int&gt; 10, 30, 83, 15, 13, 73, 30, 312, 9, 41
+## $ nom                &lt;chr&gt; "i", "d", "v", "t", "p", "m", "e", "b", "x", "g"
+## $ longitude          &lt;dbl&gt; 2.305941, 2.468813, 2.416795, 2.417785, 2.306746, …
+## $ latitude           &lt;dbl&gt; 48.83517, 48.87848, 48.88296, 48.84735, 48.87026, …
+## $ result_latitude    &lt;dbl&gt; 48.83516, 48.87866, 48.88295, 48.84742, 48.87037, …
+## $ result_longitude   &lt;dbl&gt; 2.305879, 2.468811, 2.416795, 2.417755, 2.306899, …
+## $ result_label       &lt;chr&gt; "1 Rue Nanteuil 75015 Paris", "4 Rue Gay Lussac 93…
+## $ result_distance    &lt;int&gt; 4, 20, 0, 7, 16, 8, 4, 3, 4, 8
 ## $ result_type        &lt;chr&gt; "housenumber", "housenumber", "housenumber", "hous…
-## $ result_id          &lt;chr&gt; "92050_7190_00072", "75114_4135_00003", "92040_859…
-## $ result_housenumber &lt;chr&gt; "72", "3", "170", "159", "1", "29", "12", "16 ter"…
-## $ result_name        &lt;chr&gt; "Boulevard de Pesaro", "Avenue Georges Lafenestre"…
+## $ result_id          &lt;chr&gt; "75115_6673_00001", "93064_4144_00004", "93045_443…
+## $ result_housenumber &lt;chr&gt; "1", "4", "63", "8", "50", "8", "5", "21", "16", "…
+## $ result_name        &lt;chr&gt; "Rue Nanteuil", "Rue Gay Lussac", "Rue Henri Barbu…
 ## $ result_street      &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
-## $ result_postcode    &lt;chr&gt; "92000", "75014", "92130", "75013", "92150", "9210…
-## $ result_city        &lt;chr&gt; "Nanterre", "Paris", "Issy-les-Moulineaux", "Paris…
-## $ result_context     &lt;chr&gt; "92, Hauts-de-Seine, Île-de-France", "75, Paris, Î…
-## $ result_citycode    &lt;chr&gt; "92050", "75114", "92040", "75113", "92073", "9201…
+## $ result_postcode    &lt;chr&gt; "75015", "93110", "93260", "94160", "75008", "7501…
+## $ result_city        &lt;chr&gt; "Paris", "Rosny-sous-Bois", "Les Lilas", "Saint-Ma…
+## $ result_context     &lt;chr&gt; "75, Paris, Île-de-France", "93, Seine-Saint-Denis…
+## $ result_citycode    &lt;chr&gt; "75115", "93064", "93045", "94067", "75108", "7511…
 ## $ result_oldcitycode &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
 ## $ result_oldcity     &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
-## $ result_district    &lt;chr&gt; NA, "Paris 14e Arrondissement", NA, "Paris 13e Arr…</code></pre>
+## $ result_district    &lt;chr&gt; "Paris 15e Arrondissement", NA, NA, NA, "Paris 8e …</code></pre>
 </div>
 </div>
   </div>
