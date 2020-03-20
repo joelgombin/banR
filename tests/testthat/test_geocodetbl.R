@@ -9,11 +9,11 @@ test_that(
     y = c("75015", "75012", "75007"),
     z = rnorm(3)
   )
-  expect_is(
+  expect_s3_class(
     object = banR::geocode_tbl(tbl = table_test, adresse = x),
     class = "tbl_df"
     )
-  expect_is(
+  expect_s3_class(
     object = banR::geocode_tbl(tbl = table_test, adresse = x, code_postal = y),
     class = "tbl_df"
     )
@@ -57,7 +57,7 @@ test_that(
       y = c(48.84683, 48.84255, 48.85032),
       z = rnorm(3)
     )
-    expect_is(
+    expect_s3_class(
       object = reverse_geocode_tbl(
         tbl = table_reverse, longitude = x, latitude = y),
       class = "tbl_df"
@@ -74,17 +74,19 @@ test_that(
       "Square Edouard Herriot", "85400", "Lucon", "85128"
       )
 
-    expect_equivalent(
-      object = geocode_tbl(
+    expect_true(
+      all_equal(
+        geocode_tbl(
           tbl = table_check,
           adresse = num_voie,
           code_postal = cp
           ),
-      expected = geocode_tbl(
+      geocode_tbl(
           tbl = table_check,
           adresse = num_voie,
           code_insee =  codecommune
         )
     )
+  )
   }
 )
