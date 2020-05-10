@@ -1,3 +1,6 @@
+# banR v0.2.2
+- getting ready for dplyr v1.0
+
 # banR v0.2.1
 - very minor changes 
 - fix #16: allows for characters in postcodes and housenumbers

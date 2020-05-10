@@ -4,7 +4,8 @@
 \name{paris2012}
 \alias{paris2012}
 \title{Addresses in the electoral register of Paris, 2012.}
-\format{a \code{tbl_df} with 72107 lines and 7 variables
+\format{
+a \code{tbl_df} with 72107 lines and 7 variables
 \describe{
  \item{arrondissement}{code of the arrondissement (district)}
  \item{bureau}{code of the polling station, in the arrondissement}
@@ -13,7 +14,8 @@
  \item{nom}{name of the street}
  \item{nb}{number of voters registered at this adress}
  \item{ID}{polling station ID}
-}}
+}
+}
 \source{
 data have been collected by Baptiste Coulmont
 }

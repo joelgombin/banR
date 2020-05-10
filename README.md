@@ -3,8 +3,11 @@
 
 # An R client for the BAN API
 
-[![Travis-CI Build
-Status](https://travis-ci.org/joelgombin/banR.svg?branch=master)](https://travis-ci.org/joelgombin/banR)
+<!-- badges: start -->
+
+[![R build
+status](https://github.com/joelgombin/banR/workflows/R-CMD-check/badge.svg)](https://github.com/joelgombin/banR/actions)
+<!-- badges: end -->
 
 The `banR` package is a light R client for the [BAN
 API](https://geo.api.gouv.fr/adresse). The [Base Adresse Nationale
@@ -50,12 +53,12 @@ paris2012 %>%
          code_insee = paste0("751", arrondissement)) %>% 
   geocode_tbl(adresse = adresse, code_insee = code_insee) %>%
   glimpse
-#> Writing tempfile to.../tmp/RtmpgcvC2R/file367c582c0944.csv
+#> Writing tempfile to.../tmp/RtmpIH1Wul/file13a295bdce43e.csv
 #> If file is larger than 8 MB, it must be splitted
 #> Size is : 3 Kb
 #> SuccessOKSuccess: (200) OK
-#> Observations: 100
-#> Variables: 25
+#> Rows: 100
+#> Columns: 25
 #> $ arrondissement     <chr> "06", "06", "06", "06", "06", "06", "06", "06", "0…
 #> $ bureau             <chr> "09", "09", "09", "09", "09", "09", "09", "09", "0…
 #> $ numero             <int> 4, 5, 6, 7, 8, 11, 12, 13, 14, 16, 3, 4, 5, 6, 7, …
