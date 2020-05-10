@@ -1,6 +1,13 @@
 ## Test environments
-* local Ubuntu 19.10, R 3.6.1
-* ubuntu 16.04 (on travis-ci), R 3.6.1
+* local Ubuntu 20.04, R 4.0.0
+* [Github Actions](https://github.com/joelgombin/banR/actions?query=workflow%3AR-CMD-check) : 
+  * macOS-latest, devel
+  * macOS-latest, 4.0
+  * windows-latest, 4.0
+  * Ubuntu 16.04, 4.0
+  * Ubuntu 16.04, 3.6
+  * Ubuntu 16.04, 3.5
+  * Ubuntu 16.04, 3.5
 * r-hub (using `rhub::check_for_cran()`)
 
 ## R CMD check results
