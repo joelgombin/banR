@@ -1,7 +1,7 @@
 Package: banR
 Type: Package
 Title: R Client for the BAN API
-Version: 0.2.2
+Version: 0.2.2.0000
 Authors@R: c(
     person("Joel", "Gombin", email = "joel.gombin@gmail.com", role = c("cre", "aut")),
     person("Paul-Antoine", "Chevalier", email = "pachevalier@gmail.com", role = "aut"))
@@ -19,8 +19,7 @@ Imports:
     tibble,
     purrr,
     rlang,
-    utils,
-    utf8
+    utils
 Suggests:
     testthat,
     knitr,
