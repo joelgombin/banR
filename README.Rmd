@@ -58,3 +58,4 @@ Please report issues and suggestions to the [issues tracker](https://github.com/
 ## See also
 
 * [BAN-geocoder](https://github.com/atao/BAN-Geocoder), python wrapper for adresse.data.gouv.fr
+* [tidygeocoder](https://github.com/jessecambon/tidygeocoder), r package similar to banR using other geocoding services such as US Census geocoder, Nominatim (OSM), Geocodio, and Location IQ. 
