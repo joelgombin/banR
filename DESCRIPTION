@@ -24,7 +24,7 @@ Suggests:
     testthat,
     knitr,
     rmarkdown
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 Encoding: UTF-8
 URL: http://joelgombin.github.io/banR/, http://github.com/joelgombin/banR/
 BugReports: http://github.com/joelgombin/banR/issues

@@ -34,6 +34,7 @@ geocode_tbl <- function(tbl, adresse, code_insee = NULL, code_postal = NULL) {
   purrr::discard(rlang::quo_is_null)
 
   dplyr::select(.data = tbl, !!! vars) %>%
+    dplyr::mutate({{adresse}} := stringr::str_replace({{adresse}}, "'", " ")) %>% 
     readr::write_csv(path = tmp)
 
   message(
