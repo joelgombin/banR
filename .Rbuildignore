@@ -11,3 +11,5 @@
 ^CRAN-RELEASE$
 ^\.github$
 ^revdep$
+^vignettes/reverse\.csv$
+^vignettes/search\.csv$

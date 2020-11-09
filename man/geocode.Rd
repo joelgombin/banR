@@ -16,6 +16,6 @@ a tibble
 Geocode
 }
 \examples{
-geocode(query = "39 quai André Citroën, Paris")
+geocode(query = "39 quai AndrÃ© CitroÃ«n, Paris")
 
 }

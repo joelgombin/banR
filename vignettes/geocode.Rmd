@@ -94,3 +94,93 @@ test_df %>%
   glimpse
 
 ```
+
+
+### Geocode from a CSV file: 
+
+
+`geocode_csv()` allows you, from a csv file, to geocode a massive amount of addresses. __The API can handle a csv file up to 50Mo__. In order to use the function, you'll need a local CSV file. 
+
+In this example we'll work with the CSV file provided by the API DOC website, available here: __https://adresse.data.gouv.fr/exemples/search.csv__
+
+```{r}
+
+# 1.first download the csv file 
+
+download.file("https://adresse.data.gouv.fr/exemples/search.csv", 
+              "search.csv")
+
+# 2. geocode the addresses 
+
+geocode_csv(file = "search.csv")
+
+
+```
+
+__By default `geocode_csv()` will concatenate all the columns in order to formulate the addresses to be geocoded and it will return a tibble containing the geocoded addresses among other related information.__
+
+
+You can also tune your geocoding by providing additional parameters to the `...` argument of the `geocode_csv()` function. For example, it's possible to select the columns that will be used for our geocoding: 
+
+
+```{r}
+
+
+geocode_csv(file = "search.csv", 
+            columns = "postcode", 
+            columns = "adresse")
+
+
+```
+
+In case you've a large CSV file and you want to speed up the process, you can indicate the needed resulting columns this way: 
+
+
+```{r}
+
+geocode_csv(file = "search.csv", 
+            columns = "postcode", 
+            columns = "adresse", 
+            result_columns = "latitude", 
+            result_columns = "longitude")
+
+
+```
+
+Finally, it's possible to indicate the column that contains the __INSEE code__ or the __Postal code__. The example CSV file that we're using doesn't contain these kind of columns but you'd implement it this way:
+
+```{r, eval=FALSE}
+
+# DO NOT RUN. THIS IS HYPOTHETICAL 
+
+geocode_csv(file = "YOUR_CSV_FILE", 
+            postcode = "COLUMN_WITH_POSTCODE", 
+            citycode = "COLUMN_WITH_INSEECODE")
+
+```
+
+## 4. Reverse Geocode from a CSV file: `geocode_csv_reverse()`
+
+
+`geocode_csv_reverse()` works the way as `geocode_csv()` except that it does the inverse. It transforms longitude and latitude information into addresses. __Note also that API tolerates CSV files up to 6Mo for this kind of operation.__ 
+
+##### Important 🐱 The csv file must contain columns named _latitude (or lat)__ and _longitude (or lon or lng)_
+
+
+In order to illustrate this function, we'll work on the CSV file provided by the API DOC and available here: __https://adresse.data.gouv.fr/exemples/reverse.csv__
+
+
+
+```{r}
+
+# 1.first download the csv file 
+
+download.file("https://adresse.data.gouv.fr/exemples/reverse.csv", 
+              "reverse.csv")
+
+# 2. geocode the addresses 
+
+geocode_csv_reverse(file = "reverse.csv")
+
+
+```
