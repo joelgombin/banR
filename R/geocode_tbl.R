@@ -38,7 +38,7 @@ geocode_tbl <- function(tbl, adresse, code_insee = NULL, code_postal = NULL) {
     readr::write_csv(path = tmp)
 
   message(
-    "If file is larger than 8 MB, it must be splitted\n",
+    "If file is larger than 50 MB, it must be splitted\n",
     "Size is : ", format_object_size(x = file.size(tmp), units = "auto")
   )
 
