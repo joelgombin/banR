@@ -52,7 +52,7 @@ get_features <- function(x) {
 #'
 #' @param query a string of the address you want to geocode
 #' @param limit an integer maximum number of results
-#' @param autocomplete a boolean 
+#' @param autocomplete a boolean
 #' @param type of result wanted. Default returns all results
 #'
 #' @return a tibble
@@ -60,15 +60,15 @@ get_features <- function(x) {
 #'
 #' @examples
 #' geocode(query = "39 quai André Citroën, Paris")
-#' 
-geocode <- function(query, 
+#'
+geocode <- function(query,
                     limit = NULL,
                     autocomplete = NULL,
-                    type = c("all","housenumber", "street", "locality", "municipality")) {
-  
-  if (missing(type) || type == "all") 
+                    type = c("all", "housenumber", "street", "locality", "municipality")) {
+
+  if (missing(type) || type == "all")
     type <- NULL
-  
+
   base_url <- "http://api-adresse.data.gouv.fr/search/?q="
   get_query <- httr::GET(
     url = base_url,
