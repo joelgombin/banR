@@ -10,6 +10,8 @@
 #' @return an augmented data frame of class tbl with latitude, longitude, etc
 #' @export 
 #'
+#' @importFrom rlang :=
+#'
 #' @examples
 #' 
 #' table_test <- tibble::tibble(
@@ -35,7 +37,7 @@ geocode_tbl <- function(tbl, adresse, code_insee = NULL, code_postal = NULL) {
 
   dplyr::select(.data = tbl, !!! vars) %>%
     dplyr::mutate({{adresse}} := stringr::str_replace({{adresse}}, "'", " ")) %>% 
-    readr::write_csv(path = tmp)
+    readr::write_csv(file = tmp)
 
   message(
     "If file is larger than 8 MB, it must be splitted\n",
@@ -134,7 +136,7 @@ reverse_geocode_tbl <- function(tbl, longitude, latitude) {
     "latitude" = rlang::enquo(latitude)
     )
   dplyr::select(.data = tbl, !!! vars) %>%
-    readr::write_csv(path = tmp)
+    readr::write_csv(file = tmp)
 
   tbl_temp <- dplyr::select(
     .data = tbl,
