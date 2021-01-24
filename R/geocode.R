@@ -71,7 +71,7 @@ geocode <- function(query,
   if (missing(type) || type == "all")
     type <- NULL
 
-  base_url <- "http://api-adresse.data.gouv.fr/search/?q="
+  base_url <- "http://api-adresse.data.gouv.fr/search/"
   get_query <- httr::GET(
     url = base_url,
     query = list(
