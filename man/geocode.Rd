@@ -4,10 +4,21 @@
 \alias{geocode}
 \title{Geocode}
 \usage{
-geocode(query)
+geocode(
+  query,
+  limit = NULL,
+  autocomplete = NULL,
+  type = c("all", "housenumber", "street", "locality", "municipality")
+)
 }
 \arguments{
-\item{query}{a string of the adress you want to geocode}
+\item{query}{a string of the address you want to geocode}
+
+\item{limit}{an integer maximum number of results}
+
+\item{autocomplete}{a boolean}
+
+\item{type}{of result wanted. Default returns all results}
 }
 \value{
 a tibble
