@@ -14,11 +14,13 @@ geocode(
 \arguments{
 \item{query}{a string of the address you want to geocode}
 
-\item{limit}{an integer maximum number of results}
+\item{limit}{an integer indicating the maximum number of results wanted}
 
 \item{autocomplete}{a boolean}
 
-\item{type}{of result wanted. Default returns all results}
+\item{type}{a string with the type of result wanted. 
+Default returns all results. 
+Can have one of the following values: "all", "housenumber", "street", "locality" or "municipality"}
 }
 \value{
 a tibble

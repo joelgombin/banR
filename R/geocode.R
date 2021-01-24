@@ -51,9 +51,11 @@ get_features <- function(x) {
 #' Geocode
 #'
 #' @param query a string of the address you want to geocode
-#' @param limit an integer maximum number of results
+#' @param limit an integer indicating the maximum number of results wanted
 #' @param autocomplete a boolean
-#' @param type of result wanted. Default returns all results
+#' @param type a string with the type of result wanted. 
+#'   Default returns all results. 
+#'   Can have one of the following values: "all", "housenumber", "street", "locality" or "municipality"
 #'
 #' @return a tibble
 #' @export
