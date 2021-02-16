@@ -37,7 +37,7 @@ geocode_tbl <- function(tbl, adresse, code_insee = NULL, code_postal = NULL) {
 
   dplyr::select(.data = tbl, !!! vars) %>%
     dplyr::mutate({{adresse}} := stringr::str_replace({{adresse}}, "'", " ")) %>% 
-    readr::write_csv(file = tmp)
+    readr::write_csv(file = tmp, na = "")
 
   message(
     "If file is larger than 8 MB, it must be splitted\n",
