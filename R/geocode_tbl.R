@@ -67,7 +67,7 @@ geocode_tbl <- function(tbl, adresse, code_insee = NULL, code_postal = NULL) {
   body$data <- httr::upload_file(path = tmp)
   body$delimiter <- ","
 
-  base_url  <- "http://api-adresse.data.gouv.fr/search/csv/"
+  base_url  <- "https://api-adresse.data.gouv.fr/search/csv/"
 
   query_results <- httr::POST(
     url = base_url,

@@ -59,7 +59,7 @@ get_features <- function(x) {
 #' geocode(query = "39 quai André Citroën, Paris")
 #'
 geocode <- function(query) {
-  base_url <- "http://api-adresse.data.gouv.fr/search/?q="
+  base_url <- "https://api-adresse.data.gouv.fr/search/?q="
   get_query <- httr::GET(utils::URLencode(paste0(base_url, query)))
   message(
     httr::status_code(get_query)
@@ -87,7 +87,7 @@ geocode <- function(query) {
 #'
 reverse_geocode <- function(long, lat) {
 
-  base_url <- "http://api-adresse.data.gouv.fr/reverse/?"
+  base_url <- "https://api-adresse.data.gouv.fr/reverse/?"
   get_query <- httr::GET(paste0(base_url, "lon=", long, "&lat=", lat))
 
   message(httr::status_code(x = get_query))

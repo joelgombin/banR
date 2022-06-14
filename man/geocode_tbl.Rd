@@ -24,8 +24,8 @@ Geocode tbl geocodes a whole data frame
 \examples{
 
 table_test <- tibble::tibble(
-x = c("39 quai Andre Citroen", "64 Allee de Bercy", "20 avenue de Segur"), 
-y = c("75015", "75012", "75007"), 
+x = c("39 quai Andre Citroen", "64 Allee de Bercy", "20 avenue de Segur"),
+y = c("75015", "75012", "75007"),
 z = rnorm(3)
 )
 

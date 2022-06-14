@@ -18,7 +18,7 @@ format_object_size(x, units = "b", standard = "auto", digits = 1L, ...)
 \item{...}{anything else}
 }
 \description{
-This function is modified copy of the utils:::format.object_size 
-function which is not exported. 
+This function is modified copy of the utils:::format.object_size
+function which is not exported.
 The main difference is that it returns values.
 }
