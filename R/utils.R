@@ -1,9 +1,9 @@
 #' Format object size
 #'
-#' This function is modified copy of the utils:::format.object_size 
-#' function which is not exported. 
+#' This function is modified copy of the utils:::format.object_size
+#' function which is not exported.
 #' The main difference is that it returns values.
-#' 
+#'
 #' @param x a number
 #' @param units a unit
 #' @param standard a standard

@@ -4,7 +4,7 @@
 #' @param x a feature list
 #'
 #' @return a tibble
-#' 
+#'
 
 get_properties <- function(x) {
   tibble::as_tibble(
@@ -17,7 +17,7 @@ get_properties <- function(x) {
 #' @param x a feature
 #'
 #' @return a tibble
-#' 
+#'
 get_geometry <- function(x) {
   geom <- magrittr::extract2(x, "geometry")
   tibble::tibble(
@@ -36,7 +36,7 @@ get_geometry <- function(x) {
 #' @param x the content of a request
 #'
 #' @return a tibble
-#' 
+#'
 get_features <- function(x) {
   dplyr::bind_cols(
     purrr::map_df(
@@ -57,7 +57,7 @@ get_features <- function(x) {
 #'
 #' @examples
 #' geocode(query = "39 quai André Citroën, Paris")
-#' 
+#'
 geocode <- function(query) {
   base_url <- "http://api-adresse.data.gouv.fr/search/?q="
   get_query <- httr::GET(utils::URLencode(paste0(base_url, query)))
@@ -82,9 +82,9 @@ geocode <- function(query) {
 #' @export
 #'
 #' @examples
-#' 
+#'
 #' reverse_geocode(long = 2.37, lat = 48.357)
-#' 
+#'
 reverse_geocode <- function(long, lat) {
 
   base_url <- "http://api-adresse.data.gouv.fr/reverse/?"
