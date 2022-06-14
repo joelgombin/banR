@@ -19,7 +19,8 @@ Imports:
     tibble,
     purrr,
     rlang,
-    utils
+    utils,
+    stringr
 Suggests:
     testthat,
     knitr,
