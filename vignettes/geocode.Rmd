@@ -13,13 +13,15 @@ vignette: >
 library("tibble")
 library("dplyr")
 library("banR")
-# generate fake data
+
 table_test <- tibble::tibble(
   adress = c("39 quai André Citroën", "64 Allée de Bercy", "20 avenue de Ségur"),
   postal_code = c("75015", "75012", "75007"),
   z = rnorm(3)
   )
 ```
+
+
 
 - `geocode()` geocodes a single address
 - `reverse_geocode()` reverse geocodes a single pair of longitude and latitude

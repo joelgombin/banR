@@ -103,7 +103,7 @@
 <span class="co">##     intersect, setdiff, setequal, union</span></code></pre>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="http://joelgombin.github.io/banR/" class="external-link">"banR"</a></span><span class="op">)</span>
-<span class="co"># generate fake data</span>
+
 <span class="va">table_test</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>
   adress <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"39 quai André Citroën"</span>, <span class="st">"64 Allée de Bercy"</span>, <span class="st">"20 avenue de Ségur"</span><span class="op">)</span>,
   postal_code <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"75015"</span>, <span class="st">"75012"</span>, <span class="st">"75007"</span><span class="op">)</span>,
@@ -159,14 +159,14 @@
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/geocode_tbl.html">geocode_tbl</a></span><span class="op">(</span>tbl <span class="op">=</span> <span class="va">table_test</span>, adresse <span class="op">=</span> <span class="va">adress</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## Writing tempfile to.../tmp/RtmppJXwwA/file1002233b444de.csv</span></code></pre>
+<pre><code><span class="co">## Writing tempfile to.../tmp/RtmplA1eOF/file155e0309cb996.csv</span></code></pre>
 <pre><code><span class="co">## If file is larger than 50 MB, it must be splitted</span>
 <span class="co">## Size is : 70 bytes</span></code></pre>
 <pre><code><span class="co">## SuccessOKSuccess: (200) OK</span></code></pre>
 <pre><code><span class="co">## Rows: 3</span>
 <span class="co">## Columns: 19</span>
 <span class="co">## $ postal_code        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "75015", "75012", "75007"</span>
-<span class="co">## $ z                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> -0.4003420, 0.7388267, -1.2080801</span>
+<span class="co">## $ z                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1.0123532, -0.3553875, -0.8148182</span>
 <span class="co">## $ adress             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "39 quai André Citroën", "64 Allée de Bercy", "20 a…</span>
 <span class="co">## $ latitude           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 48.84696, 48.84254, 48.85070</span>
 <span class="co">## $ longitude          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 2.278922, 2.376011, 2.308628</span>
@@ -187,13 +187,13 @@
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/geocode_tbl.html">geocode_tbl</a></span><span class="op">(</span>tbl <span class="op">=</span> <span class="va">table_test</span>, adresse <span class="op">=</span> <span class="va">adress</span>, code_postal <span class="op">=</span> <span class="va">postal_code</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## Writing tempfile to.../tmp/RtmppJXwwA/file1002241b0d63b.csv</span></code></pre>
+<pre><code><span class="co">## Writing tempfile to.../tmp/RtmplA1eOF/file155e02ccbb1a2.csv</span></code></pre>
 <pre><code><span class="co">## If file is larger than 50 MB, it must be splitted</span>
 <span class="co">## Size is : 100 bytes</span></code></pre>
 <pre><code><span class="co">## SuccessOKSuccess: (200) OK</span></code></pre>
 <pre><code><span class="co">## Rows: 3</span>
 <span class="co">## Columns: 19</span>
-<span class="co">## $ z                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> -0.4003420, 0.7388267, -1.2080801</span>
+<span class="co">## $ z                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1.0123532, -0.3553875, -0.8148182</span>
 <span class="co">## $ adress             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "39 quai André Citroën", "64 Allée de Bercy", "20 a…</span>
 <span class="co">## $ postal_code        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "75015", "75012", "75007"</span>
 <span class="co">## $ latitude           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 48.84696, 48.84254, 48.85070</span>
@@ -222,7 +222,7 @@
     <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="../reference/geocode_tbl.html">geocode_tbl</a></span><span class="op">(</span>adresse <span class="op">=</span> <span class="va">adresse</span>, code_insee <span class="op">=</span> <span class="va">code_insee</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## Writing tempfile to.../tmp/RtmppJXwwA/file1002253581477.csv</span></code></pre>
+<pre><code><span class="co">## Writing tempfile to.../tmp/RtmplA1eOF/file155e070ddf487.csv</span></code></pre>
 <pre><code><span class="co">## If file is larger than 50 MB, it must be splitted</span>
 <span class="co">## Size is : 3 Kb</span></code></pre>
 <pre><code><span class="co">## SuccessOKSuccess: (200) OK</span></code></pre>
@@ -303,31 +303,31 @@
 <span class="va">test_df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="fu"><a href="../reference/reverse_geocode_tbl.html">reverse_geocode_tbl</a></span><span class="op">(</span><span class="va">lon</span>, <span class="va">lat</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="va">glimpse</span></code></pre></div>
-<pre><code><span class="co">## Writing tempfile to.../tmp/RtmppJXwwA/file10022f29de0c.csv</span></code></pre>
+<pre><code><span class="co">## Writing tempfile to.../tmp/RtmplA1eOF/file155e02e9b9b32.csv</span></code></pre>
 <pre><code><span class="co">## If file is larger than 50 MB, it must be splitted</span>
-<span class="co">## Size is : 386 bytes</span></code></pre>
+<span class="co">## Size is : 391 bytes</span></code></pre>
 <pre><code><span class="co">## SuccessOKSuccess: (200) OK</span></code></pre>
 <pre><code><span class="co">## Rows: 10</span>
 <span class="co">## Columns: 19</span>
-<span class="co">## $ nom                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "e", "s", "d", "b", "x", "i", "m", "k", "y", "p"</span>
-<span class="co">## $ longitude          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 2.245244, 2.354225, 2.377782, 2.241753, 2.207742, 2…</span>
-<span class="co">## $ latitude           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 48.80485, 48.83470, 48.80737, 48.83363, 48.84872, 4…</span>
-<span class="co">## $ result_latitude    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 48.80487, 48.83471, 48.80749, 48.83383, 48.84870, 4…</span>
-<span class="co">## $ result_longitude   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 2.245033, 2.354242, 2.377995, 2.241639, 2.207216, 2…</span>
-<span class="co">## $ result_label       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "3 Rue du Parc de Fleury 92190 Meudon", "40 Rue du …</span>
-<span class="co">## $ result_distance    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 15, 1, 20, 23, 38, 6, 10, 72, 8, 10</span>
+<span class="co">## $ nom                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "b", "d", "o", "z", "h", "e", "u", "n", "s", "c"</span>
+<span class="co">## $ longitude          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 2.280913, 2.393396, 2.443009, 2.401468, 2.365696, 2…</span>
+<span class="co">## $ latitude           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 48.86070, 48.88343, 48.86584, 48.80958, 48.88799, 4…</span>
+<span class="co">## $ result_latitude    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 48.86059, 48.88330, 48.86581, 48.80966, 48.88795, 4…</span>
+<span class="co">## $ result_longitude   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 2.281157, 2.393637, 2.443042, 2.401171, 2.366197, 2…</span>
+<span class="co">## $ result_label       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "62a Rue de la Tour 75016 Paris", "19 Rue de la Pré…</span>
+<span class="co">## $ result_distance    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 21, 22, 3, 23, 36, 13, 7, 51, 4, 35</span>
 <span class="co">## $ result_type        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "housenumber", "housenumber", "housenumber", "house…</span>
-<span class="co">## $ result_id          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "92048_1865_00003", "75113_0656_00040", "94041_4136…</span>
-<span class="co">## $ result_housenumber <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "3", "40", "2ter", "14", "14bis", "92", "18", "53",…</span>
-<span class="co">## $ result_name        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Rue du Parc de Fleury", "Rue du Banquier", "Rue Ga…</span>
+<span class="co">## $ result_id          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "75116_9362_00062_a", "75119_7826_00019", "93048_44…</span>
+<span class="co">## $ result_housenumber <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "62a", "19", "33ter", "30", "20a", "91", "107", "35…</span>
+<span class="co">## $ result_name        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Rue de la Tour", "Rue de la Prévoyance", "Boulevar…</span>
 <span class="co">## $ result_street      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA</span>
-<span class="co">## $ result_postcode    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "92190", "75013", "94200", "92100", "92210", "94800…</span>
-<span class="co">## $ result_city        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Meudon", "Paris", "Ivry-sur-Seine", "Boulogne-Bill…</span>
-<span class="co">## $ result_context     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "92, Hauts-de-Seine, Île-de-France", "75, Paris, Îl…</span>
-<span class="co">## $ result_citycode    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "92048", "75113", "94041", "92012", "92064", "94076…</span>
+<span class="co">## $ result_postcode    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "75016", "75019", "93100", "94200", "75018", "75012…</span>
+<span class="co">## $ result_city        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Paris", "Paris", "Montreuil", "Ivry-sur-Seine", "P…</span>
+<span class="co">## $ result_context     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "75, Paris, Île-de-France", "75, Paris, Île-de-Fran…</span>
+<span class="co">## $ result_citycode    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "75116", "75119", "93048", "94041", "75118", "75112…</span>
 <span class="co">## $ result_oldcitycode <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA</span>
 <span class="co">## $ result_oldcity     <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA</span>
-<span class="co">## $ result_district    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, "Paris 13e Arrondissement", NA, NA, NA, NA, NA,…</span></code></pre>
+<span class="co">## $ result_district    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Paris 16e Arrondissement", "Paris 19e Arrondisseme…</span></code></pre>
 </div>
 </div>
   </div>

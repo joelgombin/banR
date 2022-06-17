@@ -87,21 +87,13 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
 <span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"joelgombin/banR"</span>, build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<p>There used to be a version on CRAN but it may be outdated (old version):</p>
+<p>The CRAN version is out of date :</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"banR"</span><span class="op">)</span></code></pre></div>
-<p><code>banR</code> allows to geocode lots of adresses in batch (the only hard limit is that, at the moment, the API only allows CSV files up to 8 MB). Please be gentle with the server though!</p>
+<p><code>banR</code> allows to geocode lots of adresses in batch (the only hard limit is that, at the moment, the API only allows CSV files up to 50 MB). Please be gentle with the server though!</p>
 <p><code>banR</code> is designed to be used in a data exploration workflow, with a syntax ‘à la <a href="http://tidyverse.org" class="external-link"><code>tidyverse</code></a>’:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Attaching package: 'dplyr'</span>
-<span class="co">#&gt; The following objects are masked from 'package:stats':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     filter, lag</span>
-<span class="co">#&gt; The following objects are masked from 'package:base':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     intersect, setdiff, setequal, union</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://joelgombin.github.io/banR/" class="external-link">banR</a></span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"paris2012"</span><span class="op">)</span>
 
@@ -110,45 +102,49 @@
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>adresse <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="va">numero</span>, <span class="va">voie</span>, <span class="va">nom</span><span class="op">)</span>,
          code_insee <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"751"</span>, <span class="va">arrondissement</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="fu"><a href="reference/geocode_tbl.html">geocode_tbl</a></span><span class="op">(</span>adresse <span class="op">=</span> <span class="va">adresse</span>, code_insee <span class="op">=</span> <span class="va">code_insee</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="va">glimpse</span>
-<span class="co">#&gt; Writing tempfile to.../tmp/RtmpIH1Wul/file13a295bdce43e.csv</span>
-<span class="co">#&gt; If file is larger than 8 MB, it must be splitted</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; Writing tempfile to.../tmp/Rtmp9YlNra/file147282c595535.csv</span>
+<span class="co">#&gt; If file is larger than 50 MB, it must be splitted</span>
 <span class="co">#&gt; Size is : 3 Kb</span>
 <span class="co">#&gt; SuccessOKSuccess: (200) OK</span>
 <span class="co">#&gt; Rows: 100</span>
 <span class="co">#&gt; Columns: 25</span>
-<span class="co">#&gt; $ arrondissement     &lt;chr&gt; "06", "06", "06", "06", "06", "06", "06", "06", "0…</span>
-<span class="co">#&gt; $ bureau             &lt;chr&gt; "09", "09", "09", "09", "09", "09", "09", "09", "0…</span>
-<span class="co">#&gt; $ numero             &lt;int&gt; 4, 5, 6, 7, 8, 11, 12, 13, 14, 16, 3, 4, 5, 6, 7, …</span>
-<span class="co">#&gt; $ voie               &lt;chr&gt; "RUE DE L", "RUE DE L", "RUE DE L", "RUE DE L", "R…</span>
-<span class="co">#&gt; $ nom                &lt;chr&gt; "ABBAYE", "ABBAYE", "ABBAYE", "ABBAYE", "ABBAYE", …</span>
-<span class="co">#&gt; $ nb                 &lt;int&gt; 1, 1, 20, 2, 17, 2, 9, 15, 17, 8, 13, 6, 6, 3, 9, …</span>
-<span class="co">#&gt; $ ID                 &lt;chr&gt; "0609", "0609", "0609", "0609", "0609", "0609", "0…</span>
-<span class="co">#&gt; $ adresse            &lt;chr&gt; "4 RUE DE L ABBAYE", "5 RUE DE L ABBAYE", "6 RUE D…</span>
-<span class="co">#&gt; $ code_insee         &lt;chr&gt; "75106", "75106", "75106", "75106", "75106", "7510…</span>
-<span class="co">#&gt; $ latitude           &lt;dbl&gt; 48.85405, 48.85407, 48.85414, 48.85410, 48.85425, …</span>
-<span class="co">#&gt; $ longitude          &lt;dbl&gt; 2.335715, 2.335172, 2.335352, 2.335041, 2.334903, …</span>
-<span class="co">#&gt; $ result_label       &lt;chr&gt; "4 Rue de l'Abbaye 75006 Paris", "5 Rue de l'Abbay…</span>
-<span class="co">#&gt; $ result_score       &lt;dbl&gt; 0.96, 0.96, 0.96, 0.96, 0.96, 0.96, 0.96, 0.96, 0.…</span>
-<span class="co">#&gt; $ result_type        &lt;chr&gt; "housenumber", "housenumber", "housenumber", "hous…</span>
-<span class="co">#&gt; $ result_id          &lt;chr&gt; "75106_0002_00004", "75106_0002_00005", "75106_000…</span>
-<span class="co">#&gt; $ result_housenumber &lt;chr&gt; "4", "5", "6", "7", "8", "11", "12", "13", "14", "…</span>
-<span class="co">#&gt; $ result_name        &lt;chr&gt; "Rue de l'Abbaye", "Rue de l'Abbaye", "Rue de l'Ab…</span>
-<span class="co">#&gt; $ result_street      &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ result_postcode    &lt;chr&gt; "75006", "75006", "75006", "75006", "75006", "7500…</span>
-<span class="co">#&gt; $ result_city        &lt;chr&gt; "Paris", "Paris", "Paris", "Paris", "Paris", "Pari…</span>
-<span class="co">#&gt; $ result_context     &lt;chr&gt; "75, Paris, Île-de-France", "75, Paris, Île-de-Fra…</span>
-<span class="co">#&gt; $ result_citycode    &lt;chr&gt; "75106", "75106", "75106", "75106", "75106", "7510…</span>
-<span class="co">#&gt; $ result_oldcitycode &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ result_oldcity     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ result_district    &lt;chr&gt; "Paris 6e Arrondissement", "Paris 6e Arrondissemen…</span></code></pre></div>
+<span class="co">#&gt; $ arrondissement     &lt;chr&gt; "06", "06", "06", "06", "06", "06", "06", "06", "06…</span>
+<span class="co">#&gt; $ bureau             &lt;chr&gt; "09", "09", "09", "09", "09", "09", "09", "09", "09…</span>
+<span class="co">#&gt; $ numero             &lt;int&gt; 4, 5, 6, 7, 8, 11, 12, 13, 14, 16, 3, 4, 5, 6, 7, 8…</span>
+<span class="co">#&gt; $ voie               &lt;chr&gt; "RUE DE L", "RUE DE L", "RUE DE L", "RUE DE L", "RU…</span>
+<span class="co">#&gt; $ nom                &lt;chr&gt; "ABBAYE", "ABBAYE", "ABBAYE", "ABBAYE", "ABBAYE", "…</span>
+<span class="co">#&gt; $ nb                 &lt;int&gt; 1, 1, 20, 2, 17, 2, 9, 15, 17, 8, 13, 6, 6, 3, 9, 1…</span>
+<span class="co">#&gt; $ ID                 &lt;chr&gt; "0609", "0609", "0609", "0609", "0609", "0609", "06…</span>
+<span class="co">#&gt; $ adresse            &lt;chr&gt; "4 RUE DE L ABBAYE", "5 RUE DE L ABBAYE", "6 RUE DE…</span>
+<span class="co">#&gt; $ code_insee         &lt;chr&gt; "75106", "75106", "75106", "75106", "75106", "75106…</span>
+<span class="co">#&gt; $ latitude           &lt;dbl&gt; 48.85405, 48.85407, 48.85414, 48.85410, 48.85425, 4…</span>
+<span class="co">#&gt; $ longitude          &lt;dbl&gt; 2.335715, 2.335172, 2.335352, 2.335041, 2.334903, 2…</span>
+<span class="co">#&gt; $ result_label       &lt;chr&gt; "4 Rue de l’Abbaye 75006 Paris", "5 Rue de l’Abbaye…</span>
+<span class="co">#&gt; $ result_score       &lt;dbl&gt; 0.97, 0.97, 0.97, 0.97, 0.97, 0.97, 0.97, 0.97, 0.9…</span>
+<span class="co">#&gt; $ result_type        &lt;chr&gt; "housenumber", "housenumber", "housenumber", "house…</span>
+<span class="co">#&gt; $ result_id          &lt;chr&gt; "75106_0002_00004", "75106_0002_00005", "75106_0002…</span>
+<span class="co">#&gt; $ result_housenumber &lt;chr&gt; "4", "5", "6", "7", "8", "11", "12", "13", "14", "1…</span>
+<span class="co">#&gt; $ result_name        &lt;chr&gt; "Rue de l’Abbaye", "Rue de l’Abbaye", "Rue de l’Abb…</span>
+<span class="co">#&gt; $ result_street      &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
+<span class="co">#&gt; $ result_postcode    &lt;chr&gt; "75006", "75006", "75006", "75006", "75006", "75006…</span>
+<span class="co">#&gt; $ result_city        &lt;chr&gt; "Paris", "Paris", "Paris", "Paris", "Paris", "Paris…</span>
+<span class="co">#&gt; $ result_context     &lt;chr&gt; "75, Paris, Île-de-France", "75, Paris, Île-de-Fran…</span>
+<span class="co">#&gt; $ result_citycode    &lt;chr&gt; "75106", "75106", "75106", "75106", "75106", "75106…</span>
+<span class="co">#&gt; $ result_oldcitycode &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
+<span class="co">#&gt; $ result_oldcity     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
+<span class="co">#&gt; $ result_district    &lt;chr&gt; "Paris 6e Arrondissement", "Paris 6e Arrondissement…</span></code></pre></div>
 <p>To know more about this package, please read the <a href="http://joelgombin.github.io/banR/articles/geocode.html" class="external-link">vignette</a> (<code><a href="articles/geocode.html">vignette("geocode")</a></code>)</p>
 <p>Please report issues and suggestions to the <a href="https://github.com/joelgombin/banR/issues" class="external-link">issues tracker</a>.</p>
 <div class="section level2">
 <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a>
 </h2>
-<ul><li>
-<a href="https://github.com/atao/BAN-Geocoder" class="external-link">BAN-geocoder</a>, python wrapper for adresse.data.gouv.fr</li></ul>
+<ul>
+<li>
+<a href="https://github.com/atao/BAN-Geocoder" class="external-link">BAN-geocoder</a>, python wrapper for adresse.data.gouv.fr</li>
+<li>
+<a href="https://github.com/jessecambon/tidygeocoder" class="external-link">tidygeocoder</a>, r package similar to banR using other geocoding services such as US Census geocoder, Nominatim (OSM), Geocodio, and Location IQ.</li>
+</ul>
 </div>
 </div>
   </div>

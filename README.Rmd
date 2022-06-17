@@ -47,9 +47,9 @@ paris2012 %>%
   mutate(adresse = paste(numero, voie, nom),
          code_insee = paste0("751", arrondissement)) %>% 
   geocode_tbl(adresse = adresse, code_insee = code_insee) %>%
-  glimpse
-
+  glimpse()
 ```
+
 To know more about this package, please read the [vignette](http://joelgombin.github.io/banR/articles/geocode.html) (`vignette("geocode")`)
 
 Please report issues and suggestions to the [issues tracker](https://github.com/joelgombin/banR/issues).
