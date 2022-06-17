@@ -39,7 +39,7 @@ geocode_tbl <- function(tbl, adresse, code_insee = NULL, code_postal = NULL) {
         {{adresse}}, "'", " "
         )
       ) %>%
-    readr::write_csv(file = tmp)
+    readr::write_csv(file = tmp, na = "")
 
   message(
     "If file is larger than 50 MB, it must be splitted\n",
@@ -138,7 +138,7 @@ reverse_geocode_tbl <- function(tbl, longitude, latitude) {
     "latitude" = rlang::enquo(latitude)
     )
   dplyr::select(.data = tbl, !!! vars) %>%
-    readr::write_csv(file = tmp)
+    readr::write_csv(file = tmp, na = "")
 
   tbl_temp <- dplyr::select(
     .data = tbl,
