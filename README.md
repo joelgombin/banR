@@ -14,19 +14,19 @@ API](https://geo.api.gouv.fr/adresse). The [Base Adresse Nationale
 (BAN)](https://adresse.data.gouv.fr/) is an open database of French
 adresses, produced by OpenStreetMap, La Poste, the IGN and Etalab.
 
-`banR` can be installed from CRAN (stable version):
-
-``` r
-install.packages("banR")
-```
-
-or from Github (dev version):
+`banR` can be installed from Github (current version):
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("joelgombin/banR", build_vignettes = TRUE)
 ```
 
+There used to be a version on CRAN but it may be outdated (old version):
+
+``` r
+install.packages("banR")
+```
+ 
 `banR` allows to geocode lots of adresses in batch (the only hard limit
 is that, at the moment, the API only allows CSV files up to 8 MB).
 Please be gentle with the server though\!
