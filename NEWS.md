@@ -1,6 +1,6 @@
 # banR v0.2.3 
 - Change API url to IGN's geoplateforme <https://data.geopf.fr/geocodage/>
-- bug fix function reverse_geocode() who couldn't deal with NULL values any more, surely due to `as_tibble()` evolutions
+- bug fix function reverse_geocode() that couldn't deal with NULL values any more, surely due to `as_tibble()` evolutions
 
 # banR v0.2.2
 - getting ready for dplyr v1.0
