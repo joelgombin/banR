@@ -67,7 +67,7 @@ geocode_tbl <- function(tbl, adresse, code_insee = NULL, code_postal = NULL) {
   body$data <- httr::upload_file(path = tmp)
   body$delimiter <- ","
 
-  base_url  <- "https://api-adresse.data.gouv.fr/search/csv/"
+  base_url  <- "https://data.geopf.fr/geocodage/search/csv/"
 
   query_results <- httr::POST(
     url = base_url,
@@ -159,7 +159,7 @@ reverse_geocode_tbl <- function(tbl, longitude, latitude) {
     delimiter = ","
   )
 
-  base_url  <- "https://api-adresse.data.gouv.fr/reverse/csv/"
+  base_url  <- "https://data.geopf.fr/geocodage/reverse/csv/"
 
   query_results <- httr::POST(
     url = base_url,
