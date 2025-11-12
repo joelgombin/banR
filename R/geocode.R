@@ -1,23 +1,9 @@
-
-#' Get properties of a feature
-#'
-#' @param x a feature list
-#'
-#' @return a tibble
-#'
-
-get_properties <- function(x) {
-  tibble::as_tibble(
-    magrittr::extract2(x, "properties")
-    )
-}
-
 #' Get geometry
 #'
 #' @param x a feature
-#'
+#' @importFrom magrittr extract2
+#' @importFrom tibble tibble
 #' @return a tibble
-#'
 get_geometry <- function(x) {
   geom <- magrittr::extract2(x, "geometry")
   tibble::tibble(
@@ -37,11 +23,17 @@ get_geometry <- function(x) {
 #'
 #' @return a tibble
 #'
+#' @importFrom dplyr bind_cols everything
+#' @importFrom magrittr extract2
+#' @importFrom purrr pluck map transpose map_df
+#' @importFrom tidyr as_tibble unnest
 get_features <- function(x) {
   dplyr::bind_cols(
-    purrr::map_df(
-      .x = magrittr::extract2(x, "features"),
-      .f = get_properties),
+    purrr::pluck(x, "features") %>% 
+      purrr::map(~purrr::pluck(.x, "properties")) %>% 
+      purrr::transpose() %>% 
+      tidyr::as_tibble() %>% 
+      tidyr::unnest(cols = dplyr::everything()),
     purrr::map_df(
       .x = magrittr::extract2(x, "features"),
       .f = get_geometry)
@@ -58,8 +50,10 @@ get_features <- function(x) {
 #' @examples
 #' geocode(query = "39 quai André Citroën, Paris")
 #'
+#' @importFrom httr GET status_code content
+#' @importFrom utils URLencode
 geocode <- function(query) {
-  base_url <- "https://api-adresse.data.gouv.fr/search/?q="
+  base_url <- "https://data.geopf.fr/geocodage/search/?q="
   get_query <- httr::GET(utils::URLencode(paste0(base_url, query)))
   message(
     httr::status_code(get_query)
@@ -85,9 +79,10 @@ geocode <- function(query) {
 #'
 #' reverse_geocode(long = 2.37, lat = 48.357)
 #'
+#' @importFrom httr GET status_code content
 reverse_geocode <- function(long, lat) {
 
-  base_url <- "https://api-adresse.data.gouv.fr/reverse/?"
+  base_url <- "https://data.geopf.fr/geocodage/reverse/?"
   get_query <- httr::GET(paste0(base_url, "lon=", long, "&lat=", lat))
 
   message(httr::status_code(x = get_query))

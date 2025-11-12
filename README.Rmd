@@ -18,7 +18,8 @@ knitr::opts_chunk$set(
 [![R build status](https://github.com/joelgombin/banR/workflows/R-CMD-check/badge.svg)](https://github.com/joelgombin/banR/actions)
 <!-- badges: end -->
   
-The `banR` package is a light R client for the [BAN API](https://geo.api.gouv.fr/adresse). The [Base Adresse Nationale (BAN)](https://adresse.data.gouv.fr/) is an open database of French adresses, produced by OpenStreetMap, La Poste, the IGN and Etalab. 
+The `banR` package is a light R client for the [BAN API](https://adresse.data.gouv.fr/outils/api-doc/adresse). 
+The [Base Adresse Nationale (BAN)](https://adresse.data.gouv.fr/) is an open database of French adresses, produced by OpenStreetMap, La Poste, the IGN and Etalab.
 
 `banR` can be installed from Github (current version):
 
@@ -33,7 +34,8 @@ The CRAN version is out of date :
 install.packages("banR")
 ```
 
-`banR` allows to geocode lots of adresses in batch (the only hard limit is that, at the moment, the API only allows CSV files up to 50 MB). Please be gentle with the server though!
+`banR` allows to geocode a single adress directly (limited to 50 requests per second from the same IP address) or lots of adresses in batch (the only hard limit is that, at the moment, the API only allows CSV files up to 50 MB).  
+Please be gentle with the server though!
 
 `banR` is designed to be used in a data exploration workflow, with a syntax 'à la [`tidyverse`](http://tidyverse.org)':
 

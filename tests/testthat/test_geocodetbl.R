@@ -75,18 +75,20 @@ test_that(
       )
 
     expect_true(
-      all_equal(
+      all.equal(
         geocode_tbl(
           tbl = table_check,
           adresse = num_voie,
           code_postal = cp
-          ),
-      geocode_tbl(
+        )%>% 
+          select(ville, codecommune, num_voie, cp, everything()), #on fixe l'ordre des premieres colonnes
+        geocode_tbl(
           tbl = table_check,
           adresse = num_voie,
           code_insee =  codecommune
-        )
-    )
+        ) %>% 
+          select(ville, codecommune, num_voie, cp, everything())
+      )
   )
   }
 )
