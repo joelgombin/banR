@@ -1,15 +1,11 @@
 ## Test environments
-* local Ubuntu 20.04, R 4.0.0
+* local MacOS 26.1 (M chip), R 4.5.1
 * [Github Actions](https://github.com/joelgombin/banR/actions?query=workflow%3AR-CMD-check) : 
   * macOS-latest, devel
-  * macOS-latest, 4.0
-  * windows-latest, 4.0
-  * Ubuntu 16.04, 4.0
-  * Ubuntu 16.04, 3.6
-  * Ubuntu 16.04, 3.5
-  * Ubuntu 16.04, 3.4
-  * Ubuntu 16.04, 3.3
-* r-hub (using `rhub::check_for_cran(env_vars=c(R_COMPILE_AND_INSTALL_PACKAGES = "always"))`)
+  * macOS-latest, release
+  * windows-latest, release
+  * Ubuntu latest, release
+* r-hub 
 
 ## R CMD check results
 
