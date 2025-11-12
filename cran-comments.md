@@ -14,3 +14,7 @@ All checks came back with 0 error, 0 warning and 0 note.
 ## Downstream dependencies
 
 There are currently no downstream dependencies for this package. 
+
+## Other comments
+
+I fixed URLs so there shouldn't be any more notes.
