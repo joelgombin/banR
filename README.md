@@ -35,7 +35,7 @@ CSV files up to 50 MB).
 Please be gentle with the server though!
 
 `banR` is designed to be used in a data exploration workflow, with a
-syntax ‘à la [`tidyverse`](http://tidyverse.org)’:
+syntax 'à la [`tidyverse`](https://tidyverse.org/)':
 
 ``` r
 library(dplyr)

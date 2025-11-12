@@ -13,3 +13,6 @@
 ^revdep$
 ^doc$
 ^Meta$
+^CRAN-SUBMISSION$
+^\.claude$
+^CLAUDE\.md$
