@@ -11,3 +11,5 @@
 ^CRAN-RELEASE$
 ^\.github$
 ^revdep$
+^doc$
+^Meta$
