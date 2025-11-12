@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="Paul-Antoine Chevalier (Etalab), Joël Gombin (Datactivist)" />
+
+<meta name="date" content="2025-11-12" />
+
+<title>Geocoding French adresses with BanR</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+<style type="text/css">
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+
+<style type="text/css">
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
+</style>
+<style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Geocoding French adresses with BanR</h1>
+<h4 class="author">Paul-Antoine Chevalier (Etalab), Joël Gombin
+(Datactivist)</h4>
+<h4 class="date">2025-11-12</h4>
+
+
+
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;tibble&quot;</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;banR&quot;</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>table_test <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>  <span class="at">adress =</span> <span class="fu">c</span>(<span class="st">&quot;39 quai André Citroën&quot;</span>, <span class="st">&quot;64 Allée de Bercy&quot;</span>, <span class="st">&quot;20 avenue de Ségur&quot;</span>),</span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>  <span class="at">postal_code =</span> <span class="fu">c</span>(<span class="st">&quot;75015&quot;</span>, <span class="st">&quot;75012&quot;</span>, <span class="st">&quot;75007&quot;</span>),</span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a>  <span class="at">z =</span> <span class="fu">rnorm</span>(<span class="dv">3</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a>  )</span></code></pre></div>
+<ul>
+<li><code>geocode()</code> geocodes a single address</li>
+<li><code>reverse_geocode()</code> reverse geocodes a single pair of
+longitude and latitude</li>
+<li><code>geocode_tbl()</code> geocodes a data frame</li>
+<li><code>reverse_geocode_tbl()</code> reverse geocodes a data
+frame</li>
+</ul>
+<div id="geocode" class="section level2">
+<h2>Geocode</h2>
+<p>Geocoding is the process of transforming a human readable address
+into a location (ie a pair of latitude and longitude).</p>
+<div id="a-single-address" class="section level3">
+<h3>A single address</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">geocode</span>(<span class="at">query =</span> <span class="st">&quot;39 quai André Citroën, Paris&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code></pre></div>
+<pre><code>Rows: 1
+Columns: 19
+$ label       &lt;chr&gt; &quot;39 Quai André Citroën 75015 Paris&quot;
+$ score       &lt;dbl&gt; 0.9801645
+$ housenumber &lt;chr&gt; &quot;39&quot;
+$ id          &lt;chr&gt; &quot;75115_0318_00039&quot;
+$ name        &lt;chr&gt; &quot;39 Quai André Citroën&quot;
+$ postcode    &lt;chr&gt; &quot;75015&quot;
+$ citycode    &lt;chr&gt; &quot;75115&quot;
+$ x           &lt;dbl&gt; 647082.8
+$ y           &lt;dbl&gt; 6861010
+$ city        &lt;chr&gt; &quot;Paris&quot;
+$ district    &lt;chr&gt; &quot;Paris 15e Arrondissement&quot;
+$ context     &lt;chr&gt; &quot;75, Paris, Île-de-France&quot;
+$ type        &lt;chr&gt; &quot;housenumber&quot;
+$ importance  &lt;dbl&gt; 0.78181
+$ street      &lt;chr&gt; &quot;Quai André Citroën&quot;
+$ `_type`     &lt;chr&gt; &quot;address&quot;
+$ type_geo    &lt;chr&gt; &quot;Point&quot;
+$ longitude   &lt;dbl&gt; 2.278922
+$ latitude    &lt;dbl&gt; 48.84696</code></pre>
+<p>The BAN API sends back both projected/Cartesian coordinates
+(<code>x</code> and <code>y</code> columns - they use Lambert 93
+projection, aka as EPSG:2154), and lon/lat (i.e. WGS84) coordinates
+(<code>longitude</code> and <code>latitude</code> columns). It also
+indicates the degree of confidence it has in each result (column
+<code>score</code>). The above example only sends back one result, but
+sometimes the API will send back several suggestion for the same query.
+They are ordered by descending order of confidence.</p>
+</div>
+<div id="a-data-frame" class="section level3">
+<h3>A data frame</h3>
+<p>In addition to the adress, <code>geocode_tbl()</code> can take as
+argument either the <a href="https://en.wikipedia.org/wiki/Postal_codes_in_France">postal
+code</a> or the French official code (<a href="https://en.wikipedia.org/wiki/INSEE_code">INSEE code</a>) of the
+commune.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">geocode_tbl</span>(<span class="at">tbl =</span> table_test, <span class="at">adresse =</span> adress) <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code></pre></div>
+<pre><code>Rows: 3
+Columns: 21
+$ postal_code        &lt;chr&gt; &quot;75015&quot;, &quot;75012&quot;, &quot;75007&quot;
+$ z                  &lt;dbl&gt; -1.316912, 2.787876, 1.313769
+$ adress             &lt;chr&gt; &quot;39 quai André Citroën&quot;, &quot;64 Allée de Bercy&quot;, &quot;20 a…
+$ longitude          &lt;dbl&gt; 2.278922, 2.376011, 2.308628
+$ latitude           &lt;dbl&gt; 48.84696, 48.84254, 48.85070
+$ result_score       &lt;dbl&gt; 0.9801645, 0.9729327, 0.9716455
+$ result_score_next  &lt;chr&gt; &quot;0.8013699999999999&quot;, NA, &quot;0.9532445454545454&quot;
+$ result_label       &lt;chr&gt; &quot;39 Quai André Citroën 75015 Paris&quot;, &quot;64 Allée de B…
+$ result_type        &lt;chr&gt; &quot;housenumber&quot;, &quot;housenumber&quot;, &quot;housenumber&quot;
+$ result_id          &lt;chr&gt; &quot;75115_0318_00039&quot;, &quot;75112_0874_00064&quot;, &quot;75107_8909…
+$ result_housenumber &lt;chr&gt; &quot;39&quot;, &quot;64&quot;, &quot;20&quot;
+$ result_name        &lt;chr&gt; &quot;39 Quai André Citroën&quot;, &quot;64 Allée de Bercy&quot;, &quot;20 A…
+$ result_street      &lt;chr&gt; &quot;Quai André Citroën&quot;, &quot;Allée de Bercy&quot;, &quot;Avenue de …
+$ result_postcode    &lt;chr&gt; &quot;75015&quot;, &quot;75012&quot;, &quot;75007&quot;
+$ result_city        &lt;chr&gt; &quot;Paris&quot;, &quot;Paris&quot;, &quot;Paris&quot;
+$ result_context     &lt;chr&gt; &quot;75, Paris, Île-de-France&quot;, &quot;75, Paris, Île-de-Fran…
+$ result_citycode    &lt;chr&gt; &quot;75115&quot;, &quot;75112&quot;, &quot;75107&quot;
+$ result_oldcitycode &lt;chr&gt; NA, NA, NA
+$ result_oldcity     &lt;chr&gt; NA, NA, NA
+$ result_district    &lt;chr&gt; &quot;Paris 15e Arrondissement&quot;, &quot;Paris 12e Arrondisseme…
+$ result_status      &lt;chr&gt; &quot;ok&quot;, &quot;ok&quot;, &quot;ok&quot;</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">geocode_tbl</span>(<span class="at">tbl =</span> table_test, <span class="at">adresse =</span> adress, <span class="at">code_postal =</span> postal_code) <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code></pre></div>
+<pre><code>Rows: 3
+Columns: 21
+$ z                  &lt;dbl&gt; -0.1769586, 1.2007049, -0.3180847
+$ adress             &lt;chr&gt; &quot;39 quai André Citroën&quot;, &quot;64 Allée de Bercy&quot;, &quot;20 a…
+$ postal_code        &lt;chr&gt; &quot;75015&quot;, &quot;75012&quot;, &quot;75007&quot;
+$ longitude          &lt;dbl&gt; 2.278922, 2.376011, 2.308628
+$ latitude           &lt;dbl&gt; 48.84696, 48.84254, 48.85070
+$ result_score       &lt;dbl&gt; 0.9801645, 0.9729327, 0.9716455
+$ result_score_next  &lt;chr&gt; NA, &quot;0.600363971291866&quot;, &quot;0.38506487603305783&quot;
+$ result_label       &lt;chr&gt; &quot;39 Quai André Citroën 75015 Paris&quot;, &quot;64 Allée de B…
+$ result_type        &lt;chr&gt; &quot;housenumber&quot;, &quot;housenumber&quot;, &quot;housenumber&quot;
+$ result_id          &lt;chr&gt; &quot;75115_0318_00039&quot;, &quot;75112_0874_00064&quot;, &quot;75107_8909…
+$ result_housenumber &lt;chr&gt; &quot;39&quot;, &quot;64&quot;, &quot;20&quot;
+$ result_name        &lt;chr&gt; &quot;39 Quai André Citroën&quot;, &quot;64 Allée de Bercy&quot;, &quot;20 A…
+$ result_street      &lt;chr&gt; &quot;Quai André Citroën&quot;, &quot;Allée de Bercy&quot;, &quot;Avenue de …
+$ result_postcode    &lt;chr&gt; &quot;75015&quot;, &quot;75012&quot;, &quot;75007&quot;
+$ result_city        &lt;chr&gt; &quot;Paris&quot;, &quot;Paris&quot;, &quot;Paris&quot;
+$ result_context     &lt;chr&gt; &quot;75, Paris, Île-de-France&quot;, &quot;75, Paris, Île-de-Fran…
+$ result_citycode    &lt;chr&gt; &quot;75115&quot;, &quot;75112&quot;, &quot;75107&quot;
+$ result_oldcitycode &lt;chr&gt; NA, NA, NA
+$ result_oldcity     &lt;chr&gt; NA, NA, NA
+$ result_district    &lt;chr&gt; &quot;Paris 15e Arrondissement&quot;, &quot;Paris 12e Arrondisseme…
+$ result_status      &lt;chr&gt; &quot;ok&quot;, &quot;ok&quot;, &quot;ok&quot;</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;paris2012&quot;</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>paris2012 <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>    <span class="at">adresse =</span> <span class="fu">paste</span>(numero, voie, nom),</span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a>    <span class="at">code_insee =</span> <span class="fu">paste0</span>(<span class="st">&quot;751&quot;</span>, arrondissement)</span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a>  <span class="fu">geocode_tbl</span>(<span class="at">adresse =</span> adresse, <span class="at">code_insee =</span> code_insee) <span class="sc">%&gt;%</span></span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code></pre></div>
+<pre><code>Rows: 100
+Columns: 27
+$ arrondissement     &lt;chr&gt; &quot;06&quot;, &quot;06&quot;, &quot;06&quot;, &quot;06&quot;, &quot;06&quot;, &quot;06&quot;, &quot;06&quot;, &quot;06&quot;, &quot;06…
+$ bureau             &lt;chr&gt; &quot;09&quot;, &quot;09&quot;, &quot;09&quot;, &quot;09&quot;, &quot;09&quot;, &quot;09&quot;, &quot;09&quot;, &quot;09&quot;, &quot;09…
+$ numero             &lt;int&gt; 4, 5, 6, 7, 8, 11, 12, 13, 14, 16, 3, 4, 5, 6, 7, 8…
+$ voie               &lt;chr&gt; &quot;RUE DE L&quot;, &quot;RUE DE L&quot;, &quot;RUE DE L&quot;, &quot;RUE DE L&quot;, &quot;RU…
+$ nom                &lt;chr&gt; &quot;ABBAYE&quot;, &quot;ABBAYE&quot;, &quot;ABBAYE&quot;, &quot;ABBAYE&quot;, &quot;ABBAYE&quot;, &quot;…
+$ nb                 &lt;int&gt; 1, 1, 20, 2, 17, 2, 9, 15, 17, 8, 13, 6, 6, 3, 9, 1…
+$ ID                 &lt;chr&gt; &quot;0609&quot;, &quot;0609&quot;, &quot;0609&quot;, &quot;0609&quot;, &quot;0609&quot;, &quot;0609&quot;, &quot;06…
+$ adresse            &lt;chr&gt; &quot;4 RUE DE L ABBAYE&quot;, &quot;5 RUE DE L ABBAYE&quot;, &quot;6 RUE DE…
+$ code_insee         &lt;chr&gt; &quot;75106&quot;, &quot;75106&quot;, &quot;75106&quot;, &quot;75106&quot;, &quot;75106&quot;, &quot;75106…
+$ longitude          &lt;dbl&gt; 2.335715, 2.335172, 2.335352, 2.335041, 2.334903, 2…
+$ latitude           &lt;dbl&gt; 48.85405, 48.85407, 48.85414, 48.85410, 48.85425, 4…
+$ result_score       &lt;dbl&gt; 0.9663627, 0.9663627, 0.9663627, 0.9663627, 0.96636…
+$ result_score_next  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ result_label       &lt;chr&gt; &quot;4 Rue de l&#39;Abbaye 75006 Paris&quot;, &quot;5 Rue de l&#39;Abbaye…
+$ result_type        &lt;chr&gt; &quot;housenumber&quot;, &quot;housenumber&quot;, &quot;housenumber&quot;, &quot;house…
+$ result_id          &lt;chr&gt; &quot;75106_0002_00004&quot;, &quot;75106_0002_00005&quot;, &quot;75106_0002…
+$ result_housenumber &lt;chr&gt; &quot;4&quot;, &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;8&quot;, &quot;11&quot;, &quot;12&quot;, &quot;13&quot;, &quot;14&quot;, &quot;1…
+$ result_name        &lt;chr&gt; &quot;4 Rue de l&#39;Abbaye&quot;, &quot;5 Rue de l&#39;Abbaye&quot;, &quot;6 Rue de…
+$ result_street      &lt;chr&gt; &quot;Rue de l&#39;Abbaye&quot;, &quot;Rue de l&#39;Abbaye&quot;, &quot;Rue de l&#39;Abb…
+$ result_postcode    &lt;chr&gt; &quot;75006&quot;, &quot;75006&quot;, &quot;75006&quot;, &quot;75006&quot;, &quot;75006&quot;, &quot;75006…
+$ result_city        &lt;chr&gt; &quot;Paris&quot;, &quot;Paris&quot;, &quot;Paris&quot;, &quot;Paris&quot;, &quot;Paris&quot;, &quot;Paris…
+$ result_context     &lt;chr&gt; &quot;75, Paris, Île-de-France&quot;, &quot;75, Paris, Île-de-Fran…
+$ result_citycode    &lt;chr&gt; &quot;75106&quot;, &quot;75106&quot;, &quot;75106&quot;, &quot;75106&quot;, &quot;75106&quot;, &quot;75106…
+$ result_oldcitycode &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ result_oldcity     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ result_district    &lt;chr&gt; &quot;Paris 6e Arrondissement&quot;, &quot;Paris 6e Arrondissement…
+$ result_status      &lt;chr&gt; &quot;ok&quot;, &quot;ok&quot;, &quot;ok&quot;, &quot;ok&quot;, &quot;ok&quot;, &quot;ok&quot;, &quot;ok&quot;, &quot;ok&quot;, &quot;ok…</code></pre>
+</div>
+</div>
+<div id="reverse-geocode" class="section level2">
+<h2>Reverse geocode</h2>
+<p>Reverse geocoding is the process of back (reverse) coding of a point
+location (latitude, longitude) to a human readable address.</p>
+<div id="a-single-adress" class="section level3">
+<h3>A single adress</h3>
+<p><code>reverse_geocode()</code> takes longitude and latitude as
+arguments and returns a data frame with addresses.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">reverse_geocode</span>(<span class="at">long =</span>  <span class="fl">2.279092</span>, <span class="at">lat =</span> <span class="fl">48.84683</span>)  <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code></pre></div>
+<pre><code>Rows: 10
+Columns: 23
+$ type        &lt;chr&gt; &quot;housenumber&quot;, &quot;housenumber&quot;, &quot;housenumber&quot;, &quot;housenumber&quot;…
+$ name        &lt;chr&gt; &quot;39a Quai André Citroën&quot;, &quot;39 Quai André Citroën&quot;, &quot;43a Qu…
+$ label       &lt;chr&gt; &quot;39a Quai André Citroën 75015 Paris&quot;, &quot;39 Quai André Citro…
+$ street      &lt;chr&gt; &quot;Quai André Citroën&quot;, &quot;Quai André Citroën&quot;, &quot;Quai André Ci…
+$ postcode    &lt;chr&gt; &quot;75015&quot;, &quot;75015&quot;, &quot;75015&quot;, &quot;75015&quot;, &quot;75015&quot;, &quot;75015&quot;, &quot;750…
+$ citycode    &lt;chr&gt; &quot;75115&quot;, &quot;75115&quot;, &quot;75115&quot;, &quot;75115&quot;, &quot;75115&quot;, &quot;75115&quot;, &quot;751…
+$ city        &lt;chr&gt; &quot;Paris&quot;, &quot;Paris&quot;, &quot;Paris&quot;, &quot;Paris&quot;, &quot;Paris&quot;, &quot;Paris&quot;, &quot;Par…
+$ oldcitycode &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
+$ oldcity     &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
+$ district    &lt;chr&gt; &quot;Paris 15e Arrondissement&quot;, &quot;Paris 15e Arrondissement&quot;, &quot;P…
+$ context     &lt;chr&gt; &quot;75, Paris, Île-de-France&quot;, &quot;75, Paris, Île-de-France&quot;, &quot;7…
+$ importance  &lt;dbl&gt; 0.78181, 0.78181, 0.78181, 0.78181, 0.82311, 0.78181, 0.82…
+$ housenumber &lt;chr&gt; &quot;39a&quot;, &quot;39&quot;, &quot;43a&quot;, &quot;41&quot;, &quot;8a&quot;, &quot;37&quot;, &quot;8&quot;, &quot;10&quot;, &quot;43&quot;, &quot;12&quot;
+$ id          &lt;chr&gt; &quot;75115_0318_00039_a&quot;, &quot;75115_0318_00039&quot;, &quot;75115_0318_0004…
+$ banId       &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
+$ x           &lt;dbl&gt; 647094.3, 647082.8, 647087.1, 647071.8, 647110.9, 647095.8…
+$ y           &lt;dbl&gt; 6860995, 6861010, 6860976, 6860999, 6861016, 6861024, 6861…
+$ distance    &lt;int&gt; 1, 19, 21, 24, 26, 29, 30, 32, 36, 40
+$ score       &lt;dbl&gt; 0.9999, 0.9981, 0.9979, 0.9976, 0.9974, 0.9971, 0.9970, 0.…
+$ `_type`     &lt;chr&gt; &quot;address&quot;, &quot;address&quot;, &quot;address&quot;, &quot;address&quot;, &quot;address&quot;, &quot;ad…
+$ type_geo    &lt;chr&gt; &quot;Point&quot;, &quot;Point&quot;, &quot;Point&quot;, &quot;Point&quot;, &quot;Point&quot;, &quot;Point&quot;, &quot;Poi…
+$ longitude   &lt;dbl&gt; 2.279081, 2.278922, 2.278985, 2.278774, 2.279305, 2.279098…
+$ latitude    &lt;dbl&gt; 48.84683, 48.84696, 48.84665, 48.84686, 48.84701, 48.84709…</code></pre>
+</div>
+<div id="a-data-frame-1" class="section level3">
+<h3>A data frame</h3>
+<p><code>reverse_geocode_tbl</code> takes the names of the longitude and
+latitude columns and returns a data frame with adresses.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>test_df <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>  <span class="at">nom =</span> <span class="fu">sample</span>(letters, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>),</span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a>  <span class="at">lon =</span> <span class="fu">runif</span>(<span class="dv">10</span>, <span class="fl">2.19</span>, <span class="fl">2.47</span>),</span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a>  <span class="at">lat =</span> <span class="fu">runif</span>(<span class="dv">10</span>, <span class="fl">48.8</span>, <span class="fl">48.9</span>)</span>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a>)</span>
+<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" tabindex="-1"></a>test_df <span class="sc">%&gt;%</span></span>
+<span id="cb16-8"><a href="#cb16-8" tabindex="-1"></a>  <span class="fu">reverse_geocode_tbl</span>(lon, lat) <span class="sc">%&gt;%</span></span>
+<span id="cb16-9"><a href="#cb16-9" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code></pre></div>
+<pre><code>Rows: 10
+Columns: 20
+$ nom                &lt;chr&gt; &quot;p&quot;, &quot;n&quot;, &quot;i&quot;, &quot;j&quot;, &quot;f&quot;, &quot;c&quot;, &quot;o&quot;, &quot;u&quot;, &quot;q&quot;, &quot;a&quot;
+$ longitude          &lt;dbl&gt; 2.209505, 2.245517, 2.286644, 2.382297, 2.193622, 2…
+$ latitude           &lt;dbl&gt; 48.82198, 48.89566, 48.85378, 48.83758, 48.88390, 4…
+$ result_longitude   &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
+$ result_latitude    &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
+$ result_distance    &lt;int&gt; 14, 10, 46, 4, 35, NA, 4, 8, 45, 3
+$ result_label       &lt;chr&gt; &quot;Rue Léon Cladel 92310 Sèvres&quot;, &quot;71 Rue Segoffin 92…
+$ result_type        &lt;chr&gt; &quot;street&quot;, &quot;housenumber&quot;, &quot;housenumber&quot;, &quot;housenumbe…
+$ result_id          &lt;chr&gt; &quot;92072_1130&quot;, &quot;92026_8535_00071&quot;, &quot;75115_4313_00016…
+$ result_housenumber &lt;chr&gt; NA, &quot;71&quot;, &quot;16a&quot;, &quot;55&quot;, &quot;69&quot;, NA, &quot;203&quot;, &quot;52&quot;, &quot;39&quot;,…
+$ result_name        &lt;chr&gt; &quot;Rue Léon Cladel&quot;, &quot;71 Rue Segoffin&quot;, &quot;16a Quai de …
+$ result_street      &lt;chr&gt; NA, &quot;Rue Segoffin&quot;, &quot;Quai de Grenelle&quot;, &quot;Rue de Ber…
+$ result_postcode    &lt;chr&gt; &quot;92310&quot;, &quot;92400&quot;, &quot;75015&quot;, &quot;75012&quot;, &quot;92000&quot;, NA, &quot;7…
+$ result_city        &lt;chr&gt; &quot;Sèvres&quot;, &quot;Courbevoie&quot;, &quot;Paris&quot;, &quot;Paris&quot;, &quot;Nanterre…
+$ result_context     &lt;chr&gt; &quot;92, Hauts-de-Seine, Île-de-France&quot;, &quot;92, Hauts-de-…
+$ result_citycode    &lt;chr&gt; &quot;92072&quot;, &quot;92026&quot;, &quot;75115&quot;, &quot;75112&quot;, &quot;92050&quot;, NA, &quot;7…
+$ result_oldcitycode &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
+$ result_oldcity     &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
+$ result_district    &lt;chr&gt; NA, NA, &quot;Paris 15e Arrondissement&quot;, &quot;Paris 12e Arro…
+$ result_status      &lt;chr&gt; &quot;ok&quot;, &quot;ok&quot;, &quot;ok&quot;, &quot;ok&quot;, &quot;ok&quot;, &quot;not-found&quot;, &quot;ok&quot;, &quot;o…</code></pre>
+</div>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
