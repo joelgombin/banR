@@ -11,7 +11,7 @@
 #' @export
 #'
 #' @examples
-#'
+#' \donttest{
 #' table_test <- tibble::tibble(
 #' x = c("39 quai Andre Citroen", "64 Allee de Bercy", "20 avenue de Segur"),
 #' y = c("75015", "75012", "75007"),
@@ -20,6 +20,7 @@
 #'
 #' geocode_tbl(tbl = table_test, adresse = x)
 #' geocode_tbl(tbl = table_test, adresse = x, code_postal = y)
+#' }
 #'
 geocode_tbl <- function(tbl, adresse, code_insee = NULL, code_postal = NULL) {
 
@@ -119,7 +120,7 @@ geocode_tbl <- function(tbl, adresse, code_insee = NULL, code_postal = NULL) {
 #' @export
 #'
 #' @examples
-#'
+#' \donttest{
 #' table_reverse <- tibble::tibble(
 #' x = c(2.279092, 2.375933,2.308332),
 #' y = c(48.84683, 48.84255, 48.85032),
@@ -127,6 +128,7 @@ geocode_tbl <- function(tbl, adresse, code_insee = NULL, code_postal = NULL) {
 #' )
 #'
 #' reverse_geocode_tbl(tbl = table_reverse, longitude = x, latitude = y)
+#' }
 #'
 reverse_geocode_tbl <- function(tbl, longitude, latitude) {
 
