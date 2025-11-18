@@ -17,4 +17,4 @@ There are currently no downstream dependencies for this package.
 
 ## Other comments
 
-I fixed URLs so there shouldn't be any more notes.
+I added single quotes where needed, removed the redundant R in the title and omitted the LICENSE file. 
