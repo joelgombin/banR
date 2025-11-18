@@ -1,13 +1,13 @@
 Package: banR
 Type: Package
-Title: R Client for the BAN API
+Title: Client for the 'BAN' API
 Version: 0.2.3
 Authors@R: c(
     person("Joel", "Gombin", email = "joel.gombin@gmail.com", role = c("cre", "aut")),
     person("Paul-Antoine", "Chevalier", email = "pachevalier@gmail.com", role = "aut"))
-Description: A client for the "Base Adresses Nationale" (BAN) API, which allows to (batch)
-    geocode and reverse-geocode French addresses. For more information about the BAN and its API, please see <https://adresse.data.gouv.fr/outils/api-doc/adresse>. 
-License: GPL-3 | file LICENSE
+Description: A client for the 'Base Adresses Nationale' ('BAN') API, which allows to (batch)
+    geocode and reverse-geocode French addresses. For more information about the 'BAN' and its API, please see <https://adresse.data.gouv.fr/outils/api-doc/adresse>. 
+License: GPL-3
 LazyData: TRUE
 Depends:
     R (>= 2.10)
