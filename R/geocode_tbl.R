@@ -11,7 +11,7 @@
 #' @export
 #'
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' table_test <- tibble::tibble(
 #' x = c("39 quai Andre Citroen", "64 Allee de Bercy", "20 avenue de Segur"),
 #' y = c("75015", "75012", "75007"),
@@ -120,7 +120,7 @@ geocode_tbl <- function(tbl, adresse, code_insee = NULL, code_postal = NULL) {
 #' @export
 #'
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' table_reverse <- tibble::tibble(
 #' x = c(2.279092, 2.375933,2.308332),
 #' y = c(48.84683, 48.84255, 48.85032),

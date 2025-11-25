@@ -48,7 +48,7 @@ get_features <- function(x) {
 #' @export
 #'
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' geocode(query = "39 quai André Citroën, Paris")
 #' }
 #'
@@ -78,7 +78,7 @@ geocode <- function(query) {
 #' @export
 #'
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' reverse_geocode(long = 2.37, lat = 48.357)
 #' }
 #'
