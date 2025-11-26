@@ -1,7 +1,7 @@
 Package: banR
 Type: Package
 Title: Client for the 'BAN' API
-Version: 0.2.3
+Version: 0.2.4
 Authors@R: c(
     person("Joel", "Gombin", email = "joel.gombin@gmail.com", role = c("cre", "aut")),
     person("Paul-Antoine", "Chevalier", email = "pachevalier@gmail.com", role = "aut"))
