@@ -16,6 +16,8 @@ a tibble
 Geocode
 }
 \examples{
+\dontrun{
 geocode(query = "39 quai André Citroën, Paris")
+}
 
 }

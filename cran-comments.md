@@ -17,4 +17,4 @@ There are currently no downstream dependencies for this package.
 
 ## Other comments
 
-I fixed URLs so there shouldn't be any more notes.
+used /dontrun to prevent exemples to raise errors because of network issues.

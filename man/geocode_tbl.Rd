@@ -22,7 +22,7 @@ an augmented data frame of class tbl with latitude, longitude, etc
 Geocode tbl geocodes a whole data frame
 }
 \examples{
-
+\dontrun{
 table_test <- tibble::tibble(
 x = c("39 quai Andre Citroen", "64 Allee de Bercy", "20 avenue de Segur"),
 y = c("75015", "75012", "75007"),
@@ -31,5 +31,6 @@ z = rnorm(3)
 
 geocode_tbl(tbl = table_test, adresse = x)
 geocode_tbl(tbl = table_test, adresse = x, code_postal = y)
+}
 
 }

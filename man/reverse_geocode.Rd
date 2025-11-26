@@ -18,7 +18,8 @@ a tibble
 Reverse geocode
 }
 \examples{
-
+\dontrun{
 reverse_geocode(long = 2.37, lat = 48.357)
+}
 
 }
