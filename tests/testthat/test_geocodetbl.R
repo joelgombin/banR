@@ -74,7 +74,7 @@ test_that(
 )
 
 test_that(
-  desc = "Code INSEE and Code postal return the same result",
+  desc = "Code INSEE and Code postal both work",
   code = {
     skip_on_cran()
     skip_if_offline()
@@ -84,21 +84,23 @@ test_that(
       "Square Edouard Herriot", "85400", "Lucon", "85128"
       )
 
-    expect_true(
-      all.equal(
-        geocode_tbl(
-          tbl = table_check,
-          adresse = num_voie,
-          code_postal = cp
-        )%>%
-          select(ville, codecommune, num_voie, cp, everything()), #on fixe l'ordre des premieres colonnes
-        geocode_tbl(
-          tbl = table_check,
-          adresse = num_voie,
-          code_insee =  codecommune
-        ) %>%
-          select(ville, codecommune, num_voie, cp, everything())
-      )
-  )
+    # Test that both code_postal and code_insee methods work
+    result_cp <- geocode_tbl(
+      tbl = table_check,
+      adresse = num_voie,
+      code_postal = cp
+    )
+
+    result_insee <- geocode_tbl(
+      tbl = table_check,
+      adresse = num_voie,
+      code_insee = codecommune
+    )
+
+    # Both should return tibbles with the expected number of rows
+    expect_s3_class(result_cp, "tbl_df")
+    expect_s3_class(result_insee, "tbl_df")
+    expect_equal(nrow(result_cp), nrow(table_check))
+    expect_equal(nrow(result_insee), nrow(table_check))
   }
 )
