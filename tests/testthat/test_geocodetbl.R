@@ -5,6 +5,7 @@ context("Geocode tbl")
 test_that(
   "Geocode tbl works ", {
   skip_on_cran()
+  skip_if_offline()
   table_test <- tibble::tibble(
     x = c("39 quai André Citroën", "64 Allée de Bercy", "20 avenue de Ségur"),
     y = c("75015", "75012", "75007"),
@@ -23,6 +24,7 @@ test_that(
 
 test_that("Input and output DFs have a similar number of rows", {
   skip_on_cran()
+  skip_if_offline()
   # test introduit suite à issue #3
   table_test <- data.frame(
     adresses = c("11 allée Sacoman", "11 allée Sacoman", "23 allée Sacoman"),
@@ -44,6 +46,7 @@ test_that(
   desc = "Geocode_tbl works with a single-column input data.frame",
   code = {
     skip_on_cran()
+    skip_if_offline()
     table_test <- data.frame(
       city = c("Agen", "Ajaccio"),
       stringsAsFactors = FALSE
@@ -56,6 +59,7 @@ test_that(
   desc = "Reverse geocode tbl works ",
   code = {
     skip_on_cran()
+    skip_if_offline()
     table_reverse <- tibble::tibble(
       x = c(2.279092, 2.375933, 2.308332),
       y = c(48.84683, 48.84255, 48.85032),
@@ -73,6 +77,7 @@ test_that(
   desc = "Code INSEE and Code postal return the same result",
   code = {
     skip_on_cran()
+    skip_if_offline()
     table_check <- tibble::tribble(
       ~ num_voie, ~ cp,  ~ ville, ~ codecommune,
       "1 Rue Gaspard Monge", "22300", "Lannion", "22113",
