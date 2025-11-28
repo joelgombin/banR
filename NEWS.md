@@ -1,5 +1,9 @@
 # banR (development version)
 
+# banR v0.2.4
+- minor fixes to avoid CRAN issues with API calls
+- compliance with CRAN formatting policies
+
 # banR v0.2.3
 - Change API url to IGN's geoplateforme (https://data.geopf.fr/geocodage/openapi)
 - bug fix function reverse_geocode() that couldn't deal with NULL values any more, surely due to `as_tibble()` evolutions
