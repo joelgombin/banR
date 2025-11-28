@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">banR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.4.9000</span>
       </span>
     </div>
 
@@ -39,7 +39,7 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="http://github.com/joelgombin/banR/" class="external-link">
+  <a href="https://github.com/joelgombin/banR/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
 
   </a>
@@ -54,7 +54,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Reverse geocode tbl</h1>
-    <small class="dont-index">Source: <a href="http://github.com/joelgombin/banR/blob/HEAD/R/geocode_tbl.R" class="external-link"><code>R/geocode_tbl.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/joelgombin/banR/blob/HEAD/R/geocode_tbl.R" class="external-link"><code>R/geocode_tbl.R</code></a></small>
     <div class="hidden name"><code>reverse_geocode_tbl.Rd</code></div>
     </div>
 
@@ -89,7 +89,7 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
 <span class="r-in"><span><span class="va">table_reverse</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2.279092</span>, <span class="fl">2.375933</span>,<span class="fl">2.308332</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">48.84683</span>, <span class="fl">48.84255</span>, <span class="fl">48.85032</span><span class="op">)</span>,</span></span>
@@ -97,21 +97,7 @@
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">reverse_geocode_tbl</span><span class="op">(</span>tbl <span class="op">=</span> <span class="va">table_reverse</span>, longitude <span class="op">=</span> <span class="va">x</span>, latitude <span class="op">=</span> <span class="va">y</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Writing tempfile to...C:\Users\JULIET~1.ENG\AppData\Local\Temp\RtmpAzOdDH\file64605aee28a4.csv</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> If file is larger than 50 MB, it must be splitted</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Size is : 73 bytes</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> SuccessOKSuccess: (200) OK</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 20</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        z longitude latitude result_longitude result_latitude result_distance</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> -<span style="color: #BB0000;">0.247</span>      2.28     48.8               <span style="color: #BB0000;">NA</span>              <span style="color: #BB0000;">NA</span>               1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> -<span style="color: #BB0000;">0.244</span>      2.38     48.8               <span style="color: #BB0000;">NA</span>              <span style="color: #BB0000;">NA</span>               6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> -<span style="color: #BB0000;">0.283</span>      2.31     48.9               <span style="color: #BB0000;">NA</span>              <span style="color: #BB0000;">NA</span>              38</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 14 more variables: result_label &lt;chr&gt;, result_type &lt;chr&gt;, result_id &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   result_housenumber &lt;chr&gt;, result_name &lt;chr&gt;, result_street &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   result_postcode &lt;chr&gt;, result_city &lt;chr&gt;, result_context &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   result_citycode &lt;chr&gt;, result_oldcitycode &lt;lgl&gt;, result_oldcity &lt;lgl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   result_district &lt;chr&gt;, result_status &lt;chr&gt;</span></span>
+<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

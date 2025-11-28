@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">banR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.4.9000</span>
       </span>
     </div>
 
@@ -59,7 +59,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="http://github.com/joelgombin/banR/" class="external-link">
+  <a href="https://github.com/joelgombin/banR/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
 
   </a>
@@ -81,9 +81,9 @@
                         <h4 data-toc-skip class="author">Paul-Antoine
 Chevalier (Etalab), Joël Gombin (Datactivist)</h4>
             
-            <h4 data-toc-skip class="date">2025-11-10</h4>
+            <h4 data-toc-skip class="date">2025-11-28</h4>
       
-      <small class="dont-index">Source: <a href="http://github.com/joelgombin/banR/blob/HEAD/vignettes/geocode.Rmd" class="external-link"><code>vignettes/geocode.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/joelgombin/banR/blob/HEAD/vignettes/geocode.Rmd" class="external-link"><code>vignettes/geocode.Rmd</code></a></small>
       <div class="hidden name"><code>geocode.Rmd</code></div>
 
     </div>
@@ -102,7 +102,7 @@ Chevalier (Etalab), Joël Gombin (Datactivist)</h4>
 <span><span class="co">## </span></span>
 <span><span class="co">##     intersect, setdiff, setequal, union</span></span></code></pre>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="http://joelgombin.github.io/banR/" class="external-link">"banR"</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://joelgombin.github.io/banR/" class="external-link">"banR"</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">table_test</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span>
 <span>  adress <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"39 quai André Citroën"</span>, <span class="st">"64 Allée de Bercy"</span>, <span class="st">"20 avenue de Ségur"</span><span class="op">)</span>,</span>
@@ -132,28 +132,27 @@ into a location (ie a pair of latitude and longitude).</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/geocode.html">geocode</a></span><span class="op">(</span>query <span class="op">=</span> <span class="st">"39 quai André Citroën, Paris"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## 200</span></span></code></pre>
-<pre><code><span><span class="co">## Rows: 1</span></span>
-<span><span class="co">## Columns: 19</span></span>
-<span><span class="co">## $ label       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "39 Quai André Citroën 75015 Paris"</span></span>
-<span><span class="co">## $ score       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.9801645</span></span>
-<span><span class="co">## $ housenumber <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "39"</span></span>
-<span><span class="co">## $ id          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "75115_0318_00039"</span></span>
-<span><span class="co">## $ name        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "39 Quai André Citroën"</span></span>
-<span><span class="co">## $ postcode    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "75015"</span></span>
-<span><span class="co">## $ citycode    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "75115"</span></span>
-<span><span class="co">## $ x           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 647082.8</span></span>
-<span><span class="co">## $ y           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 6861010</span></span>
-<span><span class="co">## $ city        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Paris"</span></span>
-<span><span class="co">## $ district    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Paris 15e Arrondissement"</span></span>
-<span><span class="co">## $ context     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "75, Paris, Île-de-France"</span></span>
-<span><span class="co">## $ type        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "housenumber"</span></span>
-<span><span class="co">## $ importance  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.78181</span></span>
-<span><span class="co">## $ street      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Quai André Citroën"</span></span>
-<span><span class="co">## $ `_type`     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "address"</span></span>
-<span><span class="co">## $ type_geo    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Point"</span></span>
-<span><span class="co">## $ longitude   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 2.278922</span></span>
-<span><span class="co">## $ latitude    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 48.84696</span></span></code></pre>
+<pre><code>Rows: 1
+Columns: 19
+$ label       &lt;chr&gt; "39 Quai André Citroën 75015 Paris"
+$ score       &lt;dbl&gt; 0.9801645
+$ housenumber &lt;chr&gt; "39"
+$ id          &lt;chr&gt; "75115_0318_00039"
+$ name        &lt;chr&gt; "39 Quai André Citroën"
+$ postcode    &lt;chr&gt; "75015"
+$ citycode    &lt;chr&gt; "75115"
+$ x           &lt;dbl&gt; 647082.8
+$ y           &lt;dbl&gt; 6861010
+$ city        &lt;chr&gt; "Paris"
+$ district    &lt;chr&gt; "Paris 15e Arrondissement"
+$ context     &lt;chr&gt; "75, Paris, Île-de-France"
+$ type        &lt;chr&gt; "housenumber"
+$ importance  &lt;dbl&gt; 0.78181
+$ street      &lt;chr&gt; "Quai André Citroën"
+$ `_type`     &lt;chr&gt; "address"
+$ type_geo    &lt;chr&gt; "Point"
+$ longitude   &lt;dbl&gt; 2.278922
+$ latitude    &lt;dbl&gt; 48.84696</code></pre>
 <p>The BAN API sends back both projected/Cartesian coordinates
 (<code>x</code> and <code>y</code> columns - they use Lambert 93
 projection, aka as EPSG:2154), and lon/lat (i.e. WGS84) coordinates
@@ -170,67 +169,59 @@ They are ordered by descending order of confidence.</p>
 argument either the <a href="https://en.wikipedia.org/wiki/Postal_codes_in_France" class="external-link">postal
 code</a> or the French official code (<a href="https://en.wikipedia.org/wiki/INSEE_code" class="external-link">INSEE code</a>) of the
 commune.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/geocode_tbl.html">geocode_tbl</a></span><span class="op">(</span>tbl <span class="op">=</span> <span class="va">table_test</span>, adresse <span class="op">=</span> <span class="va">adress</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Writing tempfile to...C:\Users\JULIET~1.ENG\AppData\Local\Temp\RtmpC2GOgf\file7a3058e35c81.csv</span></span></code></pre>
-<pre><code><span><span class="co">## If file is larger than 50 MB, it must be splitted</span></span>
-<span><span class="co">## Size is : 70 bytes</span></span></code></pre>
-<pre><code><span><span class="co">## SuccessOKSuccess: (200) OK</span></span></code></pre>
-<pre><code><span><span class="co">## Rows: 3</span></span>
-<span><span class="co">## Columns: 21</span></span>
-<span><span class="co">## $ postal_code        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "75015"<span style="color: #949494;">, </span>"75012"<span style="color: #949494;">, </span>"75007"</span></span>
-<span><span class="co">## $ z                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> -1.4000435<span style="color: #949494;">, </span>0.2553171<span style="color: #949494;">, </span>-2.4372636</span></span>
-<span><span class="co">## $ adress             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "39 quai André Citroën"<span style="color: #949494;">, </span>"64 Allée de Bercy"<span style="color: #949494;">, </span>"20 a…</span></span>
-<span><span class="co">## $ longitude          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 2.278922<span style="color: #949494;">, </span>2.376011<span style="color: #949494;">, </span>2.308628</span></span>
-<span><span class="co">## $ latitude           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 48.84696<span style="color: #949494;">, </span>48.84254<span style="color: #949494;">, </span>48.85070</span></span>
-<span><span class="co">## $ result_score       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.9801645<span style="color: #949494;">, </span>0.9729327<span style="color: #949494;">, </span>0.9716455</span></span>
-<span><span class="co">## $ result_score_next  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "0.8013699999999999"<span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span>"0.9532445454545454"</span></span>
-<span><span class="co">## $ result_label       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "39 Quai André Citroën 75015 Paris"<span style="color: #949494;">, </span>"64 Allée de B…</span></span>
-<span><span class="co">## $ result_type        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "housenumber"<span style="color: #949494;">, </span>"housenumber"<span style="color: #949494;">, </span>"housenumber"</span></span>
-<span><span class="co">## $ result_id          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "75115_0318_00039"<span style="color: #949494;">, </span>"75112_0874_00064"<span style="color: #949494;">, </span>"75107_8909…</span></span>
-<span><span class="co">## $ result_housenumber <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "39"<span style="color: #949494;">, </span>"64"<span style="color: #949494;">, </span>"20"</span></span>
-<span><span class="co">## $ result_name        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "39 Quai André Citroën"<span style="color: #949494;">, </span>"64 Allée de Bercy"<span style="color: #949494;">, </span>"20 A…</span></span>
-<span><span class="co">## $ result_street      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Quai André Citroën"<span style="color: #949494;">, </span>"Allée de Bercy"<span style="color: #949494;">, </span>"Avenue de …</span></span>
-<span><span class="co">## $ result_postcode    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "75015"<span style="color: #949494;">, </span>"75012"<span style="color: #949494;">, </span>"75007"</span></span>
-<span><span class="co">## $ result_city        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Paris"<span style="color: #949494;">, </span>"Paris"<span style="color: #949494;">, </span>"Paris"</span></span>
-<span><span class="co">## $ result_context     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "75, Paris, Île-de-France"<span style="color: #949494;">, </span>"75, Paris, Île-de-Fran…</span></span>
-<span><span class="co">## $ result_citycode    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "75115"<span style="color: #949494;">, </span>"75112"<span style="color: #949494;">, </span>"75107"</span></span>
-<span><span class="co">## $ result_oldcitycode <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## $ result_oldcity     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## $ result_district    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Paris 15e Arrondissement"<span style="color: #949494;">, </span>"Paris 12e Arrondisseme…</span></span>
-<span><span class="co">## $ result_status      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "ok"<span style="color: #949494;">, </span>"ok"<span style="color: #949494;">, </span>"ok"</span></span></code></pre>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<pre><code>Rows: 3
+Columns: 21
+$ postal_code        &lt;chr&gt; "75015", "75012", "75007"
+$ z                  &lt;dbl&gt; -1.316912, 2.787876, 1.313769
+$ adress             &lt;chr&gt; "39 quai André Citroën", "64 Allée de Bercy", "20 a…
+$ longitude          &lt;dbl&gt; 2.278922, 2.376011, 2.308628
+$ latitude           &lt;dbl&gt; 48.84696, 48.84254, 48.85070
+$ result_score       &lt;dbl&gt; 0.9801645, 0.9729327, 0.9716455
+$ result_score_next  &lt;chr&gt; "0.8013699999999999", NA, "0.9532445454545454"
+$ result_label       &lt;chr&gt; "39 Quai André Citroën 75015 Paris", "64 Allée de B…
+$ result_type        &lt;chr&gt; "housenumber", "housenumber", "housenumber"
+$ result_id          &lt;chr&gt; "75115_0318_00039", "75112_0874_00064", "75107_8909…
+$ result_housenumber &lt;chr&gt; "39", "64", "20"
+$ result_name        &lt;chr&gt; "39 Quai André Citroën", "64 Allée de Bercy", "20 A…
+$ result_street      &lt;chr&gt; "Quai André Citroën", "Allée de Bercy", "Avenue de …
+$ result_postcode    &lt;chr&gt; "75015", "75012", "75007"
+$ result_city        &lt;chr&gt; "Paris", "Paris", "Paris"
+$ result_context     &lt;chr&gt; "75, Paris, Île-de-France", "75, Paris, Île-de-Fran…
+$ result_citycode    &lt;chr&gt; "75115", "75112", "75107"
+$ result_oldcitycode &lt;chr&gt; NA, NA, NA
+$ result_oldcity     &lt;chr&gt; NA, NA, NA
+$ result_district    &lt;chr&gt; "Paris 15e Arrondissement", "Paris 12e Arrondisseme…
+$ result_status      &lt;chr&gt; "ok", "ok", "ok"</code></pre>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/geocode_tbl.html">geocode_tbl</a></span><span class="op">(</span>tbl <span class="op">=</span> <span class="va">table_test</span>, adresse <span class="op">=</span> <span class="va">adress</span>, code_postal <span class="op">=</span> <span class="va">postal_code</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Writing tempfile to...C:\Users\JULIET~1.ENG\AppData\Local\Temp\RtmpC2GOgf\file7a303b741a78.csv</span></span></code></pre>
-<pre><code><span><span class="co">## If file is larger than 50 MB, it must be splitted</span></span>
-<span><span class="co">## Size is : 100 bytes</span></span></code></pre>
-<pre><code><span><span class="co">## SuccessOKSuccess: (200) OK</span></span></code></pre>
-<pre><code><span><span class="co">## Rows: 3</span></span>
-<span><span class="co">## Columns: 21</span></span>
-<span><span class="co">## $ z                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> -1.4000435<span style="color: #949494;">, </span>0.2553171<span style="color: #949494;">, </span>-2.4372636</span></span>
-<span><span class="co">## $ adress             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "39 quai André Citroën"<span style="color: #949494;">, </span>"64 Allée de Bercy"<span style="color: #949494;">, </span>"20 a…</span></span>
-<span><span class="co">## $ postal_code        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "75015"<span style="color: #949494;">, </span>"75012"<span style="color: #949494;">, </span>"75007"</span></span>
-<span><span class="co">## $ longitude          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 2.278922<span style="color: #949494;">, </span>2.376011<span style="color: #949494;">, </span>2.308628</span></span>
-<span><span class="co">## $ latitude           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 48.84696<span style="color: #949494;">, </span>48.84254<span style="color: #949494;">, </span>48.85070</span></span>
-<span><span class="co">## $ result_score       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.9801645<span style="color: #949494;">, </span>0.9729327<span style="color: #949494;">, </span>0.9716455</span></span>
-<span><span class="co">## $ result_score_next  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span>"0.600363971291866"<span style="color: #949494;">, </span>"0.38506487603305783"</span></span>
-<span><span class="co">## $ result_label       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "39 Quai André Citroën 75015 Paris"<span style="color: #949494;">, </span>"64 Allée de B…</span></span>
-<span><span class="co">## $ result_type        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "housenumber"<span style="color: #949494;">, </span>"housenumber"<span style="color: #949494;">, </span>"housenumber"</span></span>
-<span><span class="co">## $ result_id          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "75115_0318_00039"<span style="color: #949494;">, </span>"75112_0874_00064"<span style="color: #949494;">, </span>"75107_8909…</span></span>
-<span><span class="co">## $ result_housenumber <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "39"<span style="color: #949494;">, </span>"64"<span style="color: #949494;">, </span>"20"</span></span>
-<span><span class="co">## $ result_name        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "39 Quai André Citroën"<span style="color: #949494;">, </span>"64 Allée de Bercy"<span style="color: #949494;">, </span>"20 A…</span></span>
-<span><span class="co">## $ result_street      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Quai André Citroën"<span style="color: #949494;">, </span>"Allée de Bercy"<span style="color: #949494;">, </span>"Avenue de …</span></span>
-<span><span class="co">## $ result_postcode    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "75015"<span style="color: #949494;">, </span>"75012"<span style="color: #949494;">, </span>"75007"</span></span>
-<span><span class="co">## $ result_city        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Paris"<span style="color: #949494;">, </span>"Paris"<span style="color: #949494;">, </span>"Paris"</span></span>
-<span><span class="co">## $ result_context     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "75, Paris, Île-de-France"<span style="color: #949494;">, </span>"75, Paris, Île-de-Fran…</span></span>
-<span><span class="co">## $ result_citycode    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "75115"<span style="color: #949494;">, </span>"75112"<span style="color: #949494;">, </span>"75107"</span></span>
-<span><span class="co">## $ result_oldcitycode <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## $ result_oldcity     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## $ result_district    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Paris 15e Arrondissement"<span style="color: #949494;">, </span>"Paris 12e Arrondisseme…</span></span>
-<span><span class="co">## $ result_status      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "ok"<span style="color: #949494;">, </span>"ok"<span style="color: #949494;">, </span>"ok"</span></span></code></pre>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<pre><code>Rows: 3
+Columns: 21
+$ z                  &lt;dbl&gt; -0.1769586, 1.2007049, -0.3180847
+$ adress             &lt;chr&gt; "39 quai André Citroën", "64 Allée de Bercy", "20 a…
+$ postal_code        &lt;chr&gt; "75015", "75012", "75007"
+$ longitude          &lt;dbl&gt; 2.278922, 2.376011, 2.308628
+$ latitude           &lt;dbl&gt; 48.84696, 48.84254, 48.85070
+$ result_score       &lt;dbl&gt; 0.9801645, 0.9729327, 0.9716455
+$ result_score_next  &lt;chr&gt; NA, "0.600363971291866", "0.38506487603305783"
+$ result_label       &lt;chr&gt; "39 Quai André Citroën 75015 Paris", "64 Allée de B…
+$ result_type        &lt;chr&gt; "housenumber", "housenumber", "housenumber"
+$ result_id          &lt;chr&gt; "75115_0318_00039", "75112_0874_00064", "75107_8909…
+$ result_housenumber &lt;chr&gt; "39", "64", "20"
+$ result_name        &lt;chr&gt; "39 Quai André Citroën", "64 Allée de Bercy", "20 A…
+$ result_street      &lt;chr&gt; "Quai André Citroën", "Allée de Bercy", "Avenue de …
+$ result_postcode    &lt;chr&gt; "75015", "75012", "75007"
+$ result_city        &lt;chr&gt; "Paris", "Paris", "Paris"
+$ result_context     &lt;chr&gt; "75, Paris, Île-de-France", "75, Paris, Île-de-Fran…
+$ result_citycode    &lt;chr&gt; "75115", "75112", "75107"
+$ result_oldcitycode &lt;chr&gt; NA, NA, NA
+$ result_oldcity     &lt;chr&gt; NA, NA, NA
+$ result_district    &lt;chr&gt; "Paris 15e Arrondissement", "Paris 12e Arrondisseme…
+$ result_status      &lt;chr&gt; "ok", "ok", "ok"</code></pre>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"paris2012"</span><span class="op">)</span></span>
 <span><span class="va">paris2012</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">100</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -240,39 +231,35 @@ commune.</p>
 <span>    <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="../reference/geocode_tbl.html">geocode_tbl</a></span><span class="op">(</span>adresse <span class="op">=</span> <span class="va">adresse</span>, code_insee <span class="op">=</span> <span class="va">code_insee</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Writing tempfile to...C:\Users\JULIET~1.ENG\AppData\Local\Temp\RtmpC2GOgf\file7a309d533a4.csv</span></span></code></pre>
-<pre><code><span><span class="co">## If file is larger than 50 MB, it must be splitted</span></span>
-<span><span class="co">## Size is : 3 Kb</span></span></code></pre>
-<pre><code><span><span class="co">## SuccessOKSuccess: (200) OK</span></span></code></pre>
-<pre><code><span><span class="co">## Rows: 100</span></span>
-<span><span class="co">## Columns: 27</span></span>
-<span><span class="co">## $ arrondissement     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "06"<span style="color: #949494;">, </span>"06"<span style="color: #949494;">, </span>"06"<span style="color: #949494;">, </span>"06"<span style="color: #949494;">, </span>"06"<span style="color: #949494;">, </span>"06"<span style="color: #949494;">, </span>"06"<span style="color: #949494;">, </span>"06"<span style="color: #949494;">, </span>"06…</span></span>
-<span><span class="co">## $ bureau             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "09"<span style="color: #949494;">, </span>"09"<span style="color: #949494;">, </span>"09"<span style="color: #949494;">, </span>"09"<span style="color: #949494;">, </span>"09"<span style="color: #949494;">, </span>"09"<span style="color: #949494;">, </span>"09"<span style="color: #949494;">, </span>"09"<span style="color: #949494;">, </span>"09…</span></span>
-<span><span class="co">## $ numero             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 4<span style="color: #949494;">, </span>5<span style="color: #949494;">, </span>6<span style="color: #949494;">, </span>7<span style="color: #949494;">, </span>8<span style="color: #949494;">, </span>11<span style="color: #949494;">, </span>12<span style="color: #949494;">, </span>13<span style="color: #949494;">, </span>14<span style="color: #949494;">, </span>16<span style="color: #949494;">, </span>3<span style="color: #949494;">, </span>4<span style="color: #949494;">, </span>5<span style="color: #949494;">, </span>6<span style="color: #949494;">, </span>7<span style="color: #949494;">, </span>8…</span></span>
-<span><span class="co">## $ voie               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "RUE DE L"<span style="color: #949494;">, </span>"RUE DE L"<span style="color: #949494;">, </span>"RUE DE L"<span style="color: #949494;">, </span>"RUE DE L"<span style="color: #949494;">, </span>"RU…</span></span>
-<span><span class="co">## $ nom                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "ABBAYE"<span style="color: #949494;">, </span>"ABBAYE"<span style="color: #949494;">, </span>"ABBAYE"<span style="color: #949494;">, </span>"ABBAYE"<span style="color: #949494;">, </span>"ABBAYE"<span style="color: #949494;">, </span>"…</span></span>
-<span><span class="co">## $ nb                 <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1<span style="color: #949494;">, </span>1<span style="color: #949494;">, </span>20<span style="color: #949494;">, </span>2<span style="color: #949494;">, </span>17<span style="color: #949494;">, </span>2<span style="color: #949494;">, </span>9<span style="color: #949494;">, </span>15<span style="color: #949494;">, </span>17<span style="color: #949494;">, </span>8<span style="color: #949494;">, </span>13<span style="color: #949494;">, </span>6<span style="color: #949494;">, </span>6<span style="color: #949494;">, </span>3<span style="color: #949494;">, </span>9<span style="color: #949494;">, </span>1…</span></span>
-<span><span class="co">## $ ID                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "0609"<span style="color: #949494;">, </span>"0609"<span style="color: #949494;">, </span>"0609"<span style="color: #949494;">, </span>"0609"<span style="color: #949494;">, </span>"0609"<span style="color: #949494;">, </span>"0609"<span style="color: #949494;">, </span>"06…</span></span>
-<span><span class="co">## $ adresse            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "4 RUE DE L ABBAYE"<span style="color: #949494;">, </span>"5 RUE DE L ABBAYE"<span style="color: #949494;">, </span>"6 RUE DE…</span></span>
-<span><span class="co">## $ code_insee         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "75106"<span style="color: #949494;">, </span>"75106"<span style="color: #949494;">, </span>"75106"<span style="color: #949494;">, </span>"75106"<span style="color: #949494;">, </span>"75106"<span style="color: #949494;">, </span>"75106…</span></span>
-<span><span class="co">## $ longitude          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 2.335715<span style="color: #949494;">, </span>2.335172<span style="color: #949494;">, </span>2.335352<span style="color: #949494;">, </span>2.335041<span style="color: #949494;">, </span>2.334903<span style="color: #949494;">, </span>2…</span></span>
-<span><span class="co">## $ latitude           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 48.85405<span style="color: #949494;">, </span>48.85407<span style="color: #949494;">, </span>48.85414<span style="color: #949494;">, </span>48.85410<span style="color: #949494;">, </span>48.85425<span style="color: #949494;">, </span>4…</span></span>
-<span><span class="co">## $ result_score       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.9663627<span style="color: #949494;">, </span>0.9663627<span style="color: #949494;">, </span>0.9663627<span style="color: #949494;">, </span>0.9663627<span style="color: #949494;">, </span>0.96636…</span></span>
-<span><span class="co">## $ result_score_next  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">,</span>…</span></span>
-<span><span class="co">## $ result_label       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "4 Rue de l'Abbaye 75006 Paris"<span style="color: #949494;">, </span>"5 Rue de l'Abbaye…</span></span>
-<span><span class="co">## $ result_type        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "housenumber"<span style="color: #949494;">, </span>"housenumber"<span style="color: #949494;">, </span>"housenumber"<span style="color: #949494;">, </span>"house…</span></span>
-<span><span class="co">## $ result_id          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "75106_0002_00004"<span style="color: #949494;">, </span>"75106_0002_00005"<span style="color: #949494;">, </span>"75106_0002…</span></span>
-<span><span class="co">## $ result_housenumber <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "4"<span style="color: #949494;">, </span>"5"<span style="color: #949494;">, </span>"6"<span style="color: #949494;">, </span>"7"<span style="color: #949494;">, </span>"8"<span style="color: #949494;">, </span>"11"<span style="color: #949494;">, </span>"12"<span style="color: #949494;">, </span>"13"<span style="color: #949494;">, </span>"14"<span style="color: #949494;">, </span>"1…</span></span>
-<span><span class="co">## $ result_name        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "4 Rue de l'Abbaye"<span style="color: #949494;">, </span>"5 Rue de l'Abbaye"<span style="color: #949494;">, </span>"6 Rue de…</span></span>
-<span><span class="co">## $ result_street      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Rue de l'Abbaye"<span style="color: #949494;">, </span>"Rue de l'Abbaye"<span style="color: #949494;">, </span>"Rue de l'Abb…</span></span>
-<span><span class="co">## $ result_postcode    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "75006"<span style="color: #949494;">, </span>"75006"<span style="color: #949494;">, </span>"75006"<span style="color: #949494;">, </span>"75006"<span style="color: #949494;">, </span>"75006"<span style="color: #949494;">, </span>"75006…</span></span>
-<span><span class="co">## $ result_city        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Paris"<span style="color: #949494;">, </span>"Paris"<span style="color: #949494;">, </span>"Paris"<span style="color: #949494;">, </span>"Paris"<span style="color: #949494;">, </span>"Paris"<span style="color: #949494;">, </span>"Paris…</span></span>
-<span><span class="co">## $ result_context     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "75, Paris, Île-de-France"<span style="color: #949494;">, </span>"75, Paris, Île-de-Fran…</span></span>
-<span><span class="co">## $ result_citycode    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "75106"<span style="color: #949494;">, </span>"75106"<span style="color: #949494;">, </span>"75106"<span style="color: #949494;">, </span>"75106"<span style="color: #949494;">, </span>"75106"<span style="color: #949494;">, </span>"75106…</span></span>
-<span><span class="co">## $ result_oldcitycode <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">,</span>…</span></span>
-<span><span class="co">## $ result_oldcity     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">,</span>…</span></span>
-<span><span class="co">## $ result_district    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Paris 6e Arrondissement"<span style="color: #949494;">, </span>"Paris 6e Arrondissement…</span></span>
-<span><span class="co">## $ result_status      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "ok"<span style="color: #949494;">, </span>"ok"<span style="color: #949494;">, </span>"ok"<span style="color: #949494;">, </span>"ok"<span style="color: #949494;">, </span>"ok"<span style="color: #949494;">, </span>"ok"<span style="color: #949494;">, </span>"ok"<span style="color: #949494;">, </span>"ok"<span style="color: #949494;">, </span>"ok…</span></span></code></pre>
+<pre><code>Rows: 100
+Columns: 27
+$ arrondissement     &lt;chr&gt; "06", "06", "06", "06", "06", "06", "06", "06", "06…
+$ bureau             &lt;chr&gt; "09", "09", "09", "09", "09", "09", "09", "09", "09…
+$ numero             &lt;int&gt; 4, 5, 6, 7, 8, 11, 12, 13, 14, 16, 3, 4, 5, 6, 7, 8…
+$ voie               &lt;chr&gt; "RUE DE L", "RUE DE L", "RUE DE L", "RUE DE L", "RU…
+$ nom                &lt;chr&gt; "ABBAYE", "ABBAYE", "ABBAYE", "ABBAYE", "ABBAYE", "…
+$ nb                 &lt;int&gt; 1, 1, 20, 2, 17, 2, 9, 15, 17, 8, 13, 6, 6, 3, 9, 1…
+$ ID                 &lt;chr&gt; "0609", "0609", "0609", "0609", "0609", "0609", "06…
+$ adresse            &lt;chr&gt; "4 RUE DE L ABBAYE", "5 RUE DE L ABBAYE", "6 RUE DE…
+$ code_insee         &lt;chr&gt; "75106", "75106", "75106", "75106", "75106", "75106…
+$ longitude          &lt;dbl&gt; 2.335715, 2.335172, 2.335352, 2.335041, 2.334903, 2…
+$ latitude           &lt;dbl&gt; 48.85405, 48.85407, 48.85414, 48.85410, 48.85425, 4…
+$ result_score       &lt;dbl&gt; 0.9663627, 0.9663627, 0.9663627, 0.9663627, 0.96636…
+$ result_score_next  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ result_label       &lt;chr&gt; "4 Rue de l'Abbaye 75006 Paris", "5 Rue de l'Abbaye…
+$ result_type        &lt;chr&gt; "housenumber", "housenumber", "housenumber", "house…
+$ result_id          &lt;chr&gt; "75106_0002_00004", "75106_0002_00005", "75106_0002…
+$ result_housenumber &lt;chr&gt; "4", "5", "6", "7", "8", "11", "12", "13", "14", "1…
+$ result_name        &lt;chr&gt; "4 Rue de l'Abbaye", "5 Rue de l'Abbaye", "6 Rue de…
+$ result_street      &lt;chr&gt; "Rue de l'Abbaye", "Rue de l'Abbaye", "Rue de l'Abb…
+$ result_postcode    &lt;chr&gt; "75006", "75006", "75006", "75006", "75006", "75006…
+$ result_city        &lt;chr&gt; "Paris", "Paris", "Paris", "Paris", "Paris", "Paris…
+$ result_context     &lt;chr&gt; "75, Paris, Île-de-France", "75, Paris, Île-de-Fran…
+$ result_citycode    &lt;chr&gt; "75106", "75106", "75106", "75106", "75106", "75106…
+$ result_oldcitycode &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ result_oldcity     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ result_district    &lt;chr&gt; "Paris 6e Arrondissement", "Paris 6e Arrondissement…
+$ result_status      &lt;chr&gt; "ok", "ok", "ok", "ok", "ok", "ok", "ok", "ok", "ok…</code></pre>
 </div>
 </div>
 <div class="section level2">
@@ -285,77 +272,72 @@ location (latitude, longitude) to a human readable address.</p>
 </h3>
 <p><code><a href="../reference/reverse_geocode.html">reverse_geocode()</a></code> takes longitude and latitude as
 arguments and returns a data frame with addresses.</p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/reverse_geocode.html">reverse_geocode</a></span><span class="op">(</span>long <span class="op">=</span>  <span class="fl">2.279092</span>, lat <span class="op">=</span> <span class="fl">48.84683</span><span class="op">)</span>  <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## 200</span></span></code></pre>
-<pre><code><span><span class="co">## Rows: 10</span></span>
-<span><span class="co">## Columns: 23</span></span>
-<span><span class="co">## $ type        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "housenumber"<span style="color: #949494;">, </span>"housenumber"<span style="color: #949494;">, </span>"housenumber"<span style="color: #949494;">, </span>"housenumber"…</span></span>
-<span><span class="co">## $ name        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "39a Quai André Citroën"<span style="color: #949494;">, </span>"39 Quai André Citroën"<span style="color: #949494;">, </span>"43a Qu…</span></span>
-<span><span class="co">## $ label       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "39a Quai André Citroën 75015 Paris"<span style="color: #949494;">, </span>"39 Quai André Citro…</span></span>
-<span><span class="co">## $ street      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Quai André Citroën"<span style="color: #949494;">, </span>"Quai André Citroën"<span style="color: #949494;">, </span>"Quai André Ci…</span></span>
-<span><span class="co">## $ postcode    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "75015"<span style="color: #949494;">, </span>"75015"<span style="color: #949494;">, </span>"75015"<span style="color: #949494;">, </span>"75015"<span style="color: #949494;">, </span>"75015"<span style="color: #949494;">, </span>"75015"<span style="color: #949494;">, </span>"750…</span></span>
-<span><span class="co">## $ citycode    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "75115"<span style="color: #949494;">, </span>"75115"<span style="color: #949494;">, </span>"75115"<span style="color: #949494;">, </span>"75115"<span style="color: #949494;">, </span>"75115"<span style="color: #949494;">, </span>"75115"<span style="color: #949494;">, </span>"751…</span></span>
-<span><span class="co">## $ city        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Paris"<span style="color: #949494;">, </span>"Paris"<span style="color: #949494;">, </span>"Paris"<span style="color: #949494;">, </span>"Paris"<span style="color: #949494;">, </span>"Paris"<span style="color: #949494;">, </span>"Paris"<span style="color: #949494;">, </span>"Par…</span></span>
-<span><span class="co">## $ oldcitycode <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## $ oldcity     <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## $ district    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Paris 15e Arrondissement"<span style="color: #949494;">, </span>"Paris 15e Arrondissement"<span style="color: #949494;">, </span>"P…</span></span>
-<span><span class="co">## $ context     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "75, Paris, Île-de-France"<span style="color: #949494;">, </span>"75, Paris, Île-de-France"<span style="color: #949494;">, </span>"7…</span></span>
-<span><span class="co">## $ importance  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.78181<span style="color: #949494;">, </span>0.78181<span style="color: #949494;">, </span>0.78181<span style="color: #949494;">, </span>0.78181<span style="color: #949494;">, </span>0.82311<span style="color: #949494;">, </span>0.78181<span style="color: #949494;">, </span>0.82…</span></span>
-<span><span class="co">## $ housenumber <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "39a"<span style="color: #949494;">, </span>"39"<span style="color: #949494;">, </span>"43a"<span style="color: #949494;">, </span>"41"<span style="color: #949494;">, </span>"8a"<span style="color: #949494;">, </span>"37"<span style="color: #949494;">, </span>"8"<span style="color: #949494;">, </span>"10"<span style="color: #949494;">, </span>"43"<span style="color: #949494;">, </span>"12"</span></span>
-<span><span class="co">## $ id          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "75115_0318_00039_a"<span style="color: #949494;">, </span>"75115_0318_00039"<span style="color: #949494;">, </span>"75115_0318_0004…</span></span>
-<span><span class="co">## $ banId       <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## $ x           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 647094.3<span style="color: #949494;">, </span>647082.8<span style="color: #949494;">, </span>647087.1<span style="color: #949494;">, </span>647071.8<span style="color: #949494;">, </span>647110.9<span style="color: #949494;">, </span>647095.8…</span></span>
-<span><span class="co">## $ y           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 6860995<span style="color: #949494;">, </span>6861010<span style="color: #949494;">, </span>6860976<span style="color: #949494;">, </span>6860999<span style="color: #949494;">, </span>6861016<span style="color: #949494;">, </span>6861024<span style="color: #949494;">, </span>6861…</span></span>
-<span><span class="co">## $ distance    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1<span style="color: #949494;">, </span>19<span style="color: #949494;">, </span>21<span style="color: #949494;">, </span>24<span style="color: #949494;">, </span>26<span style="color: #949494;">, </span>29<span style="color: #949494;">, </span>30<span style="color: #949494;">, </span>32<span style="color: #949494;">, </span>36<span style="color: #949494;">, </span>40</span></span>
-<span><span class="co">## $ score       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.9999<span style="color: #949494;">, </span>0.9981<span style="color: #949494;">, </span>0.9979<span style="color: #949494;">, </span>0.9976<span style="color: #949494;">, </span>0.9974<span style="color: #949494;">, </span>0.9971<span style="color: #949494;">, </span>0.9970<span style="color: #949494;">, </span>0.…</span></span>
-<span><span class="co">## $ `_type`     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "address"<span style="color: #949494;">, </span>"address"<span style="color: #949494;">, </span>"address"<span style="color: #949494;">, </span>"address"<span style="color: #949494;">, </span>"address"<span style="color: #949494;">, </span>"ad…</span></span>
-<span><span class="co">## $ type_geo    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Point"<span style="color: #949494;">, </span>"Point"<span style="color: #949494;">, </span>"Point"<span style="color: #949494;">, </span>"Point"<span style="color: #949494;">, </span>"Point"<span style="color: #949494;">, </span>"Point"<span style="color: #949494;">, </span>"Poi…</span></span>
-<span><span class="co">## $ longitude   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 2.279081<span style="color: #949494;">, </span>2.278922<span style="color: #949494;">, </span>2.278985<span style="color: #949494;">, </span>2.278774<span style="color: #949494;">, </span>2.279305<span style="color: #949494;">, </span>2.279098…</span></span>
-<span><span class="co">## $ latitude    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 48.84683<span style="color: #949494;">, </span>48.84696<span style="color: #949494;">, </span>48.84665<span style="color: #949494;">, </span>48.84686<span style="color: #949494;">, </span>48.84701<span style="color: #949494;">, </span>48.84709…</span></span></code></pre>
+<pre><code>Rows: 10
+Columns: 23
+$ type        &lt;chr&gt; "housenumber", "housenumber", "housenumber", "housenumber"…
+$ name        &lt;chr&gt; "39a Quai André Citroën", "39 Quai André Citroën", "43a Qu…
+$ label       &lt;chr&gt; "39a Quai André Citroën 75015 Paris", "39 Quai André Citro…
+$ street      &lt;chr&gt; "Quai André Citroën", "Quai André Citroën", "Quai André Ci…
+$ postcode    &lt;chr&gt; "75015", "75015", "75015", "75015", "75015", "75015", "750…
+$ citycode    &lt;chr&gt; "75115", "75115", "75115", "75115", "75115", "75115", "751…
+$ city        &lt;chr&gt; "Paris", "Paris", "Paris", "Paris", "Paris", "Paris", "Par…
+$ oldcitycode &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
+$ oldcity     &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
+$ district    &lt;chr&gt; "Paris 15e Arrondissement", "Paris 15e Arrondissement", "P…
+$ context     &lt;chr&gt; "75, Paris, Île-de-France", "75, Paris, Île-de-France", "7…
+$ importance  &lt;dbl&gt; 0.78181, 0.78181, 0.78181, 0.78181, 0.82311, 0.78181, 0.82…
+$ housenumber &lt;chr&gt; "39a", "39", "43a", "41", "8a", "37", "8", "10", "43", "12"
+$ id          &lt;chr&gt; "75115_0318_00039_a", "75115_0318_00039", "75115_0318_0004…
+$ banId       &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
+$ x           &lt;dbl&gt; 647094.3, 647082.8, 647087.1, 647071.8, 647110.9, 647095.8…
+$ y           &lt;dbl&gt; 6860995, 6861010, 6860976, 6860999, 6861016, 6861024, 6861…
+$ distance    &lt;int&gt; 1, 19, 21, 24, 26, 29, 30, 32, 36, 40
+$ score       &lt;dbl&gt; 0.9999, 0.9981, 0.9979, 0.9976, 0.9974, 0.9971, 0.9970, 0.…
+$ `_type`     &lt;chr&gt; "address", "address", "address", "address", "address", "ad…
+$ type_geo    &lt;chr&gt; "Point", "Point", "Point", "Point", "Point", "Point", "Poi…
+$ longitude   &lt;dbl&gt; 2.279081, 2.278922, 2.278985, 2.278774, 2.279305, 2.279098…
+$ latitude    &lt;dbl&gt; 48.84683, 48.84696, 48.84665, 48.84686, 48.84701, 48.84709…</code></pre>
 </div>
 <div class="section level3">
 <h3 id="a-data-frame-1">A data frame<a class="anchor" aria-label="anchor" href="#a-data-frame-1"></a>
 </h3>
 <p><code>reverse_geocode_tbl</code> takes the names of the longitude and
 latitude columns and returns a data frame with adresses.</p>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">test_df</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span>
 <span>  nom <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="va">letters</span>, size <span class="op">=</span> <span class="fl">10</span>, replace <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,</span>
 <span>  lon <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">2.19</span>, <span class="fl">2.47</span><span class="op">)</span>,</span>
 <span>  lat <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">48.8</span>, <span class="fl">48.9</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">test_df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="../reference/reverse_geocode_tbl.html">reverse_geocode_tbl</a></span><span class="op">(</span><span class="va">lon</span>, <span class="va">lat</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="va">glimpse</span></span></code></pre></div>
-<pre><code><span><span class="co">## Writing tempfile to...C:\Users\JULIET~1.ENG\AppData\Local\Temp\RtmpC2GOgf\file7a30ce533b4.csv</span></span></code></pre>
-<pre><code><span><span class="co">## If file is larger than 50 MB, it must be splitted</span></span>
-<span><span class="co">## Size is : 390 bytes</span></span></code></pre>
-<pre><code><span><span class="co">## SuccessOKSuccess: (200) OK</span></span></code></pre>
-<pre><code><span><span class="co">## Rows: 10</span></span>
-<span><span class="co">## Columns: 20</span></span>
-<span><span class="co">## $ nom                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "o"<span style="color: #949494;">, </span>"z"<span style="color: #949494;">, </span>"d"<span style="color: #949494;">, </span>"f"<span style="color: #949494;">, </span>"i"<span style="color: #949494;">, </span>"e"<span style="color: #949494;">, </span>"u"<span style="color: #949494;">, </span>"y"<span style="color: #949494;">, </span>"m"<span style="color: #949494;">, </span>"b"</span></span>
-<span><span class="co">## $ longitude          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 2.463153<span style="color: #949494;">, </span>2.271170<span style="color: #949494;">, </span>2.379947<span style="color: #949494;">, </span>2.395889<span style="color: #949494;">, </span>2.244868<span style="color: #949494;">, </span>2…</span></span>
-<span><span class="co">## $ latitude           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 48.86886<span style="color: #949494;">, </span>48.80312<span style="color: #949494;">, </span>48.82256<span style="color: #949494;">, </span>48.83008<span style="color: #949494;">, </span>48.86365<span style="color: #949494;">, </span>4…</span></span>
-<span><span class="co">## $ result_longitude   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## $ result_latitude    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## $ result_distance    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 42<span style="color: #949494;">, </span>32<span style="color: #949494;">, </span>105<span style="color: #949494;">, </span>73<span style="color: #949494;">, </span>145<span style="color: #949494;">, </span>14<span style="color: #949494;">, </span>30<span style="color: #949494;">, </span>10<span style="color: #949494;">, </span>1<span style="color: #949494;">, </span>31</span></span>
-<span><span class="co">## $ result_label       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "234 Rue de Rosny 93100 Montreuil"<span style="color: #949494;">, </span>"7 Rue Denis Ab…</span></span>
-<span><span class="co">## $ result_type        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "housenumber"<span style="color: #949494;">, </span>"housenumber"<span style="color: #949494;">, </span>"housenumber"<span style="color: #949494;">, </span>"house…</span></span>
-<span><span class="co">## $ result_id          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "93048_8260_00234"<span style="color: #949494;">, </span>"92023_2520_00007"<span style="color: #949494;">, </span>"75113_7713…</span></span>
-<span><span class="co">## $ result_housenumber <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "234"<span style="color: #949494;">, </span>"7"<span style="color: #949494;">, </span>"12"<span style="color: #949494;">, </span>"40"<span style="color: #949494;">, </span>"80"<span style="color: #949494;">, </span>"14"<span style="color: #949494;">, </span>"51"<span style="color: #949494;">, </span>"12"<span style="color: #949494;">, </span>"8"…</span></span>
-<span><span class="co">## $ result_name        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "234 Rue de Rosny"<span style="color: #949494;">, </span>"7 Rue Denis Abraham"<span style="color: #949494;">, </span>"12 Aven…</span></span>
-<span><span class="co">## $ result_street      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Rue de Rosny"<span style="color: #949494;">, </span>"Rue Denis Abraham"<span style="color: #949494;">, </span>"Avenue de la …</span></span>
-<span><span class="co">## $ result_postcode    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "93100"<span style="color: #949494;">, </span>"92140"<span style="color: #949494;">, </span>"75013"<span style="color: #949494;">, </span>"75012"<span style="color: #949494;">, </span>"75016"<span style="color: #949494;">, </span>"94120…</span></span>
-<span><span class="co">## $ result_city        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Montreuil"<span style="color: #949494;">, </span>"Clamart"<span style="color: #949494;">, </span>"Paris"<span style="color: #949494;">, </span>"Paris"<span style="color: #949494;">, </span>"Paris"<span style="color: #949494;">, </span>…</span></span>
-<span><span class="co">## $ result_context     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "93, Seine-Saint-Denis, Île-de-France"<span style="color: #949494;">, </span>"92, Hauts-…</span></span>
-<span><span class="co">## $ result_citycode    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "93048"<span style="color: #949494;">, </span>"92023"<span style="color: #949494;">, </span>"75113"<span style="color: #949494;">, </span>"75112"<span style="color: #949494;">, </span>"75116"<span style="color: #949494;">, </span>"94033…</span></span>
-<span><span class="co">## $ result_oldcitycode <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## $ result_oldcity     <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">## $ result_district    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span>"Paris 13e Arrondissement"<span style="color: #949494;">, </span>"Paris 12e Arro…</span></span>
-<span><span class="co">## $ result_status      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "ok"<span style="color: #949494;">, </span>"ok"<span style="color: #949494;">, </span>"ok"<span style="color: #949494;">, </span>"ok"<span style="color: #949494;">, </span>"ok"<span style="color: #949494;">, </span>"ok"<span style="color: #949494;">, </span>"ok"<span style="color: #949494;">, </span>"ok"<span style="color: #949494;">, </span>"ok…</span></span></code></pre>
+<span><span class="va">test_df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/reverse_geocode_tbl.html">reverse_geocode_tbl</a></span><span class="op">(</span><span class="va">lon</span>, <span class="va">lat</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code>Rows: 10
+Columns: 20
+$ nom                &lt;chr&gt; "p", "n", "i", "j", "f", "c", "o", "u", "q", "a"
+$ longitude          &lt;dbl&gt; 2.209505, 2.245517, 2.286644, 2.382297, 2.193622, 2…
+$ latitude           &lt;dbl&gt; 48.82198, 48.89566, 48.85378, 48.83758, 48.88390, 4…
+$ result_longitude   &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
+$ result_latitude    &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
+$ result_distance    &lt;int&gt; 14, 10, 46, 4, 35, NA, 4, 8, 45, 3
+$ result_label       &lt;chr&gt; "Rue Léon Cladel 92310 Sèvres", "71 Rue Segoffin 92…
+$ result_type        &lt;chr&gt; "street", "housenumber", "housenumber", "housenumbe…
+$ result_id          &lt;chr&gt; "92072_1130", "92026_8535_00071", "75115_4313_00016…
+$ result_housenumber &lt;chr&gt; NA, "71", "16a", "55", "69", NA, "203", "52", "39",…
+$ result_name        &lt;chr&gt; "Rue Léon Cladel", "71 Rue Segoffin", "16a Quai de …
+$ result_street      &lt;chr&gt; NA, "Rue Segoffin", "Quai de Grenelle", "Rue de Ber…
+$ result_postcode    &lt;chr&gt; "92310", "92400", "75015", "75012", "92000", NA, "7…
+$ result_city        &lt;chr&gt; "Sèvres", "Courbevoie", "Paris", "Paris", "Nanterre…
+$ result_context     &lt;chr&gt; "92, Hauts-de-Seine, Île-de-France", "92, Hauts-de-…
+$ result_citycode    &lt;chr&gt; "92072", "92026", "75115", "75112", "92050", NA, "7…
+$ result_oldcitycode &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
+$ result_oldcity     &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
+$ result_district    &lt;chr&gt; NA, NA, "Paris 15e Arrondissement", "Paris 12e Arro…
+$ result_status      &lt;chr&gt; "ok", "ok", "ok", "ok", "ok", "not-found", "ok", "o…</code></pre>
 </div>
 </div>
   </div>

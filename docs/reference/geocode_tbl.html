@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">banR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.4.9000</span>
       </span>
     </div>
 
@@ -39,7 +39,7 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="http://github.com/joelgombin/banR/" class="external-link">
+  <a href="https://github.com/joelgombin/banR/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
 
   </a>
@@ -54,7 +54,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Geocode tbl</h1>
-    <small class="dont-index">Source: <a href="http://github.com/joelgombin/banR/blob/HEAD/R/geocode_tbl.R" class="external-link"><code>R/geocode_tbl.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/joelgombin/banR/blob/HEAD/R/geocode_tbl.R" class="external-link"><code>R/geocode_tbl.R</code></a></small>
     <div class="hidden name"><code>geocode_tbl.Rd</code></div>
     </div>
 
@@ -93,7 +93,7 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
 <span class="r-in"><span><span class="va">table_test</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"39 quai Andre Citroen"</span>, <span class="st">"64 Allee de Bercy"</span>, <span class="st">"20 avenue de Segur"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"75015"</span>, <span class="st">"75012"</span>, <span class="st">"75007"</span><span class="op">)</span>,</span></span>
@@ -101,37 +101,8 @@
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">geocode_tbl</span><span class="op">(</span>tbl <span class="op">=</span> <span class="va">table_test</span>, adresse <span class="op">=</span> <span class="va">x</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Writing tempfile to...C:\Users\JULIET~1.ENG\AppData\Local\Temp\RtmpAzOdDH\file646016742fe4.csv</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> If file is larger than 50 MB, it must be splitted</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Size is : 61 bytes</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> SuccessOKSuccess: (200) OK</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 21</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   y            z x             longitude latitude result_score result_score_next</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> 75015 -<span style="color: #BB0000;">2.44</span>    39 quai Andr…      2.28     48.8        0.980 0.80136999999999…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> 75012 -<span style="color: #BB0000;">0.005</span><span style="color: #BB0000; text-decoration: underline;">57</span> 64 Allee de …      2.38     48.8        0.973 <span style="color: #BB0000;">NA</span>               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> 75007  0.622   20 avenue de…      2.31     48.9        0.972 0.95324454545454…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 14 more variables: result_label &lt;chr&gt;, result_type &lt;chr&gt;, result_id &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   result_housenumber &lt;chr&gt;, result_name &lt;chr&gt;, result_street &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   result_postcode &lt;chr&gt;, result_city &lt;chr&gt;, result_context &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   result_citycode &lt;chr&gt;, result_oldcitycode &lt;chr&gt;, result_oldcity &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   result_district &lt;chr&gt;, result_status &lt;chr&gt;</span></span>
 <span class="r-in"><span><span class="fu">geocode_tbl</span><span class="op">(</span>tbl <span class="op">=</span> <span class="va">table_test</span>, adresse <span class="op">=</span> <span class="va">x</span>, code_postal <span class="op">=</span> <span class="va">y</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Writing tempfile to...C:\Users\JULIET~1.ENG\AppData\Local\Temp\RtmpAzOdDH\file64603f3f1851.csv</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> If file is larger than 50 MB, it must be splitted</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Size is : 81 bytes</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> SuccessOKSuccess: (200) OK</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 21</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          z x             y     longitude latitude result_score result_score_next</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> -<span style="color: #BB0000;">2.44</span>    39 quai Andr… 75015      2.28     48.8        0.980 <span style="color: #BB0000;">NA</span>               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> -<span style="color: #BB0000;">0.005</span><span style="color: #BB0000; text-decoration: underline;">57</span> 64 Allee de … 75012      2.38     48.8        0.973 0.600363971291866</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>  0.622   20 avenue de… 75007      2.31     48.9        0.972 0.38506487603305…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 14 more variables: result_label &lt;chr&gt;, result_type &lt;chr&gt;, result_id &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   result_housenumber &lt;chr&gt;, result_name &lt;chr&gt;, result_street &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   result_postcode &lt;chr&gt;, result_city &lt;chr&gt;, result_context &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   result_citycode &lt;chr&gt;, result_oldcitycode &lt;chr&gt;, result_oldcity &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   result_district &lt;chr&gt;, result_status &lt;chr&gt;</span></span>
+<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

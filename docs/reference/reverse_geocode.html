@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">banR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.4.9000</span>
       </span>
     </div>
 
@@ -39,7 +39,7 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="http://github.com/joelgombin/banR/" class="external-link">
+  <a href="https://github.com/joelgombin/banR/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
 
   </a>
@@ -54,7 +54,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Reverse geocode</h1>
-    <small class="dont-index">Source: <a href="http://github.com/joelgombin/banR/blob/HEAD/R/geocode.R" class="external-link"><code>R/geocode.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/joelgombin/banR/blob/HEAD/R/geocode.R" class="external-link"><code>R/geocode.R</code></a></small>
     <div class="hidden name"><code>reverse_geocode.Rd</code></div>
     </div>
 
@@ -85,24 +85,9 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
 <span class="r-in"><span><span class="fu">reverse_geocode</span><span class="op">(</span>long <span class="op">=</span> <span class="fl">2.37</span>, lat <span class="op">=</span> <span class="fl">48.357</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 200</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 9 × 20</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   type      name  postcode citycode city  oldcitycode oldcity context importance</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> street    Gran… 91720    91507    Prun… <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>      91, Es…      0.267</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> housenum… 23 G… 91720    91507    Prun… <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>      91, Es…      0.267</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> street    Rue … 91720    91507    Prun… <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>      91, Es…      0.267</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> housenum… 1 Ru… 91720    91507    Prun… <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>      91, Es…      0.267</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> housenum… 6 Ru… 91720    91507    Prun… <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>      91, Es…      0.343</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> street    Chem… 91720    91507    Prun… <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>      91, Es…      0.267</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> housenum… 23 C… 91720    91507    Prun… <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>      91, Es…      0.267</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span> housenum… 4 Ru… 91720    91507    Prun… <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>      91, Es…      0.343</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">9</span> housenum… 22 R… 91720    91507    Prun… <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>      91, Es…      0.401</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 11 more variables: id &lt;chr&gt;, banId &lt;chr&gt;, x &lt;dbl&gt;, y &lt;dbl&gt;, label &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   distance &lt;int&gt;, score &lt;dbl&gt;, `_type` &lt;chr&gt;, type_geo &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   longitude &lt;dbl&gt;, latitude &lt;dbl&gt;</span></span>
+<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

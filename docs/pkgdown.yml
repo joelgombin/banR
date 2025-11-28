@@ -1,6 +1,6 @@
-pandoc: '3.4'
+pandoc: 3.6.3
 pkgdown: 2.1.3
 pkgdown_sha: ~
 articles:
   geocode: geocode.html
-last_built: 2025-11-10T11:47Z
+last_built: 2025-11-28T13:42Z
